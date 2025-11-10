@@ -123,3 +123,139 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Custom responsive utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  /* Smooth transitions for responsive elements */
+  .transition-responsive {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  /* Custom scrollbar for better UX */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive breakpoints for better control */
+@media screen and (max-width: 640px) {
+  .mobile-only {
+    display: block !important;
+  }
+  .tablet-up {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .tablet-up {
+    display: block !important;
+  }
+  .desktop-up {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .tablet-up {
+    display: block !important;
+  }
+  .desktop-up {
+    display: block !important;
+  }
+}
+
+/* High DPI screen optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-fade-in-up {
+    animation: none !important;
+  }
+}
