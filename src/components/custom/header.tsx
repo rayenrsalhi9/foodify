@@ -40,7 +40,7 @@ const header = () => {
                             <Phone className="h-5 w-5" />
                             <div className="text-sm">
                                 <p className="text-xs opacity-90">Hotline Number:</p>
-                                <p className="font-semibold">+123 9888 0066</p>
+                                <p className="font-semibold">+1 800 FOODIFY</p>
                             </div>
                         </div>
                     </div>

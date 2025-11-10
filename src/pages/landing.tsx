@@ -101,7 +101,7 @@ const landing = () => {
           <img 
             src={bgIcon1} 
             alt="Background Icon 1" 
-            className="object-cover w-full h-full"
+            className="object-cover"
             loading="lazy"
           />
         </div>
@@ -109,7 +109,7 @@ const landing = () => {
           <img 
             src={bgIcon2} 
             alt="Background Icon 2" 
-            className="object-cover w-full h-full"
+            className="object-cover"
             loading="lazy"
           />
         </div>
