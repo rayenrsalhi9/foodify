@@ -2,6 +2,15 @@ import { Button } from "../ui/button"
 import { Menu, Phone, ShoppingCart, User, UtensilsCrossed } from "lucide-react"
 import { Link } from "react-router"
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
 const header = () => {
 
     return (
@@ -9,13 +18,20 @@ const header = () => {
             <div className="max-w-7xl mx-auto px-4 py-4">
                 {/* Mobile Layout (default) */}
                 <div className="flex items-center justify-between md:hidden">
-                    <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className="hover:bg-orange-600 transition-colors duration-200"
-                    >
-                        <Menu className="h-6 w-6" />
-                    </Button>
+                    <Sheet>
+                        <SheetTrigger>
+                            <Menu className="h-6 w-6" />
+                        </SheetTrigger>
+                        <SheetContent side="top">
+                            <SheetHeader>
+                                <SheetTitle>Are you absolutely sure?</SheetTitle>
+                                <SheetDescription>
+                                    This action cannot be undone. This will permanently delete your account
+                                    and remove your data from our servers.
+                                </SheetDescription>
+                            </SheetHeader>
+                        </SheetContent>
+                    </Sheet>
                     
                     <Link to="/" className="flex items-center gap-2 text-white no-underline">
                         <UtensilsCrossed className="h-10 w-10 bg-white text-orange-500 rounded-full p-2" />
@@ -33,9 +49,20 @@ const header = () => {
                 {/* Tablet/Desktop Layout */}
                 <div className="hidden md:flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon" className="hover:bg-orange-600 transition-colors duration-200">
-                            <Menu className="h-6 w-6" />
-                        </Button>
+                        <Sheet>
+                            <SheetTrigger>
+                                <Menu className="h-6 w-6" />
+                            </SheetTrigger>
+                            <SheetContent side="left">
+                                <SheetHeader>
+                                    <SheetTitle>Are you absolutely sure?</SheetTitle>
+                                    <SheetDescription>
+                                        This action cannot be undone. This will permanently delete your account
+                                        and remove your data from our servers.
+                                    </SheetDescription>
+                                </SheetHeader>
+                            </SheetContent>
+                        </Sheet>
                         <div className="flex items-center gap-2">
                             <Phone className="h-5 w-5" />
                             <div className="text-sm">
