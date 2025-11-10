@@ -1,43 +1,34 @@
 import { Button } from "../ui/button"
-import { Menu, Phone, ShoppingCart, User, UtensilsCrossed } from "lucide-react"
+import { Phone, ShoppingCart, User, UtensilsCrossed, Menu } from "lucide-react"
 import { Link } from "react-router"
+import { useSidebar } from "../ui/sidebar"
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+const Header = () => {
 
-const header = () => {
+    const {toggleSidebar} = useSidebar()
 
     return (
         <header className="bg-orange-500 text-white relative">
             <div className="max-w-7xl mx-auto px-4 py-4">
                 {/* Mobile Layout (default) */}
                 <div className="flex items-center justify-between md:hidden">
-                    <Sheet>
-                        <SheetTrigger>
-                            <Menu className="h-6 w-6" />
-                        </SheetTrigger>
-                        <SheetContent side="top">
-                            <SheetHeader>
-                                <SheetTitle>Are you absolutely sure?</SheetTitle>
-                                <SheetDescription>
-                                    This action cannot be undone. This will permanently delete your account
-                                    and remove your data from our servers.
-                                </SheetDescription>
-                            </SheetHeader>
-                        </SheetContent>
-                    </Sheet>
+                    
+                    <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="hover:bg-orange-600 transition-colors duration-200"
+                        onClick={toggleSidebar}
+                    >
+                        <Menu className="h-6 w-6" />
+                    </Button>
                     
                     <Link to="/" className="flex items-center gap-2 text-white no-underline">
                         <UtensilsCrossed className="h-10 w-10 bg-white text-orange-500 rounded-full p-2" />
                         <div className="text-center">
                             <h1 className="text-2xl font-extrabold">Foodify</h1>
-                            <p className="text-xs tracking-widest opacity-90">ORDER. FOOD. HAPPY</p>
+                            <p className="text-xs tracking-widest opacity-90">
+                                ORDER. FOOD. HAPPY
+                            </p>
                         </div>
                     </Link>
                     
@@ -49,20 +40,16 @@ const header = () => {
                 {/* Tablet/Desktop Layout */}
                 <div className="hidden md:flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <Sheet>
-                            <SheetTrigger>
-                                <Menu className="h-6 w-6" />
-                            </SheetTrigger>
-                            <SheetContent side="left">
-                                <SheetHeader>
-                                    <SheetTitle>Are you absolutely sure?</SheetTitle>
-                                    <SheetDescription>
-                                        This action cannot be undone. This will permanently delete your account
-                                        and remove your data from our servers.
-                                    </SheetDescription>
-                                </SheetHeader>
-                            </SheetContent>
-                        </Sheet>
+                        
+                        <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="hover:bg-orange-600 transition-colors duration-200"
+                            onClick={toggleSidebar}
+                        >
+                            <Menu className="h-6 w-6" />
+                        </Button>
+
                         <div className="flex items-center gap-2">
                             <Phone className="h-5 w-5" />
                             <div className="text-sm">
@@ -118,4 +105,4 @@ const header = () => {
     )
 }
 
-export default header
+export default Header
