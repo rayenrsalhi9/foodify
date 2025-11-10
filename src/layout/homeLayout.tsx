@@ -1,6 +1,7 @@
-import Header from "@/components/custom/header";
-import Landing from "@/pages/landing";
-import OrderSteps from "@/pages/orderSteps";
+import Header from "@/components/custom/header"
+import Landing from "@/pages/landing"
+import OrderSteps from "@/pages/orderSteps"
+import Footer from "@/components/custom/footer"
 
 const HomeLayout = () => {
   return (
@@ -8,8 +9,9 @@ const HomeLayout = () => {
       <Header />
       <Landing />
       <OrderSteps />
+      <Footer />
     </div>
-  );
-};
+  )
+}
 
 export default HomeLayout
