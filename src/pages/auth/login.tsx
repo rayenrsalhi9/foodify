@@ -26,6 +26,7 @@ const login = () => {
           src={loginBg}
           alt="Login background image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          loading="lazy"
         />
       </div>
     </div>

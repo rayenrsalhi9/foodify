@@ -57,10 +57,13 @@ const header = () => {
                         <Button variant="ghost" size="icon" className="hover:bg-orange-600 transition-colors duration-200">
                             <ShoppingCart className="h-6 w-6" />
                         </Button>
-                        <Button className="bg-white text-orange-500 hover:bg-gray-100 font-semibold flex items-center gap-2 transition-colors duration-200">
+                        <Link
+                            to="login"
+                            className="inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
+                        >
                             <User className="h-5 w-5" />
                             <span className="hidden lg:inline">Log In</span>
-                        </Button>
+                        </Link>
                     </div>
                 </div>
 
@@ -74,7 +77,10 @@ const header = () => {
                                 <p className="font-semibold">+123 9888 0066</p>
                             </div>
                         </div>
-                        <Button className="w-full bg-white text-orange-500 hover:bg-gray-100 font-semibold flex items-center justify-center gap-2 transition-colors duration-200">
+                        <Button
+                            variant="default"
+                            className="w-full bg-white text-orange-500 hover:bg-gray-100 font-semibold flex items-center justify-center gap-2 transition-colors duration-200"
+                        >
                             <User className="h-4 w-4" />
                             Log In
                         </Button>

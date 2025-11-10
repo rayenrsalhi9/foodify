@@ -11,6 +11,7 @@ const signup = () => {
           src={signupBg}
           alt="Signup background image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          loading="lazy"
         />
       </div>
       <div className="flex flex-col gap-4 p-6 md:p-10">
