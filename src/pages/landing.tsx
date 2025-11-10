@@ -1,7 +1,5 @@
-import Header from "@/components/custom/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import OrderSteps from "./orderSteps"
 import { MapPin, Navigation2, Search} from "lucide-react"
 
 import bgIcon1 from '/food/bg-icon-1.png'
@@ -25,9 +23,7 @@ const categories = [
 const landing = () => {
   
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      
-      <Header />
+    <div className="h-[calc(100vh-80px)] bg-white flex flex-col">
 
       <section className="relative bg-linear-to-br from-orange-500 to-orange-600 text-white flex-1 px-4 overflow-hidden flex items-center min-h-full">
 
@@ -116,8 +112,6 @@ const landing = () => {
         </div>
 
       </section>
-
-      <OrderSteps />
 
     </div>
   )
