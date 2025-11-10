@@ -1,6 +1,7 @@
 import Header from "@/components/custom/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import OrderSteps from "./orderSteps"
 import { MapPin, Navigation2, Search} from "lucide-react"
 
 import bgIcon1 from '/food/bg-icon-1.png'
@@ -115,6 +116,8 @@ const landing = () => {
         </div>
 
       </section>
+
+      <OrderSteps />
 
     </div>
   )
