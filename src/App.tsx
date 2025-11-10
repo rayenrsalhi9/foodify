@@ -1,10 +1,10 @@
-import { Button } from "./components/ui/button"
+import { RouterProvider } from "react-router/dom"
+import router from "./router"
 
 const App = () => {
   return (
     <div className="w-full max-w-5xl mx-auto px-2">
-      <h1 className="text-4xl">Hello, React!</h1>
-      <Button>Click Me</Button>
+      <RouterProvider router={router} />
     </div>
   )
 }
