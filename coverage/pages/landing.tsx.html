@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/custom/header.tsx</title>
+    <title>Code coverage report for pages/landing.tsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/custom</a> header.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">pages</a> landing.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -170,23 +170,43 @@
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -235,6 +255,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">96x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,114 +298,129 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button } from "../ui/button"
-import { Phone, ShoppingCart, User, UtensilsCrossed, Menu } from "lucide-react"
-import { Link } from "react-router"
-import { useSidebar } from "../ui/sidebar"
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { MapPin, Navigation2, Search} from "lucide-react"
 &nbsp;
-const Header = () =&gt; {
+import bgIcon1 from '/food/bg-icon-1.png'
+import bgIcon2 from '/food/bg-icon-2.png'
+import burger from '/food/burger.png'
+import pasta from '/food/pasta.png'
+import salad from '/food/salad.png'
+import pizza from '/food/pizza.png'
+import sandwich from '/food/sandwich.png'
+import rice from '/food/rice.png'
 &nbsp;
-    const {toggleSidebar} = useSidebar()
+const categories = [
+  { id: 1, name: "Burger", img: burger },
+  { id: 2, name: "Pasta", img: pasta },
+  { id: 3, name: "Salad", img: salad },
+  { id: 4, name: "Pizza", img: pizza },
+  { id: 5, name: "Sandwich", img: sandwich },
+  { id: 6, name: "Fried Rice", img: rice },
+]
 &nbsp;
-    return (
-        &lt;header className="bg-orange-500 text-white relative"&gt;
-            &lt;div className="max-w-7xl mx-auto px-4 py-4"&gt;
-                {/* Mobile Layout (default) */}
-                &lt;div className="flex items-center justify-between md:hidden"&gt;
-                    
-                    &lt;Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className="hover:bg-orange-600 transition-colors duration-200"
-                        onClick={toggleSidebar}
-                    &gt;
-                        &lt;Menu className="h-6 w-6" /&gt;
-                    &lt;/Button&gt;
-                    
-                    &lt;Link to="/" className="flex items-center gap-2 text-white no-underline"&gt;
-                        &lt;UtensilsCrossed className="h-10 w-10 bg-white text-orange-500 rounded-full p-2" /&gt;
-                        &lt;div className="text-center"&gt;
-                            &lt;h1 className="text-2xl font-extrabold"&gt;Foodify&lt;/h1&gt;
-                            &lt;p className="text-xs tracking-widest opacity-90"&gt;
-                                ORDER. FOOD. HAPPY
-                            &lt;/p&gt;
-                        &lt;/div&gt;
-                    &lt;/Link&gt;
-                    
-                    &lt;Button variant="ghost" size="icon" className="hover:bg-orange-600 transition-colors duration-200"&gt;
-                        &lt;ShoppingCart className="h-6 w-6" /&gt;
-                    &lt;/Button&gt;
-                &lt;/div&gt;
+const landing = () =&gt; {
+  
+  return (
+    &lt;div className="h-[calc(100vh-80px)] bg-white flex flex-col"&gt;
 &nbsp;
-                {/* Tablet/Desktop Layout */}
-                &lt;div className="hidden md:flex items-center justify-between"&gt;
-                    &lt;div className="flex items-center gap-4"&gt;
-                        
-                        &lt;Button 
-                            variant="ghost" 
-                            size="icon" 
-                            className="hover:bg-orange-600 transition-colors duration-200"
-                            onClick={toggleSidebar}
-                        &gt;
-                            &lt;Menu className="h-6 w-6" /&gt;
-                        &lt;/Button&gt;
+      &lt;section className="relative bg-linear-to-br from-orange-500 to-orange-600 text-white flex-1 px-4 overflow-hidden flex items-center min-h-full"&gt;
 &nbsp;
-                        &lt;div className="flex items-center gap-2"&gt;
-                            &lt;Phone className="h-5 w-5" /&gt;
-                            &lt;div className="text-sm"&gt;
-                                &lt;p className="text-xs opacity-90"&gt;Hotline Number:&lt;/p&gt;
-                                &lt;p className="font-semibold"&gt;+1 800 FOODIFY&lt;/p&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+        &lt;div className="max-w-5xl mx-auto relative z-1 w-full py-8 sm:py-12 lg:py-16"&gt;
+          {/* Tagline */}
+          &lt;p className="text-center text-base sm:text-lg opacity-90 mb-3 sm:mb-4 animate-fade-in"&gt;
+            Craving something? We'll bring it hot to your door-fast.
+          &lt;/p&gt;
 &nbsp;
-                    &lt;Link to="/" className="flex-1 flex items-center justify-center gap-2 text-white no-underline"&gt;
-                        &lt;UtensilsCrossed className="h-12 w-12 bg-white text-orange-500 rounded-full p-2" /&gt;
-                        &lt;div className="text-center"&gt;
-                            &lt;h1 className="text-3xl font-extrabold"&gt;Foodify&lt;/h1&gt;
-                            &lt;p className="text-xs tracking-widest"&gt;ORDER. FOOD. HAPPY&lt;/p&gt;
-                        &lt;/div&gt;
-                    &lt;/Link&gt;
+          {/* Main Headline */}
+          &lt;h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6 sm:mb-8 leading-tight text-balance animate-slide-up"&gt;
+            Fast Delivery. Zero Hassle.
+          &lt;/h2&gt;
 &nbsp;
-                    &lt;div className="flex items-center gap-4"&gt;
-                        &lt;Button variant="ghost" size="icon" className="hover:bg-orange-600 transition-colors duration-200"&gt;
-                            &lt;ShoppingCart className="h-6 w-6" /&gt;
-                        &lt;/Button&gt;
-                        &lt;Link
-                            to="login"
-                            className="inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
-                        &gt;
-                            &lt;User className="h-5 w-5" /&gt;
-                            &lt;span className="hidden lg:inline"&gt;Log In&lt;/span&gt;
-                        &lt;/Link&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-&nbsp;
-                {/* Mobile Menu Overlay */}
-                &lt;div className="absolute top-full left-0 right-0 bg-orange-600 shadow-lg transition-all duration-300 ease-in-out md:hidden opacity-0 invisible -translate-y-2"&gt;
-                    &lt;div className="px-4 py-3 space-y-3"&gt;
-                        &lt;div className="flex items-center gap-2 text-sm"&gt;
-                            &lt;Phone className="h-4 w-4" /&gt;
-                            &lt;div&gt;
-                                &lt;p className="text-xs opacity-90"&gt;Hotline Number:&lt;/p&gt;
-                                &lt;p className="font-semibold"&gt;+123 9888 0066&lt;/p&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;Button
-                            variant="default"
-                            className="w-full bg-white text-orange-500 hover:bg-gray-100 font-semibold flex items-center justify-center gap-2 transition-colors duration-200"
-                        &gt;
-                            &lt;User className="h-4 w-4" /&gt;
-                            Log In
-                        &lt;/Button&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
+          {/* Search Bar */}
+          &lt;form className="flex flex-col sm:flex-row gap-3 sm:gap-2 bg-white rounded-2xl sm:rounded-full p-3 sm:p-2 shadow-lg mb-8 sm:mb-10 max-w-xl mx-auto animate-fade-in-up"&gt;
+            &lt;div className="flex items-center gap-2 flex-1 px-3 sm:px-4"&gt;
+              &lt;MapPin className="h-5 w-5 text-gray-400 shrink-0" /&gt;
+              &lt;Input
+                type="text"
+                placeholder="Enter delivery address"
+                className="border-0 bg-transparent focus-visible:ring-0 focus-visible:outline-none text-gray-900 placeholder:text-gray-400 h-12 sm:h-auto"
+              /&gt;
             &lt;/div&gt;
-        &lt;/header&gt;
-    )
+&nbsp;
+            &lt;div className="flex gap-2"&gt;
+              &lt;Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 gap-2 flex-1 sm:flex-none transition-colors duration-200"
+              &gt;
+                &lt;Navigation2 className="h-4 w-4" /&gt;
+                &lt;span className="text-xs sm:text-sm font-medium"&gt;Locate Me&lt;/span&gt;
+              &lt;/Button&gt;
+&nbsp;
+              &lt;Button type="submit" className="bg-orange-500 hover:bg-orange-600 text-white rounded-xl sm:rounded-full px-4 sm:px-6 gap-2 flex-1 sm:flex-none transition-colors duration-200"&gt;
+                &lt;Search className="h-4 w-4" /&gt;
+                &lt;span className="text-sm font-semibold"&gt;Search&lt;/span&gt;
+              &lt;/Button&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+&nbsp;
+          {/* Food Categories */}
+          &lt;div className="flex justify-center animate-fade-in-up"&gt;
+            &lt;div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 max-w-2xl md:max-w-3xl"&gt;
+              {categories.map((category, index) =&gt; (
+                &lt;div 
+                  key={category.id} 
+                  className="flex flex-col items-center gap-2 group cursor-pointer transform transition-all duration-300 hover:scale-105"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                &gt;
+                  &lt;div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden"&gt;
+                    &lt;img 
+                      src={category.img} 
+                      alt={category.name} 
+                      className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 transition-transform duration-300 group-hover:scale-110"
+                      loading="lazy"
+                    /&gt;
+                  &lt;/div&gt;
+                  &lt;p className="text-center text-xs sm:text-sm font-medium group-hover:text-orange-100 transition-colors"&gt;
+                    {category.name}
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+&nbsp;
+        {/* Background Icons - Hidden on mobile, visible on tablet/desktop */}
+        &lt;div className="absolute bottom-[-40%] left-[-15%] pointer-events-none opacity-90 w-160 h-160 hidden md:block transition-opacity duration-500"&gt;
+          &lt;img 
+            src={bgIcon1} 
+            alt="Background Icon 1" 
+            className="object-cover"
+            loading="lazy"
+          /&gt;
+        &lt;/div&gt;
+        &lt;div className="absolute bottom-[-40%] right-[-15%] pointer-events-none opacity-90 w-120 h-120 hidden md:block transition-opacity duration-500"&gt;
+          &lt;img 
+            src={bgIcon2} 
+            alt="Background Icon 2" 
+            className="object-cover"
+            loading="lazy"
+          /&gt;
+        &lt;/div&gt;
+&nbsp;
+      &lt;/section&gt;
+&nbsp;
+    &lt;/div&gt;
+  )
 }
 &nbsp;
-export default Header</pre></td></tr></table></pre>
+export default landing</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
@@ -393,14 +429,14 @@ export default Header</pre></td></tr></table></pre>
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2025-11-11T19:13:18.625Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     
