@@ -6,8 +6,9 @@ describe("OrderSteps", () => {
 
     test("Displays appropriate title and paragraph", () => {
         render(<OrderSteps />)
-        expect(screen.getByText('How To Order?')).toBeTruthy()
-        expect(screen.getByText('Follow these three simple steps to enjoy your favorite meals delivered fresh to your door-fast, secure, and hassle-free.')).toBeTruthy()
+        
+        expect(screen.getByText('How To Order?')).toBeInTheDocument()
+        expect(screen.getByText('Follow these three simple steps to enjoy your favorite meals delivered fresh to your door-fast, secure, and hassle-free.')).toBeInTheDocument()
     })
 
 })
