@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -35,6 +38,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
+    "@vitest/ui": "^4.0.8",
     "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^5.2.0",
