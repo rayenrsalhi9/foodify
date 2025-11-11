@@ -24,7 +24,6 @@ import {
   Mail,
   Clock,
   Store,
-  FileText
 } from "lucide-react"
 import { Link } from "react-router"
 import { useState } from "react"
@@ -45,39 +44,34 @@ const AppSidebar = () => {
             title: "Home",
             url: "/",
             icon: Home,
-            subItems: []
+            subItems: [],
+            clickable: true
         },
         {
             title: "Menu",
-            url: "/menu",
+            url: "/",
             icon: UtensilsCrossed,
             subItems: [
                 { title: "Breakfast", url: "/menu/breakfast" },
                 { title: "Lunch", url: "/menu/lunch" },
                 { title: "Dinner", url: "/menu/dinner" },
                 { title: "Desserts", url: "/menu/desserts" }
-            ]
+            ],
+            clickable: false
         },
         {
-            title: "Shop",
-            url: "/shop",
+            title: "Store",
+            url: "/store",
             icon: Store,
-            subItems: [
-                { title: "Merchandise", url: "/shop/merchandise" },
-                { title: "Gift Cards", url: "/shop/gift-cards" },
-                { title: "Cookbooks", url: "/shop/cookbooks" }
-            ]
+            subItems: [],
+            clickable: true
         },
         {
-            title: "Pages",
-            url: "/pages",
-            icon: FileText,
-            subItems: [
-                { title: "About Us", url: "/about" },
-                { title: "Contact", url: "/contact" },
-                { title: "FAQ", url: "/faq" },
-                { title: "Terms & Conditions", url: "/terms" }
-            ]
+            title: "Contact",
+            url: "/contact",
+            icon: Phone,
+            subItems: [],
+            clickable: true
         }
     ];
 
@@ -126,14 +120,39 @@ const AppSidebar = () => {
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <div className="flex items-center justify-between">
-                                            <Link to={item.url} className="flex items-center gap-2 flex-1">
-                                                <item.icon className="h-4 w-4" />
-                                                <span>{item.title}</span>
-                                            </Link>
+                                            {item.clickable ? (
+                                                <Link 
+                                                    to={item.url} 
+                                                    className="flex items-center gap-2 flex-1"
+                                                    aria-label={item.title}
+                                                >
+                                                    <item.icon className="h-4 w-4" />
+                                                    <span>{item.title}</span>
+                                                </Link>
+                                            ) : (
+                                                <div 
+                                                    className="flex items-center gap-2 flex-1 cursor-pointer"
+                                                    onClick={() => toggleExpand(item.title)}
+                                                    role="button"
+                                                    aria-expanded={expandedItems.includes(item.title)}
+                                                    aria-label={`${item.title} menu`}
+                                                    tabIndex={0}
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === 'Enter' || e.key === ' ') {
+                                                            e.preventDefault();
+                                                            toggleExpand(item.title);
+                                                        }
+                                                    }}
+                                                >
+                                                    <item.icon className="h-4 w-4" />
+                                                    <span>{item.title}</span>
+                                                </div>
+                                            )}
                                             {item.subItems.length > 0 && (
                                                 <button
                                                     onClick={() => toggleExpand(item.title)}
                                                     className="p-1 hover:bg-gray-100 rounded transition-colors"
+                                                    aria-label={expandedItems.includes(item.title) ? "Collapse menu" : "Expand menu"}
                                                 >
                                                     {expandedItems.includes(item.title) ? (
                                                         <ChevronDown className="h-4 w-4" />
