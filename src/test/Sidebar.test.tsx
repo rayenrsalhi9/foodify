@@ -193,4 +193,165 @@ describe("Sidebar", () => {
         expect(hoursValue).toBeInTheDocument();
         expect(phoneValue).toBeInTheDocument();
     });
+
+    // Keyboard interaction tests for lines 141-153
+    test("Menu item is keyboard focusable with tabIndex=0", () => {
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        expect(menuButton).toHaveAttribute('tabIndex', '0');
+    });
+
+    test("Menu expands when Enter key is pressed", async () => {
+        const user = userEvent.setup();
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        // Focus the button first
+        (menuButton as HTMLElement).focus();
+        
+        // Press Enter key
+        await user.keyboard('{Enter}');
+        
+        // Verify sub-items are visible
+        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(screen.getByText("Lunch")).toBeInTheDocument();
+        expect(screen.getByText("Dinner")).toBeInTheDocument();
+        expect(screen.getByText("Desserts")).toBeInTheDocument();
+        
+        // Menu should now be expanded
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    test("Menu expands when Space key is pressed", async () => {
+        const user = userEvent.setup();
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        // Focus the button first
+        (menuButton as HTMLElement).focus();
+        
+        // Press Space key
+        await user.keyboard(' ');
+        
+        // Verify sub-items are visible
+        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(screen.getByText("Lunch")).toBeInTheDocument();
+        expect(screen.getByText("Dinner")).toBeInTheDocument();
+        expect(screen.getByText("Desserts")).toBeInTheDocument();
+        
+        // Menu should now be expanded
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    test("Menu collapses when Enter key is pressed while expanded", async () => {
+        const user = userEvent.setup();
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        // First expand the menu
+        await user.click(menuButton);
+        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+        
+        // Focus the button and press Enter key to collapse
+        (menuButton as HTMLElement).focus();
+        await user.keyboard('{Enter}');
+        
+        // Verify sub-items are hidden
+        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
+        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
+        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
+        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        
+        // Menu should now be collapsed
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    test("Menu collapses when Space key is pressed while expanded", async () => {
+        const user = userEvent.setup();
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        // First expand the menu
+        await user.click(menuButton);
+        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+        
+        // Focus the button and press Space key to collapse
+        (menuButton as HTMLElement).focus();
+        await user.keyboard(' ');
+        
+        // Verify sub-items are hidden
+        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
+        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
+        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
+        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        
+        // Menu should now be collapsed
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    test("Other keyboard keys do not trigger menu expansion/collapse", async () => {
+        const user = userEvent.setup();
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        // Focus the button
+        (menuButton as HTMLElement).focus();
+        
+        // Press Escape key (should not expand menu)
+        await user.keyboard('{Escape}');
+        
+        // Verify sub-items are still hidden
+        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
+        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
+        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
+        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        
+        // Menu should still be collapsed
+        expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    test("Menu button has correct aria-label for accessibility", () => {
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const menuElement = screen.getByText("Menu");
+        const menuButton = menuElement.closest('[role="button"]')!;
+        
+        expect(menuButton).toHaveAttribute('aria-label', 'Menu menu');
+    });
+
+    test("Expand/collapse button has correct aria-label", () => {
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const expandButton = screen.getByLabelText('Expand menu');
+        expect(expandButton).toBeInTheDocument();
+    });
+
+    test("Expand/collapse button aria-label updates when expanded", async () => {
+        const user = userEvent.setup();
+        render(<AppSidebar />, { wrapper: TestWrapper });
+        
+        const expandButton = screen.getByLabelText('Expand menu');
+        
+        // Click to expand
+        await user.click(expandButton);
+        
+        // Button should now have collapse label
+        const collapseButton = screen.getByLabelText('Collapse menu');
+        expect(collapseButton).toBeInTheDocument();
+    });
 });
