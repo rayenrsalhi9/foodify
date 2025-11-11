@@ -11,4 +11,12 @@ describe("OrderSteps", () => {
         expect(screen.getByText('Follow these three simple steps to enjoy your favorite meals delivered fresh to your door-fast, secure, and hassle-free.')).toBeInTheDocument()
     })
 
+    test("Displays all order steps", () => {
+        render(<OrderSteps />)
+
+        expect(screen.getByText("Choose your Product")).toBeInTheDocument()
+        expect(screen.getByText("Make your Order")).toBeInTheDocument()
+        expect(screen.getByText("Food is on the way")).toBeInTheDocument()
+    })
+
 })
