@@ -45,6 +45,7 @@ const OrderSteps = () => {
             return (
               <Card
                 key={step.id}
+                data-testid={`step-${step.id}`}
                 className="relative bg-white border border-border hover:shadow-lg transition-all duration-300 overflow-hidden group"
               >
                 <div className="p-8 md:p-10">
