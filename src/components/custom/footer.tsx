@@ -117,6 +117,8 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-2 border-b border-gray-600 pb-2 sm:pb-3 hover:border-white transition-colors cursor-pointer group max-w-xs mx-auto sm:mx-0">
               <input
+                id="email"
+                name="email"
                 type="email"
                 placeholder="Email Address"
                 className="bg-transparent text-white placeholder:text-gray-500 focus:outline-none text-xs sm:text-sm flex-1"
