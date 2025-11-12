@@ -6,6 +6,25 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ff8c00;
+}
+
+::-webkit-scrollbar-thumb {
+  background: orangered; /* orange */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(217, 58, 0); /* dark orange */
+}
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
