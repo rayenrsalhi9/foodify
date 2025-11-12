@@ -92,10 +92,10 @@ const Offers = () => {
                 <div className="flex flex-wrap items-center justify-between">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                      TND{(offer.price / 1000).toFixed(2)}
+                      TND {(offer.price / 1000).toFixed(2)}
                     </span>
                     <span className="text-xs sm:text-sm text-gray-500 line-through">
-                      TND{((offer.price / 1000) * (1 + offer.discountPercent)).toFixed(2)}
+                      TND {((offer.price / 1000) * (1 + offer.discountPercent)).toFixed(2)}
                     </span>
                   </div>
                   
