@@ -1,10 +1,16 @@
 import { Card } from "@/components/ui/card"
+import saladImg from '/decoration/salad.png'
 import { steps } from "@/data/steps"
 
 const OrderSteps = () => {
 
   return (
-    <section className="bg-orange-50 py-20 px-4 md:py-32">
+    <section className="bg-orange-50 py-24 px-4 relative overflow-hidden">
+      <img
+        src={saladImg}
+        alt="Decorative salad image"
+        className="absolute top-0 right-[-10%] sm:right-[-5%] w-48 h-48 md:w-64 md:h-64 object-cover "
+      />
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
