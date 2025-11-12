@@ -1,6 +1,7 @@
 import Header from "@/components/custom/header"
 import Landing from "@/pages/landing"
 import OrderSteps from "@/pages/orderSteps"
+import Offers from "@/pages/offers"
 import Footer from "@/components/custom/footer"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import AppSidebar from "@/components/custom/Sidebar"
@@ -12,6 +13,7 @@ const HomeLayout = () => {
       <div className="w-full mx-auto">
         <Header />
         <Landing />
+        <Offers />
         <OrderSteps />
         <Footer />
       </div>

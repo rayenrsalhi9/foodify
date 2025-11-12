@@ -1,38 +1,14 @@
 import { Card } from "@/components/ui/card"
-import { Hamburger, ShoppingBasket, Hourglass } from "lucide-react"
+import { steps } from "@/data/steps"
 
 const OrderSteps = () => {
-    
-  const steps = [
-    {
-      id: 1,
-      icon: Hamburger,
-      title: "Choose your Product",
-      description:
-        "Browse our diverse menu and select your favorite meals with ease. Customize ingredients, portion sizes, and dietary preferences to match your taste perfectly.",
-    },
-    {
-      id: 2,
-      icon: ShoppingBasket,
-      title: "Make your Order",
-      description:
-        "Add selected items to your cart, review your choices, apply any promo codes, and securely checkout using multiple payment options including cards, digital wallets, or cash on delivery.",
-    },
-    {
-      id: 3,
-      icon: Hourglass,
-      title: "Food is on the way",
-      description:
-        "Track your order in real-time as our chefs prepare your meal with fresh ingredients. Receive live updates on preparation, packaging, and estimated delivery time straight to your doorstep.",
-    },
-  ]
 
   return (
-    <section className="bg-white py-20 px-4 md:py-32">
+    <section className="bg-orange-50 py-20 px-4 md:py-32">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">How To Order?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">How To Order?</h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Follow these three simple steps to enjoy your favorite meals delivered fresh to your door-fast, secure, and hassle-free.
           </p>
