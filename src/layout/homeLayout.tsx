@@ -2,6 +2,7 @@ import Header from "@/components/custom/header"
 import Landing from "@/pages/landing"
 import OrderSteps from "@/pages/orderSteps"
 import Offers from "@/pages/offers"
+import OfferLimited from "@/pages/offer-limited"
 import Footer from "@/components/custom/footer"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import AppSidebar from "@/components/custom/Sidebar"
@@ -15,6 +16,7 @@ const HomeLayout = () => {
         <Landing />
         <Offers />
         <OrderSteps />
+        <OfferLimited />
         <Footer />
       </div>
     </SidebarProvider>
