@@ -8,8 +8,8 @@ const Header = () => {
     const {toggleSidebar} = useSidebar()
 
     return (
-        <header className="bg-orange-500 text-white relative">
-            <div className="max-w-7xl mx-auto px-4 py-4">
+        <header className="bg-orange-500 text-white relative p-4">
+            <div className="max-w-6xl mx-auto">
                 {/* Mobile Layout (default) */}
                 <div className="flex items-center justify-between md:hidden">
                     

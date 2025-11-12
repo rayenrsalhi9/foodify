@@ -1,3 +1,7 @@
+import { useState } from "react"
+import { Link } from "react-router"
+import { menuItems, contactInfo } from "@/data/sidebar-menu"
+import { UtensilsCrossed, ChevronDown, ChevronRight} from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -8,25 +12,10 @@ import {
   SidebarMenuItem,
   SidebarHeader,
   SidebarFooter,
-  SidebarSeparator,
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarMenuSubButton,
 } from "@/components/ui/sidebar"
-
-import { 
-  Home, 
-  UtensilsCrossed, 
-  Phone, 
-  ChevronDown,
-  ChevronRight,
-  MapPin,
-  Mail,
-  Clock,
-  Store,
-} from "lucide-react"
-import { Link } from "react-router"
-import { useState } from "react"
 
 const AppSidebar = () => {
     const [expandedItems, setExpandedItems] = useState<string[]>([]);
@@ -37,66 +26,7 @@ const AppSidebar = () => {
                 ? prev.filter(i => i !== item)
                 : [...prev, item]
         );
-    };
-
-    const menuItems = [
-        {
-            title: "Home",
-            url: "/",
-            icon: Home,
-            subItems: [],
-            clickable: true
-        },
-        {
-            title: "Menu",
-            url: "/",
-            icon: UtensilsCrossed,
-            subItems: [
-                { title: "Breakfast", url: "/menu/breakfast" },
-                { title: "Lunch", url: "/menu/lunch" },
-                { title: "Dinner", url: "/menu/dinner" },
-                { title: "Desserts", url: "/menu/desserts" }
-            ],
-            clickable: false
-        },
-        {
-            title: "Store",
-            url: "/store",
-            icon: Store,
-            subItems: [],
-            clickable: true
-        },
-        {
-            title: "Contact",
-            url: "/contact",
-            icon: Phone,
-            subItems: [],
-            clickable: true
-        }
-    ];
-
-    const contactInfo = [
-        {
-            icon: MapPin,
-            label: "Address",
-            value: "1487 Rocky Horse Carre, Arlington, TX 16819"
-        },
-        {
-            icon: Mail,
-            label: "Email",
-            value: "info@foodify.com"
-        },
-        {
-            icon: Clock,
-            label: "Hours",
-            value: "Mon-Sun: 8:00 AM - 10:00 PM"
-        },
-        {
-            icon: Phone,
-            label: "Phone",
-            value: "+1 800 6565 222"
-        }
-    ];
+    }
 
     return (
         <Sidebar>
@@ -183,9 +113,7 @@ const AppSidebar = () => {
                 </SidebarGroup>
             </SidebarContent>
 
-            <SidebarSeparator />
-
-            <SidebarFooter className="p-4">
+            <SidebarFooter className="p-4 border-t border-gray-200">
                 <div className="space-y-4">
                     <h3 className="font-bold text-sm text-gray-900">Contact Info</h3>
                     <div className="space-y-3">
