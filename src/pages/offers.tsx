@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tag, Clock, Star } from "lucide-react"
+import { Link } from "react-router"
 import { offers } from "@/data/offers"
 
 const Offers = () => {
@@ -34,7 +35,7 @@ const Offers = () => {
                 {/* Discount Badge */}
                 <div className="absolute top-4 left-4 bg-linear-to-r from-orange-500 to-red-500 text-white font-bold text-sm px-3 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
                   <Tag className="w-3 h-3" />
-                  {offer.discountPercent} OFF
+                  {offer.discountPercent * 100}% OFF
                 </div>
 
                 {/* Time Left Badge */}
@@ -91,16 +92,16 @@ const Offers = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-2xl font-bold text-gray-900">
-                      {offer.price}
+                      TND{(offer.price / 1000).toFixed(2)}
                     </span>
                     <span className="text-sm text-gray-500 line-through">
-                      ${(parseFloat(offer.price.replace('$', '')) * 1.2).toFixed(2)}
+                      TND{((offer.price / 1000) * (1 + offer.discountPercent)).toFixed(2)}
                     </span>
                   </div>
                   
                   <Button 
                     size="sm"
-                    className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                    className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-200 shadow-md cursor-pointer hover:shadow-lg"
                   >
                     Order Now
                   </Button>
@@ -112,13 +113,15 @@ const Offers = () => {
 
         {/* View All Offers Button */}
         <div className="text-center mt-12">
-          <Button 
-            variant="outline"
-            size="lg"
-            className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 hover:border-orange-600 font-semibold px-8 py-3 rounded-xl transition-all duration-200"
-          >
-            View All Offers
-          </Button>
+          <Link to="/offers">
+            <Button 
+              variant="outline"
+              size="lg"
+              className="border-2 border-orange-500 text-orange-600 cursor-pointer hover:bg-orange-50 hover:border-orange-600 font-semibold px-8 py-3 rounded-xl transition-all duration-200"
+            >
+              View All Offers
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
