@@ -54,7 +54,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-8 text-gray-400 text-sm">
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4 text-orange-500" />
-            <span>+1 (800) 656-5222</span>
+            <span>+216 71 234 567</span>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="h-4 w-4 text-orange-500" />
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-orange-500" />
-            <span>Arlington, TX</span>
+            <span>15 Rue de Marseille, 1002 Tunis, Tunisia</span>
           </div>
         </div>
 

@@ -68,7 +68,7 @@ export const contactInfo: ContactInfoItem[] = [
     {
         icon: MapPin,
         label: "Address",
-        value: "1487 Rocky Horse Carre, Arlington, TX 16819"
+        value: "15 Rue de Marseille, 1002 Tunis, Tunisia"
     },
     {
         icon: Mail,
@@ -83,6 +83,6 @@ export const contactInfo: ContactInfoItem[] = [
     {
         icon: Phone,
         label: "Phone",
-        value: "+1 800 6565 222"
+        value: "+216 71 234 567"
     }
 ];
