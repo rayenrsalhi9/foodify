@@ -9,7 +9,7 @@ const OrderSteps = () => {
       <img
         src={saladImg}
         alt="Decorative salad image"
-        className="absolute top-0 right-[-10%] sm:right-[-5%] w-48 h-48 md:w-64 md:h-64 object-cover "
+        className="absolute top-0 right-[-40%] sm:right-[-5%] w-96 h-96 object-cover opacity-20"
       />
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
