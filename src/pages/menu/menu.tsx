@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useSearchParams, Link } from "react-router"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -7,10 +8,16 @@ import { menu } from "@/data/menu"
 
 const Menu = () => {
     const [searchTerm, setSearchTerm] = useState("")
-    const [selectedCategory, setSelectedCategory] = useState("all")
 
     // Get unique categories from menu data
-    const categories = ["all", ...Array.from(new Set(menu.map(item => item.category)))]
+    const categories = [...Array.from(new Set(menu.map(item => item.category)))]
+
+    const [searchParams] = useSearchParams()
+    const category = searchParams.get('category')
+
+    const menuToDisplay = category
+        ? menu.filter(item => item.category === category)
+        : menu
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -42,19 +49,32 @@ const Menu = () => {
 
                         {/* Category Filter */}
                         <div className="flex flex-wrap gap-2 items-center">
-                            {categories.map((category) => (
-                                <Button
-                                    key={category}
-                                    variant={selectedCategory === category ? "default" : "outline"}
-                                    onClick={() => setSelectedCategory(category)}
-                                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                                        selectedCategory === category
+                            <Link
+                                to="/menu"
+                                className={
+                                    `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                                        !category
                                             ? "bg-orange-500 hover:bg-orange-600 text-white"
-                                            : "text-gray-600 hover:text-orange-600 hover:border-orange-300"
-                                    }`}
+                                            : "text-gray-600 hover:text-orange-600 hover:border-orange-300 border"
+                                    }`
+                                }
+                            >
+                                All
+                            </Link>
+                            {categories.map((cat) => (
+                                <Link
+                                    key={cat}
+                                    to={`/menu?category=${cat}`}
+                                    className={
+                                        `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                                            category === cat
+                                                ? "bg-orange-500 hover:bg-orange-600 text-white"
+                                                : "text-gray-600 hover:text-orange-600 hover:border-orange-300 border"
+                                        }`
+                                    }
                                 >
-                                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                                </Button>
+                                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -62,7 +82,7 @@ const Menu = () => {
 
                 {/* Menu Items Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {menu.map((item) => (
+                    {menuToDisplay.map((item) => (
                         <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 border-gray-100">
                             <CardHeader className="p-0">
                                 <div className="relative overflow-hidden">
@@ -103,7 +123,7 @@ const Menu = () => {
                 </div>
 
                 {/* Empty State */}
-                {menu.length === 0 && (
+                {menuToDisplay.length === 0 && (
                     <div className="text-center py-12">
                         <div className="text-gray-400 mb-4">
                             <Search className="h-16 w-16 mx-auto" />
