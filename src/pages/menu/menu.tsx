@@ -105,9 +105,9 @@ const Menu = () => {
                                 <CardDescription className="text-gray-600 text-sm mb-4 line-clamp-2">
                                     {item.description}
                                 </CardDescription>
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between gap-1">
                                     <span className="text-2xl font-bold text-orange-600">
-                                        TND {(item.price / 100).toFixed(2)}
+                                        DT {(item.price / 1000).toFixed(2)}
                                     </span>
                                     <Button
                                         variant="default"
