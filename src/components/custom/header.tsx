@@ -72,7 +72,7 @@ const Header = () => {
                             <ShoppingCart className="h-6 w-6" />
                         </Button>
                         <Link
-                            to="login"
+                            to="/login"
                             className="inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
                         >
                             <User className="h-5 w-5" />
