@@ -40,7 +40,7 @@ const MenuItem = ({item} : MenuItemProps) => {
                 </CardDescription>
                 <div className="flex items-center justify-between gap-1">
                     <span className="text-lg font-bold text-orange-600">
-                        DT {(item.price / 1000).toFixed(2)}
+                        TND {(item.price / 1000).toFixed(2)}
                     </span>
                     <Button
                         variant="default"
