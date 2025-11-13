@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { MapPin, Navigation2, Search} from "lucide-react"
+import { Link } from "react-router"
 
 import bgIcon1 from '/food/bg-icon-1.png'
 import bgIcon2 from '/food/bg-icon-2.png'
@@ -12,12 +13,12 @@ import sandwich from '/food/sandwich.png'
 import rice from '/food/rice.png'
 
 const categories = [
-  { id: 1, name: "Burger", img: burger },
-  { id: 2, name: "Pasta", img: pasta },
-  { id: 3, name: "Salad", img: salad },
-  { id: 4, name: "Pizza", img: pizza },
-  { id: 5, name: "Sandwich", img: sandwich },
-  { id: 6, name: "Fried Rice", img: rice },
+  { id: 1, name: "Burger", img: burger, urlTo: "/menu?category=burger" },
+  { id: 2, name: "Pasta", img: pasta, urlTo: "/menu?category=pasta" },
+  { id: 3, name: "Salad", img: salad, urlTo: "/menu?category=salad" },
+  { id: 4, name: "Pizza", img: pizza, urlTo: "/menu?category=pizza" },
+  { id: 5, name: "Sandwich", img: sandwich, urlTo: "/menu?category=sanswich" },
+  { id: 6, name: "Fried Rice", img: rice, urlTo: "/menu?category=rice" },
 ]
 
 const landing = () => {
@@ -71,7 +72,8 @@ const landing = () => {
           <div className="flex justify-center animate-fade-in-up">
             <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 max-w-2xl md:max-w-3xl">
               {categories.map((category, index) => (
-                <div 
+                <Link
+                  to={category.urlTo} 
                   key={category.id} 
                   className="flex flex-col items-center gap-2 group cursor-pointer transform transition-all duration-300 hover:scale-105"
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -87,7 +89,7 @@ const landing = () => {
                   <p className="text-center text-xs sm:text-sm font-medium group-hover:text-orange-100 transition-colors">
                     {category.name}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
