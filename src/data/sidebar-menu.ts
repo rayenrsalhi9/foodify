@@ -2,11 +2,16 @@ import {
     type LucideIcon, 
     Home, 
     UtensilsCrossed, 
-    Store, 
     Phone, 
     MapPin, 
     Mail, 
-    Clock 
+    Clock,
+    Sandwich,
+    Pizza,
+    Salad,
+    CakeSlice,
+    Hamburger,
+    Soup
 } from "lucide-react"
 
 type SidebarMenuItem = {
@@ -20,6 +25,7 @@ type SidebarMenuItem = {
 type SidebarMenuSubItem = {
     title: string
     url: string
+    icon: LucideIcon
 }
 
 type ContactInfoItem = {
@@ -41,26 +47,14 @@ export const menuItems: SidebarMenuItem[] = [
         url: "/",
         icon: UtensilsCrossed,
         subItems: [
-            { title: "Breakfast", url: "/menu/breakfast" },
-            { title: "Lunch", url: "/menu/lunch" },
-            { title: "Dinner", url: "/menu/dinner" },
-            { title: "Desserts", url: "/menu/desserts" }
+            { title: "Sandwich", url: "/menu?category=sandwich", icon: Sandwich },
+            { title: "Salad", url: "/menu?category=salad", icon: Salad },
+            { title: "Pasta", url: "/menu?category=pasta", icon: Soup },
+            { title: "Pizza", url: "/menu?category=pizza", icon: Pizza },
+            { title: "Burger", url: "/menu?category=burger", icon: Hamburger },
+            { title: "Dessert", url: "/menu?category=dessert", icon: CakeSlice }
         ],
         clickable: false
-    },
-    {
-        title: "Store",
-        url: "/store",
-        icon: Store,
-        subItems: [],
-        clickable: true
-    },
-    {
-        title: "Contact",
-        url: "/contact",
-        icon: Phone,
-        subItems: [],
-        clickable: true
     }
 ]
 

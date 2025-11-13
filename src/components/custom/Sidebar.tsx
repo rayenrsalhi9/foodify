@@ -98,7 +98,8 @@ const AppSidebar = () => {
                                             {item.subItems.map((subItem) => (
                                                 <SidebarMenuSubItem key={subItem.title}>
                                                     <SidebarMenuSubButton asChild>
-                                                        <Link to={subItem.url}>
+                                                        <Link to={subItem.url} className="flex items-center gap-2">
+                                                            <subItem.icon className="h-4 w-4" />
                                                             {subItem.title}
                                                         </Link>
                                                     </SidebarMenuSubButton>
