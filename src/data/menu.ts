@@ -10,7 +10,7 @@ import burger1 from '/food/burger.png'
 import pasta from '/food/pasta.png'
 import pizza from '/food/pizza.png'
 import friedRice from '/food/rice.png'
-import sandwich1 from '/food/pizza.png'
+import sandwich1 from '/food/sandwich.png'
 
 import broccoliSalad from '/menu/salad-1.jpg'
 import pastaSeaFood from "/menu/pasta-sea-food.jpg"
