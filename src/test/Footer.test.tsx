@@ -13,9 +13,9 @@ describe("Footer Component", () => {
   test("displays the essential contact information", () => {
     render(<Footer />)
 
-    expect(screen.getByText("+1 (800) 656-5222")).toBeInTheDocument()
+    expect(screen.getByText("+216 71 234 567")).toBeInTheDocument()
     expect(screen.getByText("info@foodify.com")).toBeInTheDocument()
-    expect(screen.getByText("Arlington, TX")).toBeInTheDocument()
+    expect(screen.getByText("15 Rue de Marseille, 1002 Tunis, Tunisia")).toBeInTheDocument()
   })
 
   test("renders all social media links with correct aria-labels", () => {

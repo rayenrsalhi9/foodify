@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/auth/signup.tsx</title>
+    <title>Code coverage report for data/steps.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/auth</a> signup.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">data</a> steps.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -94,17 +94,16 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,49 +125,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UtensilsCrossed } from "lucide-react"
-import signupBg from '/auth/signup-bg.jpg'
-import { SignupForm } from "@/components/signup-form"
-import { Link } from "react-router"
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { type LucideIcon, Hamburger, ShoppingBasket, Hourglass } from "lucide-react"
 &nbsp;
-const signup = () =&gt; {
-  return (
-    &lt;div className="grid min-h-svh lg:grid-cols-2"&gt;
-      &lt;div className="bg-muted relative hidden lg:block"&gt;
-        &lt;img
-          src={signupBg}
-          alt="Signup background image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-          loading="lazy"
-        /&gt;
-      &lt;/div&gt;
-      &lt;div className="flex flex-col gap-4 p-6 md:p-10"&gt;
-        &lt;div className="flex justify-center gap-2 md:justify-start"&gt;
-          &lt;Link to="/" className="flex items-center gap-2 font-medium"&gt;
-            &lt;div className="bg-orange-500 text-primary-foreground flex size-6 items-center justify-center rounded-md"&gt;
-              &lt;UtensilsCrossed className="size-4" /&gt;
-            &lt;/div&gt;
-            Foodify.
-          &lt;/Link&gt;
-        &lt;/div&gt;
-        &lt;div className="flex flex-1 items-center justify-center"&gt;
-          &lt;div className="w-full max-w-xs"&gt;
-            &lt;SignupForm /&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  )
+type Step = {
+  id: number
+  icon: LucideIcon
+  title: string
+  description: string
 }
 &nbsp;
-export default signup</pre></td></tr></table></pre>
+export const steps: Step[] = [
+    {
+      id: 1,
+      icon: Hamburger,
+      title: "Choose your Product",
+      description:
+        "Browse our diverse menu and select your favorite meals with ease. Customize ingredients, portion sizes, and dietary preferences to match your taste perfectly.",
+    },
+    {
+      id: 2,
+      icon: ShoppingBasket,
+      title: "Make your Order",
+      description:
+        "Add selected items to your cart, review your choices, apply any promo codes, and securely checkout using multiple payment options including cards, digital wallets, or cash on delivery.",
+    },
+    {
+      id: 3,
+      icon: Hourglass,
+      title: "Food is on the way",
+      description:
+        "Track your order in real-time as our chefs prepare your meal with fresh ingredients. Receive live updates on preparation, packaging, and estimated delivery time straight to your doorstep.",
+    },
+  ]</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
@@ -177,14 +165,14 @@ export default signup</pre></td></tr></table></pre>
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2025-11-13T19:27:30.303Z
             </div>
-        <script src="../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

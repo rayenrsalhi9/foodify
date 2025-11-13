@@ -31,13 +31,9 @@ describe("Sidebar", () => {
         
         const homeLink = screen.getByText("Home");
         const menuLink = screen.getByText("Menu");
-        const storeLink = screen.getByText("Store");
-        const contactLink = screen.getByText("Contact");
 
         expect(homeLink).toBeInTheDocument();
         expect(menuLink).toBeInTheDocument();
-        expect(storeLink).toBeInTheDocument();
-        expect(contactLink).toBeInTheDocument();
     });
 
     test("Menu item is not clickable (no href attribute)", () => {
@@ -67,15 +63,15 @@ describe("Sidebar", () => {
     test("Menu sub-items are initially hidden", () => {
         render(<AppSidebar />, { wrapper: TestWrapper });
         
-        const breakfastLink = screen.queryByText("Breakfast");
-        const lunchLink = screen.queryByText("Lunch");
-        const dinnerLink = screen.queryByText("Dinner");
-        const dessertsLink = screen.queryByText("Desserts");
+        const sandwichLink = screen.queryByText("Sandwich");
+        const saladLink = screen.queryByText("Salad");
+        const pastaLink = screen.queryByText("Pasta");
+        const pizzaLink = screen.queryByText("Pizza");
 
-        expect(breakfastLink).not.toBeInTheDocument();
-        expect(lunchLink).not.toBeInTheDocument();
-        expect(dinnerLink).not.toBeInTheDocument();
-        expect(dessertsLink).not.toBeInTheDocument();
+        expect(sandwichLink).not.toBeInTheDocument();
+        expect(saladLink).not.toBeInTheDocument();
+        expect(pastaLink).not.toBeInTheDocument();
+        expect(pizzaLink).not.toBeInTheDocument();
     });
 
     test("Menu expands to show sub-items when clicked", async () => {
@@ -89,15 +85,15 @@ describe("Sidebar", () => {
         await user.click(menuButton);
         
         // Now sub-items should be visible
-        const breakfastLink = screen.getByText("Breakfast");
-        const lunchLink = screen.getByText("Lunch");
-        const dinnerLink = screen.getByText("Dinner");
-        const dessertsLink = screen.getByText("Desserts");
+        const sandwichLink = screen.getByText("Sandwich");
+        const saladLink = screen.getByText("Salad");
+        const pastaLink = screen.getByText("Pasta");
+        const pizzaLink = screen.getByText("Pizza");
 
-        expect(breakfastLink).toBeInTheDocument();
-        expect(lunchLink).toBeInTheDocument();
-        expect(dinnerLink).toBeInTheDocument();
-        expect(dessertsLink).toBeInTheDocument();
+        expect(sandwichLink).toBeInTheDocument();
+        expect(saladLink).toBeInTheDocument();
+        expect(pastaLink).toBeInTheDocument();
+        expect(pizzaLink).toBeInTheDocument();
         
         // Menu should now be expanded
         expect(menuButton).toHaveAttribute('aria-expanded', 'true');
@@ -114,17 +110,17 @@ describe("Sidebar", () => {
         await user.click(menuButton);
         
         // Verify sub-items are visible
-        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(screen.getByText("Sandwich")).toBeInTheDocument();
         expect(menuButton).toHaveAttribute('aria-expanded', 'true');
         
         // Second click to collapse
         await user.click(menuButton);
         
         // Verify sub-items are hidden
-        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
-        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
-        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
-        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        expect(screen.queryByText("Sandwich")).not.toBeInTheDocument();
+        expect(screen.queryByText("Salad")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pasta")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pizza")).not.toBeInTheDocument();
         
         // Menu should now be collapsed
         expect(menuButton).toHaveAttribute('aria-expanded', 'false');
@@ -140,27 +136,23 @@ describe("Sidebar", () => {
         await user.click(menuButton);
         
         // Check href attributes
-        const breakfastLink = screen.getByText("Breakfast").closest('a');
-        const lunchLink = screen.getByText("Lunch").closest('a');
-        const dinnerLink = screen.getByText("Dinner").closest('a');
-        const dessertsLink = screen.getByText("Desserts").closest('a');
+        const sandwichLink = screen.getByText("Sandwich").closest('a');
+        const saladLink = screen.getByText("Salad").closest('a');
+        const pastaLink = screen.getByText("Pasta").closest('a');
+        const pizzaLink = screen.getByText("Pizza").closest('a');
 
-        expect(breakfastLink).toHaveAttribute('href', '/menu/breakfast');
-        expect(lunchLink).toHaveAttribute('href', '/menu/lunch');
-        expect(dinnerLink).toHaveAttribute('href', '/menu/dinner');
-        expect(dessertsLink).toHaveAttribute('href', '/menu/desserts');
+        expect(sandwichLink).toHaveAttribute('href', '/menu?category=sandwich');
+        expect(saladLink).toHaveAttribute('href', '/menu?category=salad');
+        expect(pastaLink).toHaveAttribute('href', '/menu?category=pasta');
+        expect(pizzaLink).toHaveAttribute('href', '/menu?category=pizza');
     });
 
     test("Clickable navigation items have correct href attributes", () => {
         render(<AppSidebar />, { wrapper: TestWrapper });
         
         const homeLink = screen.getByText("Home").closest('a');
-        const storeLink = screen.getByText("Store").closest('a');
-        const contactLink = screen.getByText("Contact").closest('a');
 
         expect(homeLink).toHaveAttribute('href', '/');
-        expect(storeLink).toHaveAttribute('href', '/store');
-        expect(contactLink).toHaveAttribute('href', '/contact');
     });
 
     test("Displays contact information section", () => {
@@ -183,10 +175,10 @@ describe("Sidebar", () => {
     test("Displays contact details", () => {
         render(<AppSidebar />, { wrapper: TestWrapper });
         
-        const addressValue = screen.getByText("1487 Rocky Horse Carre, Arlington, TX 16819");
+        const addressValue = screen.getByText("15 Rue de Marseille, 1002 Tunis, Tunisia");
         const emailValue = screen.getByText("info@foodify.com");
         const hoursValue = screen.getByText("Mon-Sun: 8:00 AM - 10:00 PM");
-        const phoneValue = screen.getByText("+1 800 6565 222");
+        const phoneValue = screen.getByText("+216 71 234 567");
 
         expect(addressValue).toBeInTheDocument();
         expect(emailValue).toBeInTheDocument();
@@ -218,10 +210,10 @@ describe("Sidebar", () => {
         await user.keyboard('{Enter}');
         
         // Verify sub-items are visible
-        expect(screen.getByText("Breakfast")).toBeInTheDocument();
-        expect(screen.getByText("Lunch")).toBeInTheDocument();
-        expect(screen.getByText("Dinner")).toBeInTheDocument();
-        expect(screen.getByText("Desserts")).toBeInTheDocument();
+        expect(screen.getByText("Sandwich")).toBeInTheDocument();
+        expect(screen.getByText("Salad")).toBeInTheDocument();
+        expect(screen.getByText("Pasta")).toBeInTheDocument();
+        expect(screen.getByText("Pizza")).toBeInTheDocument();
         
         // Menu should now be expanded
         expect(menuButton).toHaveAttribute('aria-expanded', 'true');
@@ -241,10 +233,10 @@ describe("Sidebar", () => {
         await user.keyboard(' ');
         
         // Verify sub-items are visible
-        expect(screen.getByText("Breakfast")).toBeInTheDocument();
-        expect(screen.getByText("Lunch")).toBeInTheDocument();
-        expect(screen.getByText("Dinner")).toBeInTheDocument();
-        expect(screen.getByText("Desserts")).toBeInTheDocument();
+        expect(screen.getByText("Sandwich")).toBeInTheDocument();
+        expect(screen.getByText("Salad")).toBeInTheDocument();
+        expect(screen.getByText("Pasta")).toBeInTheDocument();
+        expect(screen.getByText("Pizza")).toBeInTheDocument();
         
         // Menu should now be expanded
         expect(menuButton).toHaveAttribute('aria-expanded', 'true');
@@ -259,7 +251,7 @@ describe("Sidebar", () => {
         
         // First expand the menu
         await user.click(menuButton);
-        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(screen.getByText("Sandwich")).toBeInTheDocument();
         expect(menuButton).toHaveAttribute('aria-expanded', 'true');
         
         // Focus the button and press Enter key to collapse
@@ -267,10 +259,10 @@ describe("Sidebar", () => {
         await user.keyboard('{Enter}');
         
         // Verify sub-items are hidden
-        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
-        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
-        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
-        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        expect(screen.queryByText("Sandwich")).not.toBeInTheDocument();
+        expect(screen.queryByText("Salad")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pasta")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pizza")).not.toBeInTheDocument();
         
         // Menu should now be collapsed
         expect(menuButton).toHaveAttribute('aria-expanded', 'false');
@@ -285,7 +277,7 @@ describe("Sidebar", () => {
         
         // First expand the menu
         await user.click(menuButton);
-        expect(screen.getByText("Breakfast")).toBeInTheDocument();
+        expect(screen.getByText("Sandwich")).toBeInTheDocument();
         expect(menuButton).toHaveAttribute('aria-expanded', 'true');
         
         // Focus the button and press Space key to collapse
@@ -293,10 +285,10 @@ describe("Sidebar", () => {
         await user.keyboard(' ');
         
         // Verify sub-items are hidden
-        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
-        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
-        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
-        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        expect(screen.queryByText("Sandwich")).not.toBeInTheDocument();
+        expect(screen.queryByText("Salad")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pasta")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pizza")).not.toBeInTheDocument();
         
         // Menu should now be collapsed
         expect(menuButton).toHaveAttribute('aria-expanded', 'false');
@@ -316,10 +308,10 @@ describe("Sidebar", () => {
         await user.keyboard('{Escape}');
         
         // Verify sub-items are still hidden
-        expect(screen.queryByText("Breakfast")).not.toBeInTheDocument();
-        expect(screen.queryByText("Lunch")).not.toBeInTheDocument();
-        expect(screen.queryByText("Dinner")).not.toBeInTheDocument();
-        expect(screen.queryByText("Desserts")).not.toBeInTheDocument();
+        expect(screen.queryByText("Sandwich")).not.toBeInTheDocument();
+        expect(screen.queryByText("Salad")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pasta")).not.toBeInTheDocument();
+        expect(screen.queryByText("Pizza")).not.toBeInTheDocument();
         
         // Menu should still be collapsed
         expect(menuButton).toHaveAttribute('aria-expanded', 'false');
