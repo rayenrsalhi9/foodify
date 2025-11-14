@@ -11,15 +11,14 @@ const CartConfirm = () => {
     return (
         <>
             <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>Confirm your order?</AlertDialogTitle>
                 <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete your
-                    account and remove your data from our servers.
+                    By continuing, your order will be placed and sent to the restaurant for preparation and delivery.
                 </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
+                <AlertDialogAction>Place Order</AlertDialogAction>
             </AlertDialogFooter>
         </>
     )
