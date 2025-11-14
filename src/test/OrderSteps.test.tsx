@@ -1,6 +1,6 @@
 import { screen, render } from "@testing-library/react";
 import { describe, test, expect, beforeEach } from "vitest";
-import OrderSteps from "@/pages/orderSteps";
+import OrderSteps from "@/pages/landing/orderSteps";
 
 beforeEach(() => {
     render(<OrderSteps />)

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, test, expect, vi } from "vitest";
-import Landing from "@/pages/landing";
+import Landing from "@/pages/landing/landing";
 
 // Mock the image imports
 vi.mock('/food/bg-icon-1.png', () => ({ default: 'bg-icon-1-mock' }));
