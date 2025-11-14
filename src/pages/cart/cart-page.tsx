@@ -2,25 +2,43 @@ import { cart } from "@/data/cart"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent } from "@/components/ui/empty"
+import { Link } from "react-router"
+import { ShoppingCart } from "lucide-react"
 
 const CartPage = () => {
-  
+
   const handleConfirmDelivery = () => {
     console.log("Delivery confirmed")
   }
 
-  const totalAmount = cart.reduce((sum, item) => sum + item.subTotal, 0)
-
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <h1>No Cart Items yet</h1>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <Empty>
+          <EmptyHeader>
+            <div className="text-gray-400 mb-4">
+                <ShoppingCart className="h-16 w-16 mx-auto" />
+            </div>
+            <EmptyTitle>Your cart is empty</EmptyTitle>
+            <EmptyDescription>Looks like you haven't added any items to your cart yet.</EmptyDescription>
+          </EmptyHeader>
+          <EmptyContent>
+            <Link to="/menu">
+              <Button size="lg">
+                Return to Menu Page
+              </Button>
+            </Link>
+          </EmptyContent>
+        </Empty>
       </div>
     )
   }
 
+  const totalAmount = cart.reduce((sum, item) => sum + item.subTotal, 0)
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-[calc(100vh - 80px)] bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="text-center mb-12">
