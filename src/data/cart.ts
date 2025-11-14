@@ -5,7 +5,7 @@ import salad from "/menu/salad.jpg"
 import puttanesca from "/menu/puttanesca.jpg"
 import pastaMushroom from "/menu/pasta-mushroom.jpg"
 
-type CartItem = {
+export type CartItem = {
   id: number
   name: string
   image: string
