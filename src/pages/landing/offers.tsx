@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tag, Clock, Star } from "lucide-react"
-import { Link } from "react-router"
 import { offers } from "@/data/offers"
 
 const Offers = () => {
@@ -35,7 +34,7 @@ const Offers = () => {
                 {/* Discount Badge */}
                 <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-linear-to-r from-orange-500 to-red-500 text-white font-bold text-xs sm:text-sm px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full flex items-center gap-1 shadow-lg">
                   <Tag className="w-3 h-3" />
-                  {offer.discountPercent * 100}% OFF
+                  {offer.discount * 100}% OFF
                 </div>
 
                 {/* Time Left Badge */}
@@ -45,10 +44,10 @@ const Offers = () => {
                 </div>
 
                 {/* Floating Food Image */}
-                {offer.floatingImage && (
+                {offer.image && (
                   <div className="absolute -bottom-6 sm:-bottom-8 right-3 sm:right-4 w-20 h-20 sm:w-24 sm:h-24 transform group-hover:scale-110 transition-transform duration-300">
                     <img
-                      src={offer.floatingImage}
+                      src={offer.image}
                       alt={offer.name}
                       className="w-full h-full object-contain drop-shadow-lg"
                     />
@@ -92,10 +91,10 @@ const Offers = () => {
                 <div className="flex flex-wrap items-center justify-between">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xl sm:text-2xl font-bold text-gray-900">
-                      TND {(offer.price / 1000).toFixed(2)}
+                      TND {(offer.price / 1000 * (1 - offer.discount)).toFixed(2)}
                     </span>
                     <span className="text-xs sm:text-sm text-gray-500 line-through">
-                      TND {((offer.price / 1000) * (1 + offer.discountPercent)).toFixed(2)}
+                      TND {(offer.price / 1000).toFixed(2)}
                     </span>
                   </div>
                   
@@ -109,19 +108,6 @@ const Offers = () => {
               </div>
             </Card>
           ))}
-        </div>
-
-        {/* View All Offers Button */}
-        <div className="text-center mt-8 md:mt-12">
-          <Link to="/offers">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="border-2 border-orange-500 text-orange-600 cursor-pointer hover:bg-orange-50 hover:border-orange-600 font-semibold px-6 sm:px-8 py-3 rounded-xl transition-all duration-200"
-            >
-              View All Offers
-            </Button>
-          </Link>
         </div>
       </div>
     </section>

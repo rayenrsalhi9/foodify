@@ -2,7 +2,7 @@ import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Plus, ArrowRight } from "lucide-react"
 import menuDecoration from '/menu/menu-decoration.png'
-import { menuItems } from "@/data/menu"
+import { menuPreview } from "@/data/menu"
 
 const Menu = () => {
   return (
@@ -34,7 +34,7 @@ const Menu = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-              {menuItems.map((item) => (
+              {menuPreview.map((item) => (
                 <div
                   key={item.id}
                   className="group flex flex-col sm:flex-row gap-4 p-6 bg-white border border-gray-200 rounded-2xl hover:shadow-xl hover:border-orange-200 transition-all duration-300"

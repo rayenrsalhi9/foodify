@@ -26,54 +26,61 @@ type MenuItem = {
   description: string
   price: number
   image: string
+  category: string
 }
 
-export const menuItems: MenuItem[] = [
+export const menuPreview: MenuItem[] = [
   {
     id: 1,
     name: "Tacos",
     description: "Three soft corn tortillas filled with seasoned grilled chicken, fresh salsa, shredded lettuce, and a drizzle of lime crema.",
+    category: "sandwich",
     price: 12800,
-    image: tacos,
+    image: tacos
   },
   {
     id: 2,
     name: "Brik",
     description: "A golden-brown brik pastry filled with spiced tuna, capers, and a touch of harissa.",
+    category: "sandwich",
     price: 15200,
-    image: brik,
+    image: brik
   },
   {
     id: 3,
     name: "Seafood Sandwich",
     description: "Toasted ciabatta stacked with fresh shrimp, calamari, and mussels, finished with a light tomato-garlic aioli.",
+    category: "sandwich",
     price: 21100,
-    image: sandwich,
+    image: sandwich
   },
   {
     id: 4,
     name: "Garden Salad",
     description: "Crisp mixed greens topped with cherry tomatoes, cucumbers, red onions, and a tangy vinaigrette.",
+    category: "salad",
     price: 12400,
-    image: salad,
+    image: salad
   },
   {
     id: 5,
-    name: "Pasta Puttanesca",
-    description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
-    price: 18600,
-    image: puttanesca,
+    name: "Broccoli Salad",
+    description: "Fresh broccoli florets with crispy bacon, sunflower seeds, and a creamy sweet dressing.",
+    category: "salad",
+    price: 13200,
+    image: broccoliSalad
   },
   {
     id: 6,
-    name: "Creamy Mushroom Pasta",
-    description: "Fettuccine enveloped in a velvety cream sauce loaded with sautéed wild mushrooms and a sprinkle of parmesan.",
-    price: 19900,
-    image: pastaMushroom,
+    name: "Pasta Puttanesca",
+    description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
+    category: "pasta",
+    price: 18600,
+    image: puttanesca
   },
 ]
 
-export const menu = [
+export const menu: MenuItem[] = [
   {
     id: 1,
     name: "Tacos",
@@ -156,8 +163,8 @@ export const menu = [
   },
   {
     id: 11,
-    name: "Burger Deluxe",
-    description: "Juicy beef patty with lettuce, tomato, onion, pickles, and special sauce on a sesame seed bun.",
+    name: "Big Burger Cheese Deluxe",
+    description: "Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.",
     category: "burger",
     price: 19500,
     image: burgerDeluxe
@@ -186,7 +193,6 @@ export const menu = [
     price: 14600,
     image: friedRice
   },
-  // New items using decoration/food images
   {
     id: 15,
     name: "Fresh Salad Bowl",
