@@ -65,11 +65,11 @@ const OfferLimited = () => {
               </div>
               
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold bg-linear-to-br from-amber-400 to-orange-500 bg-clip-text text-transparent leading-tight">
-                  Cheese Deluxe 
+                  {limitedOffer.name}
               </h2>
               
               <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.
+                {limitedOffer.description}
               </p>
             </div>
 
