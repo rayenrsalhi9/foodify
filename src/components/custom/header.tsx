@@ -68,9 +68,11 @@ const Header = () => {
                     </Link>
 
                     <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon" className="hover:bg-orange-600 transition-colors duration-200">
-                            <ShoppingCart className="h-6 w-6" />
-                        </Button>
+                        <Link to="/cart">
+                            <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-orange-600 transition-colors duration-200">
+                                <ShoppingCart className="h-6 w-6" />
+                            </Button>
+                        </Link>
                         <Link
                             to="/login"
                             className="inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
