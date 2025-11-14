@@ -7,7 +7,7 @@ type CartItemProps = {
 const CartItemCard = ({ item } : CartItemProps) => {
     return (
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border rounded-lg">
-            {/* Image */}
+
             <div className="shrink-0">
                 <img
                 src={item.image}
@@ -20,7 +20,6 @@ const CartItemCard = ({ item } : CartItemProps) => {
                 />
             </div>
 
-            {/* Item Details */}
             <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-semibold text-gray-900 truncate">{item.name}</h3>
                 <p className="text-sm text-gray-600 mt-1">
@@ -31,13 +30,13 @@ const CartItemCard = ({ item } : CartItemProps) => {
                 </p>
             </div>
 
-            {/* Subtotal */}
-            <div className="text-right">
+            <div className="text-right ml-auto">
                 <p className="text-lg font-semibold text-gray-900">
                 {(item.subTotal / 1000).toFixed(2)} TND
                 </p>
                 <p className="text-sm text-gray-600">Subtotal</p>
             </div>
+            
         </div>
     )
 }
