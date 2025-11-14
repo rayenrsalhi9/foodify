@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { AlertDialog, AlertDialogContent, AlertDialogTrigger } from "@/components/ui/alert-dialog"
+import CartConfirm from "./cart-confirm"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { type CartItem } from "@/data/cart"
@@ -13,7 +15,7 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
         console.log("Delivery confirmed")
     }
 
-    const totalAmount = cart.reduce((sum, item) => sum + item.subTotal, 0)
+    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
     return (
         <div className="lg:col-span-1">
@@ -35,13 +37,20 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
                     <span>{(totalAmount / 1000).toFixed(2)} TND</span>
                 </div>
                 
-                <Button 
-                    onClick={handleConfirmDelivery}
-                    className="w-full mt-6"
-                    size="lg"
-                >
-                    Confirm Delivery
-                </Button>
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Button 
+                            onClick={handleConfirmDelivery}
+                            className="w-full mt-6"
+                            size="lg"
+                        >
+                            Confirm Delivery
+                        </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <CartConfirm />
+                    </AlertDialogContent>
+                </AlertDialog>
                 
                 <p className="text-xs text-gray-500 text-center mt-4">
                     By confirming, you agree to our delivery terms and conditions.

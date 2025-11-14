@@ -32,7 +32,7 @@ const CartItemCard = ({ item } : CartItemProps) => {
 
             <div className="text-right ml-auto">
                 <p className="text-lg font-semibold text-gray-900">
-                {(item.subTotal / 1000).toFixed(2)} TND
+                {((item.price * item.quantity) / 1000).toFixed(2)} TND
                 </p>
                 <p className="text-sm text-gray-600">Subtotal</p>
             </div>

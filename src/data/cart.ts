@@ -11,7 +11,6 @@ export type CartItem = {
   image: string
   price: number
   quantity: number
-  subTotal: number
 }
 
 export const cart: CartItem[] = [
@@ -21,46 +20,40 @@ export const cart: CartItem[] = [
     image: tacos,
     price: 12800,
     quantity: 2,
-    subTotal: 25600
   },
   {
     id: 2,
     name: "Brik",
     image: brik,
     price: 15200,
-    quantity: 1,
-    subTotal: 15200
+    quantity: 1
   },
   {
     id: 3,
     name: "Seafood Sandwich",
     image: sandwich,
     price: 21100,
-    quantity: 1,
-    subTotal: 21100
+    quantity: 1
   },
   {
     id: 4,
     name: "Garden Salad",
     image: salad,
     price: 12400,
-    quantity: 3,
-    subTotal: 37200
+    quantity: 3
   },
   {
     id: 5,
     name: "Pasta Puttanesca",
     image: puttanesca,
     price: 18600,
-    quantity: 1,
-    subTotal: 18600
+    quantity: 1
   },
   {
     id: 6,
     name: "Creamy Mushroom Pasta",
     image: pastaMushroom,
     price: 19900,
-    quantity: 2,
-    subTotal: 39800
+    quantity: 2
   }
 ]
