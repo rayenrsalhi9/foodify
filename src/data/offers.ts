@@ -1,8 +1,3 @@
-import cheeseBurger from '/offers/offer-burger.png'
-import burgerDeluxe from '/offers/big-burger.png'
-import pizza from '/offers/offer-pizza.png'
-import pastaMushroom from "/offers/offer-pasta.jpeg"
-
 type Offer = {
   id: number
   name: string
@@ -16,34 +11,35 @@ export const offers: Offer[] = [
   {
     id: 1,
     name: "Cheese Burger",
-    price: 21100,
-    image: cheeseBurger,
+    price: 17800, 
+    image: "/burger/cheese-burger.png",
     discount: 0.1,
     description: "Classic beef burger topped with melted cheddar cheese, lettuce, tomato, and our signature sauce.",
   },
   {
     id: 2,
-    name: "Creamy Mushroom Pasta",
-    price: 19900,
-    image: pastaMushroom,
+    name: "Seafood Pasta",
+    price: 22400, 
+    image: "/pasta/seafood-pasta.jpeg",
     discount: 0.15,
-    description: "Fettuccine enveloped in a velvety cream sauce loaded with sautéed wild mushrooms and a sprinkle of parmesan.",
+    description: "Fresh pasta with mixed seafood in a light tomato and white wine sauce with garlic and herbs.",
   },
   {
     id: 3,
     name: "Classic Pizza",
-    price: 16800,
-    image: pizza,
-    discount: 0.2,
+    price: 16800, 
+    image: "/pizza/classic-pizza.png",
+    discount: 0.1,
     description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
-  },
+  }
 ]
 
 export const limitedOffer = {
-  id: 1,
-  name: "Big Burger Cheese Deluxe",
-  description: "Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.",
-  price: 19500,
-  image: burgerDeluxe,
-  discount: 0.2
+    id: 19,
+    name: "Fried Rice",
+    description: "Savory fried rice with mixed vegetables and aromatic spices, a satisfying main course.",
+    category: "rice",
+    price: 14600,
+    image: "/rice/fried-rice.png",
+    discount: 0.2
 }

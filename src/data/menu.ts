@@ -213,7 +213,7 @@ export const menu: MenuItem[] = [
   },
   {
     id: 20,
-    name: "Rice Chicken",
+    name: "Rice and Chicken",
     description: "Delicious chicken cooked in aromatic rice with fresh vegetables and spices.",
     category: "rice",
     price: 16200,
