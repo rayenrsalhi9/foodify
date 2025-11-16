@@ -12,7 +12,7 @@ const signup = () => {
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="bg-muted relative hidden lg:block">
         <picture>
-          <source srcSet={imageData.webpSrc} type="image/webp" />
+          {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
           <img
             src={imageData.originalSrc}
             alt={imageData.alt}

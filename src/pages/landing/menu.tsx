@@ -66,7 +66,7 @@ const Menu = () => {
                   {/* Image Container */}
                   <div className="relative shrink-0 w-full sm:w-24 h-32 sm:h-24 md:w-28 md:h-28">
                     <picture>
-                      <source srcSet={imageData.webpSrc} type="image/webp" />
+                      {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
                       <img
                         src={imageData.originalSrc}
                         alt={imageData.alt}

@@ -33,7 +33,7 @@ const OfferLimited = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-linear-to-br from-amber-500/20 to-orange-600/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
                 <picture>
-                  <source srcSet={imageData.webpSrc} type="image/webp" />
+                  {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
                   <img
                     src={imageData.originalSrc}
                     alt={imageData.alt}

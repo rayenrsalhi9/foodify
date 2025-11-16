@@ -16,7 +16,7 @@ const MenuItemCard = ({item} : MenuItemProps) => {
             <CardHeader className="p-0">
                 <div className="relative overflow-hidden">
                     <picture>
-                        <source srcSet={imageData.webpSrc} type="image/webp" />
+                        {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
                         <img
                             src={imageData.originalSrc}
                             alt={imageData.alt}

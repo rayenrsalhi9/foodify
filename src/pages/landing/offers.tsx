@@ -44,7 +44,7 @@ const Offers = () => {
                       {/* Left Side - Image */}
                       <div className="relative w-28 sm:w-36 shrink-0">
                         <picture>
-                          <source srcSet={imageData.webpSrc} type="image/webp" />
+                          {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
                           <img
                             src={imageData.originalSrc}
                             alt={imageData.alt}

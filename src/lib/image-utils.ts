@@ -10,14 +10,10 @@
 export const getOptimizedImage = (src: string) => {
   if (!src) return { webpSrc: '', originalSrc: '' }
   
-  // Convert common image formats to WebP
-  const webpSrc = src
-    .replace(/\.png$/i, '.webp')
-    .replace(/\.jpg$/i, '.webp')
-    .replace(/\.jpeg$/i, '.webp')
-  
+  // For now, return only the original source since WebP files don't exist
+  // This prevents broken images while maintaining the function interface
   return {
-    webpSrc,
+    webpSrc: '', // Empty since WebP files don't exist
     originalSrc: src
   }
 }

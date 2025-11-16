@@ -11,7 +11,7 @@ const Decoration = () => {
         <>
             <div className="absolute bottom-[-40%] left-[-15%] pointer-events-none opacity-90 w-160 h-160 hidden md:block transition-opacity duration-500">
                 <picture>
-                    <source srcSet={imageData1.webpSrc} type="image/webp" />
+                    {imageData1.webpSrc && <source srcSet={imageData1.webpSrc} type="image/webp" />}
                     <img 
                         src={imageData1.originalSrc} 
                         alt={imageData1.alt} 
@@ -22,7 +22,7 @@ const Decoration = () => {
             </div>
             <div className="absolute bottom-[-40%] right-[-15%] pointer-events-none opacity-90 w-120 h-120 hidden md:block transition-opacity duration-500">
                 <picture>
-                    <source srcSet={imageData2.webpSrc} type="image/webp" />
+                    {imageData2.webpSrc && <source srcSet={imageData2.webpSrc} type="image/webp" />}
                     <img 
                         src={imageData2.originalSrc} 
                         alt={imageData2.alt} 

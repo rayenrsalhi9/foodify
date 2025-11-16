@@ -14,7 +14,7 @@ const CartItemCard = ({ item } : CartItemProps) => {
 
             <div className="shrink-0">
                 <picture>
-                    <source srcSet={imageData.webpSrc} type="image/webp" />
+                    {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
                     <img
                     src={imageData.originalSrc}
                     alt={imageData.alt}

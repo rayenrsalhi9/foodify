@@ -27,7 +27,7 @@ const login = () => {
       </div>
       <div className="bg-muted relative hidden lg:block">
         <picture>
-          <source srcSet={imageData.webpSrc} type="image/webp" />
+          {imageData.webpSrc && <source srcSet={imageData.webpSrc} type="image/webp" />}
           <img
             src={imageData.originalSrc}
             alt={imageData.alt}
