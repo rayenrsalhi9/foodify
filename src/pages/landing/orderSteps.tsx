@@ -1,16 +1,23 @@
 import { Card } from "@/components/ui/card"
 import saladImg from '/decoration/salad.png'
+import { createOptimizedPicture } from "@/lib/image-utils"
 import { steps } from "@/data/steps"
 
 const OrderSteps = () => {
+  
+  const imageData = createOptimizedPicture(saladImg, "Decorative salad image", "absolute top-0 right-[-40%] sm:right-[-5%] w-96 h-96 object-cover opacity-20", "lazy")
 
   return (
     <section className="bg-orange-50 py-24 px-4 relative overflow-hidden">
-      <img
-        src={saladImg}
-        alt="Decorative salad image"
-        className="absolute top-0 right-[-40%] sm:right-[-5%] w-96 h-96 object-cover opacity-20"
-      />
+      <picture>
+        <source srcSet={imageData.webpSrc} type="image/webp" />
+        <img
+          src={imageData.originalSrc}
+          alt={imageData.alt}
+          className={imageData.className}
+          loading={imageData.loading}
+        />
+      </picture>
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">

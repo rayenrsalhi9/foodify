@@ -5,7 +5,7 @@ import MenuEmpty from "./menu-empty"
 import { menu } from "@/data/menu"
 
 const Menu = () => {
-    // Get unique categories from menu data
+    
     const categories = [...Array.from(new Set(menu.map(item => item.category)))]
 
     const [searchParams] = useSearchParams()
@@ -28,10 +28,8 @@ const Menu = () => {
 
                 <MenuFilters category={category} categories={categories} />
                 
-
-                {/* Menu Items Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {menuToDisplay.map((item) => <MenuItemCard item={item} />)}
+                    {menuToDisplay.map((item) => <MenuItemCard key={item.id} item={item} />)}
                 </div>
 
                 { menuToDisplay.length === 0 ? <MenuEmpty /> : null }

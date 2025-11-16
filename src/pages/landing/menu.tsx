@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Plus, ArrowRight } from "lucide-react"
 import menuDecoration from '/menu/menu-decoration.png'
+import { createOptimizedPicture } from "@/lib/image-utils"
 import { menuPreview } from "@/data/menu"
 
 const Menu = () => {
@@ -34,7 +35,11 @@ const Menu = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-              {menuPreview.map((item) => (
+              {menuPreview.map((item) => {
+                
+                const imageData = createOptimizedPicture(item.image || "/placeholder.svg", item.name, "w-full h-full object-cover rounded-xl shadow-md group-hover:shadow-lg transition-shadow duration-300")
+                
+                return (
                 <div
                   key={item.id}
                   className="group flex flex-col sm:flex-row gap-4 p-6 bg-white border border-gray-200 rounded-2xl hover:shadow-xl hover:border-orange-200 transition-all duration-300"
@@ -60,14 +65,17 @@ const Menu = () => {
 
                   {/* Image Container */}
                   <div className="relative shrink-0 w-full sm:w-24 h-32 sm:h-24 md:w-28 md:h-28">
-                    <img
-                      src={item.image || "/placeholder.svg"}
-                      alt={item.name}
-                      className="w-full h-full object-cover rounded-xl shadow-md group-hover:shadow-lg transition-shadow duration-300"
-                    />
+                    <picture>
+                      <source srcSet={imageData.webpSrc} type="image/webp" />
+                      <img
+                        src={imageData.originalSrc}
+                        alt={imageData.alt}
+                        className={imageData.className}
+                      />
+                    </picture>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
             
             {/* Mobile See All Button */}

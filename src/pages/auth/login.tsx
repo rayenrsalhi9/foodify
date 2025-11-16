@@ -1,9 +1,13 @@
 import { UtensilsCrossed } from "lucide-react"
 import loginBg from '/auth/login-bg.jpg'
+import { createOptimizedPicture } from "@/lib/image-utils"
 import { LoginForm } from "@/components/login-form"
 import { Link } from "react-router"
 
 const login = () => {
+  
+  const imageData = createOptimizedPicture(loginBg, "Login background image", "absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale", "lazy")
+  
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -22,12 +26,15 @@ const login = () => {
         </div>
       </div>
       <div className="bg-muted relative hidden lg:block">
-        <img
-          src={loginBg}
-          alt="Login background image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-          loading="lazy"
-        />
+        <picture>
+          <source srcSet={imageData.webpSrc} type="image/webp" />
+          <img
+            src={imageData.originalSrc}
+            alt={imageData.alt}
+            className={imageData.className}
+            loading={imageData.loading}
+          />
+        </picture>
       </div>
     </div>
   )

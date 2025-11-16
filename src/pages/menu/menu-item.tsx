@@ -1,21 +1,29 @@
 import type { MenuItem } from "@/data/menu"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { createOptimizedPicture } from "@/lib/image-utils"
 
 type MenuItemProps = {
     item: MenuItem
 }
 
 const MenuItemCard = ({item} : MenuItemProps) => {
+    
+    const imageData = createOptimizedPicture(item.image, item.name, "w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300", "lazy")
+    
     return (
-        <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 border-gray-100">
+        <Card className="group hover:shadow-lg transition-all duration-300 border-gray-100">
             <CardHeader className="p-0">
                 <div className="relative overflow-hidden">
-                    <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <picture>
+                        <source srcSet={imageData.webpSrc} type="image/webp" />
+                        <img
+                            src={imageData.originalSrc}
+                            alt={imageData.alt}
+                            loading={imageData.loading}
+                            className={imageData.className}
+                        />
+                    </picture>
                     <div className="absolute top-3 right-3">
                         <span className="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">
                             {item.category}

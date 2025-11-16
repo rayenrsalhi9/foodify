@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Sparkles, Star } from "lucide-react"
+import { createOptimizedPicture } from "@/lib/image-utils"
 import { limitedOffer } from "@/data/offers"
 
 const OfferLimited = () => {
+  
+  const imageData = createOptimizedPicture(limitedOffer.image || "/placeholder.svg", "Limited offer meal image", "relative w-full max-w-md h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out")
+  
   return (
     <section className="relative w-full bg-linear-to-br from-zinc-900 via-zinc-800 to-zinc-900 py-20 px-4 flex justify-center items-center overflow-hidden">
       {/* Decorative Background Elements */}
@@ -28,11 +32,14 @@ const OfferLimited = () => {
               {/* Burger Image Container */}
               <div className="relative">
                 <div className="absolute inset-0 bg-linear-to-br from-amber-500/20 to-orange-600/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
-                <img
-                  src={limitedOffer.image || "/placeholder.svg"}
-                  alt="Limited offer meal image"
-                  className="relative w-full max-w-md h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
+                <picture>
+                  <source srcSet={imageData.webpSrc} type="image/webp" />
+                  <img
+                    src={imageData.originalSrc}
+                    alt={imageData.alt}
+                    className={imageData.className}
+                  />
+                </picture>
               </div>
 
               {/* Enhanced Price Badge */}

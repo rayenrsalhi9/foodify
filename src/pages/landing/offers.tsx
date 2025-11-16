@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { offers } from "@/data/offers"
+import { createOptimizedPicture } from "@/lib/image-utils"
 import Autoplay from 'embla-carousel-autoplay'
 import {
   Carousel,
@@ -31,7 +32,10 @@ const Offers = () => {
             className="w-full"
           >
             <CarouselContent className="">
-              {offers.map((offer) => (
+              {offers.map((offer) => {
+                const imageData = createOptimizedPicture(offer.image, offer.name, "w-full h-full object-contain")
+                
+                return (
                 <CarouselItem key={offer.id} className="basis-full py-4 pl-2 pr-2 sm:pl-4 sm:pr-4">
                   <Card
                     className="group overflow-hidden rounded-xl border-0 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer bg-white"
@@ -39,11 +43,14 @@ const Offers = () => {
                     <div className="flex h-32 sm:h-36">
                       {/* Left Side - Image */}
                       <div className="relative w-28 sm:w-36 shrink-0">
-                        <img
-                          src={offer.image}
-                          alt={offer.name}
-                          className="w-full h-full object-contain"
-                        />
+                        <picture>
+                          <source srcSet={imageData.webpSrc} type="image/webp" />
+                          <img
+                            src={imageData.originalSrc}
+                            alt={imageData.alt}
+                            className={imageData.className}
+                          />
+                        </picture>
                         {/* Discount Badge */}
                         <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-medium px-2 py-1 rounded">
                           -{Math.round(offer.discount * 100)}%
@@ -88,7 +95,8 @@ const Offers = () => {
                     </div>
                   </Card>
                 </CarouselItem>
-              ))}
+              );
+            })}
             </CarouselContent>
             <CarouselPrevious className="absolute -left-2 sm:-left-12 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-gray-200 shadow-lg hover:bg-white z-10" />
             <CarouselNext className="absolute -right-2 sm:-right-12 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-gray-200 shadow-lg hover:bg-white z-10" />

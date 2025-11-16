@@ -1,18 +1,25 @@
 import { UtensilsCrossed } from "lucide-react"
 import signupBg from '/auth/signup-bg.jpg'
+import { createOptimizedPicture } from "@/lib/image-utils"
 import { SignupForm } from "@/components/signup-form"
 import { Link } from "react-router"
 
 const signup = () => {
+  
+  const imageData = createOptimizedPicture(signupBg, "Signup background image", "absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale", "lazy")
+  
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="bg-muted relative hidden lg:block">
-        <img
-          src={signupBg}
-          alt="Signup background image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-          loading="lazy"
-        />
+        <picture>
+          <source srcSet={imageData.webpSrc} type="image/webp" />
+          <img
+            src={imageData.originalSrc}
+            alt={imageData.alt}
+            className={imageData.className}
+            loading={imageData.loading}
+          />
+        </picture>
       </div>
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
