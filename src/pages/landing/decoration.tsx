@@ -1,5 +1,5 @@
-import bgIcon1 from '/food/bg-icon-1.png'
-import bgIcon2 from '/food/bg-icon-2.png'
+import bgIcon1 from '/decoration/bg-icon-1.png'
+import bgIcon2 from '/decoration/bg-icon-2.png'
 
 const Decoration = () => {
     return (
