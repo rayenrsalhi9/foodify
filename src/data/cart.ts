@@ -59,7 +59,7 @@ export const cart: CartItem[] = [
   {
     id: 8,
     name: "Cappuccino",
-    image: "/menu/coffee.webp",
+    image: "/dessert/cappuccino.webp",
     price: 8500,
     quantity: 3
   },
