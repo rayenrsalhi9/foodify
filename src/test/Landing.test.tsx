@@ -3,14 +3,14 @@ import { describe, test, expect, vi } from "vitest";
 import Landing from "@/pages/landing/landing";
 
 // Mock the image imports
-vi.mock('/food/bg-icon-1.png', () => ({ default: 'bg-icon-1-mock' }));
-vi.mock('/food/bg-icon-2.png', () => ({ default: 'bg-icon-2-mock' }));
-vi.mock('/food/burger.png', () => ({ default: 'burger-mock' }));
-vi.mock('/food/pasta.png', () => ({ default: 'pasta-mock' }));
-vi.mock('/food/salad.png', () => ({ default: 'salad-mock' }));
-vi.mock('/food/pizza.png', () => ({ default: 'pizza-mock' }));
-vi.mock('/food/sandwich.png', () => ({ default: 'sandwich-mock' }));
-vi.mock('/food/rice.png', () => ({ default: 'rice-mock' }));
+vi.mock('/food/bg-icon-1.webp', () => ({ default: 'bg-icon-1-mock' }));
+vi.mock('/food/bg-icon-2.webp', () => ({ default: 'bg-icon-2-mock' }));
+vi.mock('/food/burger.webp', () => ({ default: 'burger-mock' }));
+vi.mock('/food/pasta.webp', () => ({ default: 'pasta-mock' }));
+vi.mock('/food/salad.webp', () => ({ default: 'salad-mock' }));
+vi.mock('/food/pizza.webp', () => ({ default: 'pizza-mock' }));
+vi.mock('/food/sandwich.webp', () => ({ default: 'sandwich-mock' }));
+vi.mock('/food/rice.webp', () => ({ default: 'rice-mock' }));
 
 describe("Landing Page", () => {
   test("renders landing page with main headline", () => {

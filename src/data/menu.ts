@@ -72,7 +72,7 @@ export const menu: MenuItem[] = [
     description: "Crisp mixed greens topped with cherry tomatoes, cucumbers, red onions, and a tangy vinaigrette.",
     category: "salad",
     price: 12400,
-    image: "/salad/green-salad.png",
+    image: "/salad/green-salad.webp",
     discount: 0
   },
   {
@@ -90,7 +90,7 @@ export const menu: MenuItem[] = [
     description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
     category: "pasta",
     price: 18600,
-    image: "/pasta/puttanesca-pasta.png",
+    image: "/pasta/puttanesca-pasta.webp",
     discount: 0
   },
   {
@@ -117,7 +117,7 @@ export const menu: MenuItem[] = [
     description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
     category: "pizza",
     price: 16800,
-    image: "/pizza/classic-pizza.png",
+    image: "/pizza/classic-pizza.webp",
     discount: 0
   },
   {
@@ -153,7 +153,7 @@ export const menu: MenuItem[] = [
     description: "Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.",
     category: "burger",
     price: 19500,
-    image: "/burger/deluxe-burger.jpeg",
+    image: "/burger/deluxe-burger.webp",
     discount: 0.1
   },
   {
@@ -207,7 +207,7 @@ export const menu: MenuItem[] = [
     description: "Savory fried rice with mixed vegetables and aromatic spices, a satisfying main course.",
     category: "rice",
     price: 14600,
-    image: "/rice/fried-rice.png",
+    image: "/rice/fried-rice.webp",
     discount: 0.15
   },
   {

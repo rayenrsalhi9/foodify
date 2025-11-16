@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card"
-import saladImg from '/decoration/salad.png'
+import saladImg from '/decoration/salad.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { steps } from "@/data/steps"
 

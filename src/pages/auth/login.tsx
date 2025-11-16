@@ -1,5 +1,5 @@
 import { UtensilsCrossed } from "lucide-react"
-import loginBg from '/auth/login-bg.jpg'
+import loginBg from '/auth/login-bg.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { LoginForm } from "@/components/login-form"
 import { Link } from "react-router"

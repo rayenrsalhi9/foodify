@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Plus, ArrowRight } from "lucide-react"
-import menuDecoration from '/menu/menu-decoration.png'
+import menuDecoration from '/menu/menu-decoration.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { menuPreview } from "@/data/menu"
 

@@ -17,63 +17,63 @@ export const cart: CartItem[] = [
   {
     id: 2,
     name: "Cheese Burger",
-    image: "/burger/cheese-burger.png",
+    image: "/burger/cheese-burger.webp",
     price: 17800,
     quantity: 2
   },
   {
     id: 3,
     name: "Classic Pizza",
-    image: "/pizza/classic-pizza.png",
+    image: "/pizza/classic-pizza.webp",
     price: 16800,
     quantity: 1
   },
   {
     id: 4,
     name: "Broccoli Salad",
-    image: "/salad/broccoli-salad.jpg",
+    image: "/salad/broccoli-salad.webp",
     price: 13200,
     quantity: 2
   },
   {
     id: 5,
     name: "Seafood Pasta",
-    image: "/pasta/seafood-pasta.jpeg",
+    image: "/pasta/seafood-pasta.webp",
     price: 22400,
     quantity: 1
   },
   {
     id: 6,
     name: "Fried Rice",
-    image: "/rice/fried-rice.png",
+    image: "/rice/fried-rice.webp",
     price: 14600,
     quantity: 4
   },
   {
     id: 7,
     name: "Apple Pie",
-    image: "/dessert/apple-pie.png",
+    image: "/dessert/apple-pie.webp",
     price: 9500,
     quantity: 2
   },
   {
     id: 8,
     name: "Cappuccino",
-    image: "/menu/coffee.jpg",
+    image: "/menu/coffee.webp",
     price: 8500,
     quantity: 3
   },
   {
     id: 9,
     name: "Pepperoni Pizza",
-    image: "/pizza/pepperoni-pizza.jpeg",
+    image: "/pizza/pepperoni-pizza.webp",
     price: 17800,
     quantity: 1
   },
   {
     id: 10,
     name: "Mechouia Salad",
-    image: "/salad/mechouia-salad.jpg",
+    image: "/salad/mechouia-salad.webp",
     price: 14200,
     quantity: 1
   }
