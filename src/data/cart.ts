@@ -10,7 +10,7 @@ export const cart: CartItem[] = [
   {
     id: 1,
     name: "Tacos",
-    image: "/menu/tacos.jpg",
+    image: "/sandwich/tacos.webp",
     price: 12800,
     quantity: 3,
   },
