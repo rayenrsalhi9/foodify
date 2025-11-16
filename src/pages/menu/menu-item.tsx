@@ -1,17 +1,9 @@
+import type { MenuItem } from "@/data/menu"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 type MenuItemProps = {
-    item: Item
-}
-
-type Item = {
-    id: number
-    name: string
-    description: string
-    category: string
-    price: number
-    image: string
+    item: MenuItem
 }
 
 const MenuItem = ({item} : MenuItemProps) => {
@@ -29,6 +21,13 @@ const MenuItem = ({item} : MenuItemProps) => {
                             {item.category}
                         </span>
                     </div>
+                    {item.discount > 0 ? (
+                        <div className="absolute top-3 left-3">
+                            <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                -{(item.discount * 100).toFixed(0)}%
+                            </span>
+                        </div>
+                    ) : null}
                 </div>
             </CardHeader>
             <CardContent className="p-4">
@@ -39,9 +38,18 @@ const MenuItem = ({item} : MenuItemProps) => {
                     {item.description}
                 </CardDescription>
                 <div className="flex items-center justify-between gap-1">
-                    <span className="text-lg font-bold text-orange-600">
-                        TND {(item.price / 1000).toFixed(2)}
-                    </span>
+                    <div className="flex flex-col">
+                        {
+                            item.discount > 0 ? (
+                                <span className="text-sm text-gray-500 line-through">
+                                        TND {(item.price / 1000).toFixed(2)}
+                                </span>
+                            ) : null
+                        }
+                        <span className="text-lg font-bold text-orange-600">
+                            TND {(item.price * (1 - item.discount) / 1000).toFixed(2)}
+                        </span>
+                    </div>
                     <Button
                         variant="default"
                         size="sm"

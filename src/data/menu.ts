@@ -136,7 +136,7 @@ export const menu: MenuItem[] = [
     category: "pasta",
     price: 22400,
     image: "/pasta/seafood-pasta.jpeg",
-    discount: 0
+    discount: 0.2
   },
   {
     id: 9,
@@ -181,7 +181,7 @@ export const menu: MenuItem[] = [
     category: "burger",
     price: 19500,
     image: "/burger/deluxe-burger.jpeg",
-    discount: 0
+    discount: 0.1
   },
   {
     id: 14,
@@ -207,7 +207,7 @@ export const menu: MenuItem[] = [
     description: "Rich espresso topped with steamed milk foam, perfect for ending your meal.",
     category: "dessert",
     price: 8500,
-    image: "/menu/coffee.jpg",
+    image: "/dessert/cappuccino.png",
     discount: 0
   },
   {
@@ -235,7 +235,7 @@ export const menu: MenuItem[] = [
     category: "rice",
     price: 14600,
     image: "/rice/fried-rice.png",
-    discount: 0
+    discount: 0.15
   },
   {
     id: 20,
@@ -262,7 +262,7 @@ export const menu: MenuItem[] = [
     category: "salad",
     price: 11800,
     image: "/salad/fruit-salad.png",
-    discount: 0
+    discount: 0.1
   },
   {
     id: 23,
@@ -280,7 +280,7 @@ export const menu: MenuItem[] = [
     category: "pasta",
     price: 17400,
     image: "/pasta/white-sauce-pasta.png",
-    discount: 0
+    discount: 0.2
   },
   {
     id: 25,
