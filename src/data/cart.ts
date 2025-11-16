@@ -1,11 +1,4 @@
-import tacos from "/menu/tacos.jpg"
-import brik from "/menu/brik.jpg"
-import sandwich from "/menu/sandwich.jpg"
-import salad from "/menu/salad.jpg"
-import puttanesca from "/menu/puttanesca.jpg"
-import pastaMushroom from "/menu/pasta-mushroom.jpg"
-
-export type CartItem = {
+type CartItem = {
   id: number
   name: string
   image: string
@@ -17,43 +10,71 @@ export const cart: CartItem[] = [
   {
     id: 1,
     name: "Tacos",
-    image: tacos,
+    image: "/menu/tacos.jpg",
     price: 12800,
-    quantity: 2,
+    quantity: 3,
   },
   {
     id: 2,
-    name: "Brik",
-    image: brik,
-    price: 15200,
-    quantity: 1
+    name: "Cheese Burger",
+    image: "/burger/cheese-burger.png",
+    price: 17800,
+    quantity: 2
   },
   {
     id: 3,
-    name: "Seafood Sandwich",
-    image: sandwich,
-    price: 21100,
+    name: "Classic Pizza",
+    image: "/pizza/classic-pizza.png",
+    price: 16800,
     quantity: 1
   },
   {
     id: 4,
-    name: "Garden Salad",
-    image: salad,
-    price: 12400,
-    quantity: 3
+    name: "Broccoli Salad",
+    image: "/salad/broccoli-salad.jpg",
+    price: 13200,
+    quantity: 2
   },
   {
     id: 5,
-    name: "Pasta Puttanesca",
-    image: puttanesca,
-    price: 18600,
+    name: "Seafood Pasta",
+    image: "/pasta/seafood-pasta.jpeg",
+    price: 22400,
     quantity: 1
   },
   {
     id: 6,
-    name: "Creamy Mushroom Pasta",
-    image: pastaMushroom,
-    price: 19900,
+    name: "Fried Rice",
+    image: "/rice/fried-rice.png",
+    price: 14600,
+    quantity: 4
+  },
+  {
+    id: 7,
+    name: "Apple Pie",
+    image: "/dessert/apple-pie.png",
+    price: 9500,
     quantity: 2
+  },
+  {
+    id: 8,
+    name: "Cappuccino",
+    image: "/menu/coffee.jpg",
+    price: 8500,
+    quantity: 3
+  },
+  {
+    id: 9,
+    name: "Pepperoni Pizza",
+    image: "/pizza/pepperoni-pizza.jpeg",
+    price: 17800,
+    quantity: 1
+  },
+  {
+    id: 10,
+    name: "Mechouia Salad",
+    image: "/salad/mechouia-salad.jpg",
+    price: 14200,
+    quantity: 1
   }
 ]
