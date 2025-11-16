@@ -10,13 +10,16 @@
 export const getOptimizedImage = (src: string) => {
   if (!src) return { webpSrc: '', originalSrc: '' }
   
-  // For now, return only the original source since WebP files don't exist
-  // This prevents broken images while maintaining the function interface
+  // Convert to WebP path by replacing the extension
+  const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp')
+  
   return {
-    webpSrc: '', // Empty since WebP files don't exist
+    webpSrc,
     originalSrc: src
   }
 }
+
+
 
 /**
  * Creates a picture element with WebP and fallback sources
@@ -49,6 +52,11 @@ export const createOptimizedPicture = (
  */
 export const supportsWebP = (): Promise<boolean> => {
   return new Promise((resolve) => {
+    if (typeof window === 'undefined') {
+      resolve(false)
+      return
+    }
+
     const webP = new Image()
     webP.onload = webP.onerror = () => {
       resolve(webP.height === 2)
