@@ -1,18 +1,37 @@
+import { lazy, Suspense } from "react"
 import { createBrowserRouter } from "react-router"
-
-import HomeLayout from "./layout/homeLayout"
-import MenuLayout from "./layout/menuLayout"
-import CartLayout from "./layout/cartLayout"
 
 import LoginPage from "./pages/auth/login"
 import SignupPage from "./pages/auth/signup"
 import NotFound from "./pages/not-found"
 
+const HomeLayoutLazy = lazy(() => import('./layout/homeLayout'))
+const MenuLayoutLazy = lazy(() => import('./layout/menuLayout'))
+const CartLayoutLazy = lazy(() => import('./layout/cartLayout'))
+
 const router = createBrowserRouter([
-  { path: "/", element: <HomeLayout /> },
-  { path: '/menu', element: <MenuLayout /> },
-  { path: '/cart', element: <CartLayout /> },
-  { path: "/about", element: <div>This is the about page</div> },
+  { 
+    path: "/", 
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <HomeLayoutLazy />
+      </Suspense>
+    ) 
+  },{ 
+    path: '/menu', 
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <MenuLayoutLazy />
+      </Suspense>
+    ) 
+  },{ 
+    path: '/cart', 
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <CartLayoutLazy />
+      </Suspense>
+    ) 
+  },
   { path: "login", element: <LoginPage /> },
   { path: "signup", element: <SignupPage /> },
   { path: "*", element: <NotFound /> }
