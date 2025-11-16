@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router"
 import MenuFilters from "./menu-filters"
-import MenuItem from "./menu-item"
+import MenuItemCard from "./menu-item"
 import MenuEmpty from "./menu-empty"
 import { menu } from "@/data/menu"
 
@@ -31,7 +31,7 @@ const Menu = () => {
 
                 {/* Menu Items Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {menuToDisplay.map((item) => <MenuItem item={item} />)}
+                    {menuToDisplay.map((item) => <MenuItemCard item={item} />)}
                 </div>
 
                 { menuToDisplay.length === 0 ? <MenuEmpty /> : null }

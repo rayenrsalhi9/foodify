@@ -6,7 +6,7 @@ type MenuItemProps = {
     item: MenuItem
 }
 
-const MenuItem = ({item} : MenuItemProps) => {
+const MenuItemCard = ({item} : MenuItemProps) => {
     return (
         <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 border-gray-100">
             <CardHeader className="p-0">
@@ -63,4 +63,4 @@ const MenuItem = ({item} : MenuItemProps) => {
     )
 }
 
-export default MenuItem
+export default MenuItemCard
