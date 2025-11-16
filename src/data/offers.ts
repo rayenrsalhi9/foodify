@@ -1,13 +1,6 @@
-type Offer = {
-  id: number
-  name: string
-  description: string
-  price: number
-  discount: number
-  image: string
-}
+import type { MenuItem } from "./menu"
 
-export const offers: Offer[] = [
+export const offers: MenuItem[] = [
   {
     id: 1,
     name: "Cheese Burger",
@@ -15,6 +8,7 @@ export const offers: Offer[] = [
     image: "/burger/cheese-burger.png",
     discount: 0.1,
     description: "Classic beef burger topped with melted cheddar cheese, lettuce, tomato, and our signature sauce.",
+    category: "burger",
   },
   {
     id: 2,
@@ -23,6 +17,7 @@ export const offers: Offer[] = [
     image: "/pasta/seafood-pasta.jpeg",
     discount: 0.15,
     description: "Fresh pasta with mixed seafood in a light tomato and white wine sauce with garlic and herbs.",
+    category: "pasta",
   },
   {
     id: 3,
@@ -31,6 +26,7 @@ export const offers: Offer[] = [
     image: "/pizza/classic-pizza.png",
     discount: 0.1,
     description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
+    category: "pizza",
   }
 ]
 

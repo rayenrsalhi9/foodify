@@ -1,10 +1,11 @@
-type MenuItem = {
+export type MenuItem = {
   id: number
   name: string
   description: string
   price: number
   image: string
   category: string
+  discount: number
 }
 
 export const menuPreview: MenuItem[] = [
@@ -14,7 +15,8 @@ export const menuPreview: MenuItem[] = [
     description: "Three soft corn tortillas filled with seasoned grilled chicken, fresh salsa, shredded lettuce, and a drizzle of lime crema.",
     category: "sandwich",
     price: 12800,
-    image: "/menu/tacos.jpg"
+    image: "/menu/tacos.jpg",
+    discount: 0
   },
   {
     id: 4,
@@ -22,7 +24,8 @@ export const menuPreview: MenuItem[] = [
     description: "Crisp mixed greens topped with cherry tomatoes, cucumbers, red onions, and a tangy vinaigrette.",
     category: "salad",
     price: 12400,
-    image: "/salad/green-salad.png"
+    image: "/salad/green-salad.png",
+    discount: 0
   },
   {
     id: 9,
@@ -30,7 +33,8 @@ export const menuPreview: MenuItem[] = [
     description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
     category: "pizza",
     price: 16800,
-    image: "/pizza/classic-pizza.png"
+    image: "/pizza/classic-pizza.png",
+    discount: 0
   },
   {
     id: 13,
@@ -38,7 +42,8 @@ export const menuPreview: MenuItem[] = [
     description: "Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.",
     category: "burger",
     price: 19500,
-    image: "/burger/deluxe-burger.jpeg"
+    image: "/burger/deluxe-burger.jpeg",
+    discount: 0
   },
   {
     id: 19,
@@ -46,7 +51,8 @@ export const menuPreview: MenuItem[] = [
     description: "Savory fried rice with mixed vegetables and aromatic spices, a satisfying main course.",
     category: "rice",
     price: 14600,
-    image: "/rice/fried-rice.png"
+    image: "/rice/fried-rice.png",
+    discount: 0
   },
   {
     id: 6,
@@ -54,7 +60,8 @@ export const menuPreview: MenuItem[] = [
     description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
     category: "pasta",
     price: 18600,
-    image: "/pasta/puttanesca-pasta.png"
+    image: "/pasta/puttanesca-pasta.png",
+    discount: 0
   }
 ]
 
@@ -65,7 +72,8 @@ export const menu: MenuItem[] = [
     description: "Three soft corn tortillas filled with seasoned grilled chicken, fresh salsa, shredded lettuce, and a drizzle of lime crema.",
     category: "sandwich",
     price: 12800,
-    image: "/menu/tacos.jpg"
+    image: "/menu/tacos.jpg",
+    discount: 0
   },
   {
     id: 2,
@@ -73,7 +81,8 @@ export const menu: MenuItem[] = [
     description: "A golden-brown brik pastry filled with spiced tuna, capers, and a touch of harissa.",
     category: "sandwich",
     price: 15200,
-    image: "/menu/brik.jpg"
+    image: "/menu/brik.jpg",
+    discount: 0
   },
   {
     id: 3,
@@ -81,7 +90,8 @@ export const menu: MenuItem[] = [
     description: "Toasted ciabatta stacked with fresh shrimp, calamari, and mussels, finished with a light tomato-garlic aioli.",
     category: "sandwich",
     price: 21100,
-    image: "/menu/sandwich.jpg"
+    image: "/menu/sandwich.jpg",
+    discount: 0
   },
   {
     id: 4,
@@ -89,7 +99,8 @@ export const menu: MenuItem[] = [
     description: "Crisp mixed greens topped with cherry tomatoes, cucumbers, red onions, and a tangy vinaigrette.",
     category: "salad",
     price: 12400,
-    image: "/salad/green-salad.png"
+    image: "/salad/green-salad.png",
+    discount: 0
   },
   {
     id: 5,
@@ -97,7 +108,8 @@ export const menu: MenuItem[] = [
     description: "Fresh broccoli florets with crispy bacon, sunflower seeds, and a creamy sweet dressing.",
     category: "salad",
     price: 13200,
-    image: "/salad/broccoli-salad.jpg"
+    image: "/salad/broccoli-salad.jpg",
+    discount: 0
   },
   {
     id: 6,
@@ -105,7 +117,8 @@ export const menu: MenuItem[] = [
     description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
     category: "pasta",
     price: 18600,
-    image: "/pasta/puttanesca-pasta.png"
+    image: "/pasta/puttanesca-pasta.png",
+    discount: 0
   },
   {
     id: 7,
@@ -113,7 +126,8 @@ export const menu: MenuItem[] = [
     description: "Fettuccine enveloped in a velvety cream sauce loaded with sautéed wild mushrooms and parmesan.",
     category: "pasta",
     price: 19900,
-    image: "/pasta/mushroom-pasta.jpeg"
+    image: "/pasta/mushroom-pasta.jpeg",
+    discount: 0
   },
   {
     id: 8,
@@ -121,7 +135,8 @@ export const menu: MenuItem[] = [
     description: "Fresh pasta with mixed seafood in a light tomato and white wine sauce with garlic and herbs.",
     category: "pasta",
     price: 22400,
-    image: "/pasta/seafood-pasta.jpeg"
+    image: "/pasta/seafood-pasta.jpeg",
+    discount: 0
   },
   {
     id: 9,
@@ -129,7 +144,8 @@ export const menu: MenuItem[] = [
     description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
     category: "pizza",
     price: 16800,
-    image: "/pizza/classic-pizza.png"
+    image: "/pizza/classic-pizza.png",
+    discount: 0
   },
   {
     id: 10,
@@ -137,7 +153,8 @@ export const menu: MenuItem[] = [
     description: "Simple yet delicious pizza topped with rich tomato sauce and melted mozzarella cheese.",
     category: "pizza",
     price: 15800,
-    image: "/pizza/cheese-pizza.png"
+    image: "/pizza/cheese-pizza.png",
+    discount: 0
   },
   {
     id: 11,
@@ -145,7 +162,8 @@ export const menu: MenuItem[] = [
     description: "Gourmet pizza topped with fresh shrimp, calamari, and mussels on a tomato base with herbs.",
     category: "pizza",
     price: 21800,
-    image: "/pizza/seafood-pizza.png"
+    image: "/pizza/seafood-pizza.png",
+    discount: 0
   },
   {
     id: 12,
@@ -153,7 +171,8 @@ export const menu: MenuItem[] = [
     description: "Classic pizza loaded with spicy pepperoni slices and melted mozzarella on tomato sauce.",
     category: "pizza",
     price: 17800,
-    image: "/pizza/pepperoni-pizza.jpeg"
+    image: "/pizza/pepperoni-pizza.jpeg",
+    discount: 0
   },
   {
     id: 13,
@@ -161,7 +180,8 @@ export const menu: MenuItem[] = [
     description: "Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.",
     category: "burger",
     price: 19500,
-    image: "/burger/deluxe-burger.jpeg"
+    image: "/burger/deluxe-burger.jpeg",
+    discount: 0
   },
   {
     id: 14,
@@ -169,7 +189,8 @@ export const menu: MenuItem[] = [
     description: "Classic beef burger topped with melted cheddar cheese, lettuce, tomato, and our signature sauce.",
     category: "burger",
     price: 17800,
-    image: "/burger/cheese-burger.png"
+    image: "/burger/cheese-burger.png",
+    discount: 0
   },
   {
     id: 15,
@@ -177,7 +198,8 @@ export const menu: MenuItem[] = [
     description: "Juicy beef patty with lettuce, tomato, onion, and our house sauce on a toasted bun.",
     category: "burger",
     price: 16900,
-    image: "/burger/classic-burger.png"
+    image: "/burger/classic-burger.png",
+    discount: 0
   },
   {
     id: 16,
@@ -185,7 +207,8 @@ export const menu: MenuItem[] = [
     description: "Rich espresso topped with steamed milk foam, perfect for ending your meal.",
     category: "dessert",
     price: 8500,
-    image: "/menu/coffee.jpg"
+    image: "/menu/coffee.jpg",
+    discount: 0
   },
   {
     id: 17,
@@ -193,7 +216,8 @@ export const menu: MenuItem[] = [
     description: "Refreshing soda with a hint of lime and a touch of sweetness.",
     category: "dessert",
     price: 6500,
-    image: "/dessert/soda.jpeg"
+    image: "/dessert/soda.jpeg",
+    discount: 0
   },
   {
     id: 18,
@@ -201,7 +225,8 @@ export const menu: MenuItem[] = [
     description: "Crispy pastry with a sweet apple filling, a classic dessert.",
     category: "dessert",
     price: 9500,
-    image: "/dessert/apple-pie.png"
+    image: "/dessert/apple-pie.png",
+    discount: 0
   },
   {
     id: 19,
@@ -209,7 +234,8 @@ export const menu: MenuItem[] = [
     description: "Savory fried rice with mixed vegetables and aromatic spices, a satisfying main course.",
     category: "rice",
     price: 14600,
-    image: "/rice/fried-rice.png"
+    image: "/rice/fried-rice.png",
+    discount: 0
   },
   {
     id: 20,
@@ -217,7 +243,8 @@ export const menu: MenuItem[] = [
     description: "Delicious chicken cooked in aromatic rice with fresh vegetables and spices.",
     category: "rice",
     price: 16200,
-    image: "/rice/rice-chicken.png"
+    image: "/rice/rice-chicken.png",
+    discount: 0
   },
   {
     id: 21,
@@ -225,7 +252,8 @@ export const menu: MenuItem[] = [
     description: "Fragrant aromatic rice with saffron and mixed vegetables, perfectly seasoned.",
     category: "rice",
     price: 14800,
-    image: "/rice/aromatic-rice.png"
+    image: "/rice/aromatic-rice.png",
+    discount: 0
   },
   {
     id: 22,
@@ -233,7 +261,8 @@ export const menu: MenuItem[] = [
     description: "Fresh seasonal fruits served with a light honey-lime dressing.",
     category: "salad",
     price: 11800,
-    image: "/salad/fruit-salad.png"
+    image: "/salad/fruit-salad.png",
+    discount: 0
   },
   {
     id: 23,
@@ -241,7 +270,8 @@ export const menu: MenuItem[] = [
     description: "Traditional Tunisian roasted vegetable salad with tomatoes, peppers, and olive oil.",
     category: "salad",
     price: 14200,
-    image: "/salad/mechouia-salad.jpg"
+    image: "/salad/mechouia-salad.jpg",
+    discount: 0
   },
   {
     id: 24,
@@ -249,7 +279,8 @@ export const menu: MenuItem[] = [
     description: "Creamy fettuccine pasta in a rich white sauce with parmesan and herbs.",
     category: "pasta",
     price: 17400,
-    image: "/pasta/white-sauce-pasta.png"
+    image: "/pasta/white-sauce-pasta.png",
+    discount: 0
   },
   {
     id: 25,
@@ -257,6 +288,7 @@ export const menu: MenuItem[] = [
     description: "Spicy penne pasta in a fiery tomato sauce with chili flakes and garlic.",
     category: "pasta",
     price: 16800,
-    image: "/pasta/hot-sauce-pasta.jpg"
+    image: "/pasta/hot-sauce-pasta.jpg",
+    discount: 0
   }
 ]
