@@ -271,7 +271,7 @@ export const menu: MenuItem[] = [
     category: "sandwich",
     price: 14500,
     image: "/sandwich/shawarma.webp",
-    discount: 0.15
+    discount: 0
   },
   {
     id: 27,
@@ -289,7 +289,7 @@ export const menu: MenuItem[] = [
     category: "sandwich",
     price: 15600,
     image: "/sandwich/burrito.webp",
-    discount: 0.1
+    discount: 0
   },
   {
     id: 29,
@@ -298,6 +298,6 @@ export const menu: MenuItem[] = [
     category: "sandwich",
     price: 16900,
     image: "/sandwich/tacos.webp",
-    discount: 0.05
+    discount: 0
   }
 ]
