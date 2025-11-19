@@ -7,11 +7,11 @@ import { useCartContext } from "@/context/cartContext"
 const Header: React.FC = () => {
 
     const { toggleSidebar } = useSidebar()
-    const { cart } = useCartContext()
+    const { totalItems } = useCartContext()
 
     return (
         <header 
-            className="bg-orange-500 text-white relative p-4"
+            className="bg-orange-500 text-white p-4 fixed top-0 left-0 right-0 z-50"
             role="banner"
             aria-label="Foodify header navigation"
         >
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
                             >
                                 <ShoppingCart className="h-6 w-6" aria-hidden="true" />
                                 <span className="absolute -top-1 -right-1 bg-white text-red-600 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
-                                    {cart.length}
+                                    {totalItems}
                                 </span>
                             </Button>
                         </Link>
