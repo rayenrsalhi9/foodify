@@ -27,7 +27,7 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
                     : prevItem
             ))
         } else {
-            setCart(prevItems => [...prevItems, {...item, quantity: 1}])
+            setCart(prevItems => [...prevItems, item])
         }
     }
 

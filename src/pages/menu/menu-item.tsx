@@ -1,5 +1,6 @@
 import type { MenuItem } from "@/data/menu"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useCartContext } from "@/context/cartContext"
 import { Button } from "@/components/ui/button"
 import OptimizedImage from "@/components/ui/optimized-image"
 
@@ -8,6 +9,8 @@ type MenuItemProps = {
 }
 
 const MenuItemCard = ({item} : MenuItemProps) => {
+
+    const { addToCart } = useCartContext()
     
     return (
         <Card className="group hover:shadow-lg transition-all duration-300 border-gray-100">
@@ -56,6 +59,7 @@ const MenuItemCard = ({item} : MenuItemProps) => {
                     <Button
                         variant="default"
                         size="sm"
+                        onClick={() => addToCart({...item, quantity: 1})}
                         className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200"
                     >
                         Add to Cart
