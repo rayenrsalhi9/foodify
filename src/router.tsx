@@ -3,6 +3,8 @@ import { createBrowserRouter } from "react-router"
 
 import LoginPage from "./pages/auth/login"
 import SignupPage from "./pages/auth/signup"
+
+import Loading from "./components/custom/loading"
 import NotFound from "./pages/not-found"
 
 const HomeLayoutLazy = lazy(() => import('./layout/homeLayout'))
@@ -13,21 +15,21 @@ const router = createBrowserRouter([
   { 
     path: "/", 
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <HomeLayoutLazy />
       </Suspense>
     ) 
   },{ 
     path: '/menu', 
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <MenuLayoutLazy />
       </Suspense>
     ) 
   },{ 
     path: '/cart', 
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <CartLayoutLazy />
       </Suspense>
     ) 
