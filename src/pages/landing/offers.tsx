@@ -22,7 +22,7 @@ const Offers = () => {
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4 lg:mb-6 text-balance">
-              Special Offers
+              Offers of the Week
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Don't miss out on these amazing deals! Limited time offers on your favorite meals.
