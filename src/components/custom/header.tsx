@@ -11,7 +11,7 @@ const Header: React.FC = () => {
 
     return (
         <header 
-            className="bg-orange-500 text-white p-4 fixed top-0 left-0 right-0 z-50"
+            className="bg-orange-500 text-white p-4 relative"
             role="banner"
             aria-label="Foodify header navigation"
         >
