@@ -6,8 +6,12 @@ import {
     AlertDialogHeader, 
     AlertDialogTitle 
 } from "@/components/ui/alert-dialog"
+import { useCartContext } from "@/context/cartContext"
 
 const CartConfirm = () => {
+
+    const { clearCart } = useCartContext()
+
     return (
         <>
             <AlertDialogHeader>
@@ -18,7 +22,7 @@ const CartConfirm = () => {
             </AlertDialogHeader>
             <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Place Order</AlertDialogAction>
+                <AlertDialogAction onClick={() => clearCart()}>Place Order</AlertDialogAction>
             </AlertDialogFooter>
         </>
     )
