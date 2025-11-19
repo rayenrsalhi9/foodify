@@ -1,16 +1,26 @@
 import { type CartItem } from "@/data/cart"
 import { createOptimizedPicture } from "@/lib/image-utils"
+import { useCartContext } from "@/context/cartContext"
+import { Trash2 } from "lucide-react"
 
 type CartItemProps = {
     item: CartItem
 }
 
 const CartItemCard = ({ item } : CartItemProps) => {
-    
+    const { removeFromCart } = useCartContext()
     const imageData = createOptimizedPicture(item.image, item.name, "w-20 h-20 object-cover rounded-lg", "lazy")
     
+    // Calculate discounted price
+    const discountedPrice = item.discount > 0 ? item.price * (1 - item.discount) : item.price
+    const originalPrice = item.price
+    
+    const handleRemove = () => {
+        removeFromCart(item.id)
+    }
+    
     return (
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border rounded-lg">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border rounded-lg hover:shadow-md transition-shadow duration-200">
 
             <div className="shrink-0">
                 <picture>
@@ -30,19 +40,45 @@ const CartItemCard = ({ item } : CartItemProps) => {
 
             <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-semibold text-gray-900 truncate">{item.name}</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                Price: <span className="font-medium">{(item.price / 1000).toFixed(2)} TND</span>
-                </p>
+                <div className="flex items-center gap-2 mt-1">
+                    {item.discount > 0 ? (
+                        <>
+                            <span className="text-sm text-gray-500 line-through">
+                                {(originalPrice / 1000).toFixed(2)} TND
+                            </span>
+                            <span className="text-sm font-semibold text-orange-600">
+                                {(discountedPrice / 1000).toFixed(2)} TND
+                            </span>
+                            <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">
+                                -{Math.round(item.discount * 100)}%
+                            </span>
+                        </>
+                    ) : (
+                        <span className="text-sm font-medium text-gray-900">
+                            {(originalPrice / 1000).toFixed(2)} TND
+                        </span>
+                    )}
+                </div>
                 <p className="text-sm text-gray-600">
                 Quantity: <span className="font-medium">{item.quantity}</span>
                 </p>
             </div>
 
-            <div className="text-right ml-auto">
-                <p className="text-lg font-semibold text-gray-900">
-                {((item.price * item.quantity) / 1000).toFixed(2)} TND
-                </p>
-                <p className="text-sm text-gray-600">Subtotal</p>
+            <div className="flex items-center gap-4 ml-auto">
+                <div className="text-right">
+                    <p className="text-lg font-semibold text-gray-900">
+                        {((discountedPrice * item.quantity) / 1000).toFixed(2)} TND
+                    </p>
+                    <p className="text-sm text-gray-600">Subtotal</p>
+                </div>
+                
+                <button
+                    onClick={handleRemove}
+                    className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors duration-200 group"
+                    title="Remove item from cart"
+                >
+                    <Trash2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                </button>
             </div>
             
         </div>
