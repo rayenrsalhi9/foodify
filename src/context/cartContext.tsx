@@ -19,11 +19,16 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
     const [cart, setCart] = useState<CartItem[]>([])
 
     const addToCart = (item: CartItem) => {
-        setCart(prevItems => prevItems.map(prevItem => 
-            prevItem.id === item.id 
-                ? {...prevItem, quantity: prevItem.quantity + item.quantity} 
-                : prevItem
-        ))
+        const existingItem = cart.find(cartItem => cartItem.id === item.id)
+        if (existingItem) {
+            setCart(prevItems => prevItems.map(prevItem => 
+                prevItem.id === item.id 
+                    ? {...prevItem, quantity: prevItem.quantity + item.quantity} 
+                    : prevItem
+            ))
+        } else {
+            setCart(prevItems => [...prevItems, {...item, quantity: 1}])
+        }
     }
 
     const removeFromCart = (itemId: number) => {
