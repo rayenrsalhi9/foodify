@@ -5,8 +5,7 @@ import menuDecoration from '/menu/menu-decoration.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { menu } from "@/data/menu"
 import {useCartContext} from "@/context/cartContext"
-
-
+import { formatPrice } from "@/lib/currency"
 
 const Menu = () => {
 
@@ -60,7 +59,7 @@ const Menu = () => {
                       {item.description}
                     </p>
                     <div className="flex items-center justify-between pt-2">
-                      <p className="font-bold text-orange-600 text-xl md:text-2xl">TND {(item.price / 1000).toFixed(2)}</p>
+                      <p className="font-bold text-orange-600 text-xl md:text-2xl">{formatPrice(item.price)}</p>
                       <Button
                         size="sm"
                         onClick={() => addToCart({...item, quantity: 1})}

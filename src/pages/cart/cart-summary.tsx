@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { type CartItem } from "@/data/cart"
 import { useCartContext } from "@/context/cartContext"
+import { formatPrice } from "@/lib/currency"
 
 type CartSummaryProps = {
     cart: CartItem[]
@@ -24,14 +25,14 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
                 <div className="space-y-4">
                 <div className="flex justify-between items-center">
                     <span className="text-gray-600">Items ({cart.length})</span>
-                    <span className="font-medium">{(totalPrice / 1000).toFixed(2)} TND</span>
+                    <span className="font-medium">{formatPrice(totalPrice)}</span>
                 </div>
                 
                 <Separator />
                 
                 <div className="flex justify-between items-center text-lg font-semibold">
                     <span>Total Amount</span>
-                    <span>{(totalPrice / 1000).toFixed(2)} TND</span>
+                    <span>{formatPrice(totalPrice)}</span>
                 </div>
                 
                 <AlertDialog>

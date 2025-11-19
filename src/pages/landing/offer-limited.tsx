@@ -3,6 +3,7 @@ import { ShoppingCart, Sparkles, Star } from "lucide-react"
 import { createOptimizedPicture } from "@/lib/image-utils"
 import {useCartContext} from "@/context/cartContext"
 import {menu} from "@/data/menu"
+import { formatPrice } from "@/lib/currency"
 
 const OfferLimited = () => {
 
@@ -55,10 +56,10 @@ const OfferLimited = () => {
                   <div className="relative bg-linear-to-br from-red-500 via-red-600 to-red-700 rounded-full px-6 py-3 shadow-xl border border-red-400/30 backdrop-blur-sm">
                     <div className="text-white text-center">
                       <div className="text-2xl md:text-4xl font-bold bg-linear-to-br from-white to-gray-200 bg-clip-text text-transparent">
-                        TND {(limitedOffer.price / 1000 * (1 - limitedOffer.discount)).toFixed(2)}
+                        {formatPrice(limitedOffer.price * (1 - limitedOffer.discount))}
                       </div>
                       <div className="text-xs text-gray-300 line-through">
-                        TND {(limitedOffer.price / 1000).toFixed(2)}
+                        {formatPrice(limitedOffer.price)}
                       </div>
                       <div className="text-xs font-semibold text-red-100 tracking-wide">Limited Time</div>
                     </div>

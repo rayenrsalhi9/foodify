@@ -11,6 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import {useCartContext} from "@/context/cartContext"
+import { formatPrice } from "@/lib/currency"
 
 const Offers = () => {
 
@@ -83,10 +84,10 @@ const Offers = () => {
                             {/* Price */}
                             <div className="flex items-baseline gap-1 sm:gap-2">
                               <span className="text-lg sm:text-xl font-bold text-orange-500">
-                                TND {(offer.price / 1000 * (1 - offer.discount)).toFixed(2)}
+                                {formatPrice(offer.price * (1 - offer.discount))}
                               </span>
                               <span className="text-xs sm:text-sm text-gray-600 line-through">
-                                TND {(offer.price / 1000).toFixed(2)}
+                                {formatPrice(offer.price)}
                               </span>
                             </div>
 

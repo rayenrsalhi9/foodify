@@ -2,6 +2,7 @@ import { type CartItem } from "@/data/cart"
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { useCartContext } from "@/context/cartContext"
 import { Trash2 } from "lucide-react"
+import { formatPrice } from "@/lib/currency"
 
 type CartItemProps = {
     item: CartItem
@@ -44,10 +45,10 @@ const CartItemCard = ({ item } : CartItemProps) => {
                     {item.discount > 0 ? (
                         <>
                             <span className="text-sm text-gray-500 line-through">
-                                {(originalPrice / 1000).toFixed(2)} TND
+                                {formatPrice(originalPrice)}
                             </span>
                             <span className="text-sm font-semibold text-orange-600">
-                                {(discountedPrice / 1000).toFixed(2)} TND
+                                {formatPrice(discountedPrice)}
                             </span>
                             <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">
                                 -{Math.round(item.discount * 100)}%
@@ -55,7 +56,7 @@ const CartItemCard = ({ item } : CartItemProps) => {
                         </>
                     ) : (
                         <span className="text-sm font-medium text-gray-900">
-                            {(originalPrice / 1000).toFixed(2)} TND
+                            {formatPrice(originalPrice)}
                         </span>
                     )}
                 </div>
@@ -67,7 +68,7 @@ const CartItemCard = ({ item } : CartItemProps) => {
             <div className="flex items-center gap-4 ml-auto">
                 <div className="text-right">
                     <p className="text-lg font-semibold text-gray-900">
-                        {((discountedPrice * item.quantity) / 1000).toFixed(2)} TND
+                        {formatPrice(discountedPrice * item.quantity)}
                     </p>
                     <p className="text-sm text-gray-600">Subtotal</p>
                 </div>

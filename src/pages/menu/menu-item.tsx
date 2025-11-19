@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useCartContext } from "@/context/cartContext"
 import { Button } from "@/components/ui/button"
 import OptimizedImage from "@/components/ui/optimized-image"
+import { formatPrice } from "@/lib/currency"
 
 type MenuItemProps = {
     item: MenuItem
@@ -48,12 +49,12 @@ const MenuItemCard = ({item} : MenuItemProps) => {
                         {
                             item.discount > 0 ? (
                                 <span className="text-sm text-gray-500 line-through">
-                                        TND {(item.price / 1000).toFixed(2)}
+                                        {formatPrice(item.price)}
                                 </span>
                             ) : null
                         }
                         <span className="text-lg font-bold text-orange-600">
-                            TND {(item.price * (1 - item.discount) / 1000).toFixed(2)}
+                            {formatPrice(item.price * (1 - item.discount))}
                         </span>
                     </div>
                     <Button
