@@ -77,6 +77,6 @@ export const contactInfo: ContactInfoItem[] = [
     {
         icon: Phone,
         label: "Phone",
-        value: "+216 71 234 567"
+        value: "+216 92 840 380"
     }
 ];

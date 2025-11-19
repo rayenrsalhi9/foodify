@@ -32,7 +32,7 @@ const Header: React.FC = () => {
                             <Phone className="h-5 w-5" aria-hidden="true" />
                             <div className="text-sm">
                                 <p className="text-xs opacity-90">Hotline Number:</p>
-                                <p className="font-semibold">+216 71 234 567</p>
+                                <p className="font-semibold">+216 92 840 380</p>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
                         <Phone className="h-4 w-4" aria-hidden="true" />
                         <div>
                             <p className="text-xs opacity-90">Hotline Number:</p>
-                            <p className="font-semibold">+216 71 234 567</p>
+                            <p className="font-semibold">+216 92 840 380</p>
                         </div>
                     </div>
                 </div>
