@@ -14,8 +14,6 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
 
     const { totalPrice } = useCartContext()
 
-    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
-
     return (
         <div className="lg:col-span-1">
             <Card className="sticky top-4">
@@ -26,7 +24,7 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
                 <div className="space-y-4">
                 <div className="flex justify-between items-center">
                     <span className="text-gray-600">Items ({cart.length})</span>
-                    <span className="font-medium">{(totalAmount / 1000).toFixed(2)} TND</span>
+                    <span className="font-medium">{(totalPrice / 1000).toFixed(2)} TND</span>
                 </div>
                 
                 <Separator />
