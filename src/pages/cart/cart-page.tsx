@@ -1,10 +1,12 @@
-import { cart } from "@/data/cart"
+import { useCartContext } from "@/context/cartContext"
 import CartEmpty from "./cart-empty"
 import CartItemCard from "./cart-item"
 import CartSummary from "./cart-summary"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const CartPage = () => {
+
+  const { cart } = useCartContext()
 
   return (
     <div className="min-h-[calc(100vh - 80px)] bg-gray-50">

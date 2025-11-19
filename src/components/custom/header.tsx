@@ -2,9 +2,12 @@ import { Button } from "../ui/button"
 import { Phone, ShoppingCart, User, UtensilsCrossed, Menu } from "lucide-react"
 import { Link } from "react-router"
 import { useSidebar } from "../ui/sidebar"
+import { useCartContext } from "@/context/cartContext"
 
 const Header: React.FC = () => {
+
     const { toggleSidebar } = useSidebar()
+    const { cart } = useCartContext()
 
     return (
         <header 
@@ -60,6 +63,7 @@ const Header: React.FC = () => {
                         <Link 
                             to="/cart"
                             aria-label="Shopping cart"
+                            className="relative"
                         >
                             <Button 
                                 variant="ghost" 
@@ -67,6 +71,9 @@ const Header: React.FC = () => {
                                 className="cursor-pointer hover:bg-orange-600 transition-colors duration-200"
                             >
                                 <ShoppingCart className="h-6 w-6" aria-hidden="true" />
+                                <span className="absolute -top-1 -right-1 bg-white text-red-600 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                                    {cart.length}
+                                </span>
                             </Button>
                         </Link>
                         
