@@ -8,12 +8,14 @@ const CartContext = createContext<{
     removeFromCart: (itemId: number) => void
     clearCart: () => void
     totalItems: number
+    totalPrice: number
 }>({
     cart: [],
     addToCart: () => {},
     removeFromCart: () => {},
     clearCart: () => {},
     totalItems: 0,
+    totalPrice: 0,
 })
 
 const CartContextProvider = ({children}: {children: React.ReactNode}) => {
@@ -42,9 +44,10 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
     }
 
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
+    const totalPrice = cart.reduce((total, item) => total + (item.price * (1 - item.discount)) * item.quantity, 0)
 
     return (
-        <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, totalItems}}>
+        <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, totalItems, totalPrice}}>
             {children}
         </CartContext.Provider>
     )

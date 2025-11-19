@@ -4,6 +4,7 @@ import CartConfirm from "./cart-confirm"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { type CartItem } from "@/data/cart"
+import { useCartContext } from "@/context/cartContext"
 
 type CartSummaryProps = {
     cart: CartItem[]
@@ -11,9 +12,7 @@ type CartSummaryProps = {
 
 const CartSummary = ({ cart } : CartSummaryProps) => {
 
-    const handleConfirmDelivery = () => {
-        console.log("Delivery confirmed")
-    }
+    const { totalPrice } = useCartContext()
 
     const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
@@ -34,13 +33,12 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
                 
                 <div className="flex justify-between items-center text-lg font-semibold">
                     <span>Total Amount</span>
-                    <span>{(totalAmount / 1000).toFixed(2)} TND</span>
+                    <span>{(totalPrice / 1000).toFixed(2)} TND</span>
                 </div>
                 
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
-                        <Button 
-                            onClick={handleConfirmDelivery}
+                        <Button
                             className="w-full mt-6"
                             size="lg"
                         >
