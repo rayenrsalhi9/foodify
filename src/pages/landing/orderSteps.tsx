@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card"
 import saladImg from '/decoration/salad.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
-import { steps } from "@/data/steps"
+import { steps } from "@/data/landing"
 
 const OrderSteps = () => {
   

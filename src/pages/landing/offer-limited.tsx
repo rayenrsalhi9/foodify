@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Sparkles, Star } from "lucide-react"
 import { createOptimizedPicture } from "@/lib/image-utils"
-import { limitedOffer } from "@/data/offers"
+import {menu} from "@/data/menu"
 
 const OfferLimited = () => {
+
+  const limitedOffer = menu.find((item) => item.discount >= 0.2)
   
+  if (!limitedOffer) return null
+
   const imageData = createOptimizedPicture(limitedOffer.image || "/placeholder.svg", "Limited offer meal image", "relative w-full max-w-md h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out")
   
   return (

@@ -8,63 +8,6 @@ export type MenuItem = {
   discount: number
 }
 
-export const menuPreview: MenuItem[] = [
-  {
-    id: 1,
-    name: "Tacos",
-    description: "Three soft corn tortillas filled with seasoned grilled chicken, fresh salsa, shredded lettuce, and a drizzle of lime crema.",
-    category: "sandwich",
-    price: 12800,
-    image: "/menu/tacos.webp",
-    discount: 0
-  },
-  {
-    id: 4,
-    name: "Green Salad",
-    description: "Crisp mixed greens topped with cherry tomatoes, cucumbers, red onions, and a tangy vinaigrette.",
-    category: "salad",
-    price: 12400,
-    image: "/salad/green-salad.webp",
-    discount: 0
-  },
-  {
-    id: 9,
-    name: "Classic Pizza",
-    description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
-    category: "pizza",
-    price: 16800,
-    image: "/pizza/classic-pizza.webp",
-    discount: 0
-  },
-  {
-    id: 13,
-    name: "Big Burger Cheese Deluxe",
-    description: "Perfect blend of premium beef, melted cheese, and fresh ingredients in our signature burger.",
-    category: "burger",
-    price: 19500,
-    image: "/burger/deluxe-burger.webp",
-    discount: 0
-  },
-  {
-    id: 19,
-    name: "Fried Rice",
-    description: "Savory fried rice with mixed vegetables and aromatic spices, a satisfying main course.",
-    category: "rice",
-    price: 14600,
-    image: "/rice/fried-rice.webp",
-    discount: 0
-  },
-  {
-    id: 6,
-    name: "Pasta Puttanesca",
-    description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
-    category: "pasta",
-    price: 18600,
-    image: "/pasta/puttanesca-pasta.webp",
-    discount: 0
-  }
-]
-
 export const menu: MenuItem[] = [
   {
     id: 4,
@@ -109,7 +52,7 @@ export const menu: MenuItem[] = [
     category: "pasta",
     price: 22400,
     image: "/pasta/seafood-pasta.webp",
-    discount: 0.2
+    discount: 0.1
   },
   {
     id: 9,
@@ -208,7 +151,7 @@ export const menu: MenuItem[] = [
     category: "rice",
     price: 14600,
     image: "/rice/fried-rice.webp",
-    discount: 0.15
+    discount: 0.2
   },
   {
     id: 20,
@@ -253,7 +196,7 @@ export const menu: MenuItem[] = [
     category: "pasta",
     price: 17400,
     image: "/pasta/white-sauce-pasta.webp",
-    discount: 0.2
+    discount: 0.15
   },
   {
     id: 25,

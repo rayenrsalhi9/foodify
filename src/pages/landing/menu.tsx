@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/button"
 import { Plus, ArrowRight } from "lucide-react"
 import menuDecoration from '/menu/menu-decoration.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
-import { menuPreview } from "@/data/menu"
+import { menu } from "@/data/menu"
 
 const Menu = () => {
+
+  const menuPreview = menu.filter(el => el.discount === 0).slice(0, 6)
+
   return (
     <section className="py-16 md:py-24 px-4 bg-linear-to-b from-gray-50 to-white">
       <div className="max-w-6xl mx-auto">
