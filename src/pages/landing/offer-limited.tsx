@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Sparkles, Star } from "lucide-react"
 import { createOptimizedPicture } from "@/lib/image-utils"
+import {useCartContext} from "@/context/cartContext"
 import {menu} from "@/data/menu"
 
 const OfferLimited = () => {
 
+  const { addToCart } = useCartContext()
   const limitedOffer = menu.find((item) => item.discount >= 0.2)
   
   if (!limitedOffer) return null
@@ -87,6 +89,7 @@ const OfferLimited = () => {
             {/* Enhanced CTA Button */}
             <Button
               variant="outline"
+              onClick={() => addToCart({...limitedOffer, quantity: 1})}
               className="relative bg-linear-to-r from-white to-gray-100 text-zinc-900 cursor-pointer hover:bg-linear-to-r hover:from-amber-400 hover:to-orange-500 px-10 py-7 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 ease-in-out border-0 overflow-hidden mx-auto lg:mx-0 group"
             >
               <span className="relative z-10 flex items-center gap-3">

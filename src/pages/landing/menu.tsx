@@ -4,9 +4,13 @@ import { Plus, ArrowRight } from "lucide-react"
 import menuDecoration from '/menu/menu-decoration.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { menu } from "@/data/menu"
+import {useCartContext} from "@/context/cartContext"
+
+
 
 const Menu = () => {
 
+  const { addToCart } = useCartContext()
   const menuPreview = menu.filter(el => el.discount === 0).slice(0, 6)
 
   return (
@@ -59,6 +63,7 @@ const Menu = () => {
                       <p className="font-bold text-orange-600 text-xl md:text-2xl">TND {(item.price / 1000).toFixed(2)}</p>
                       <Button
                         size="sm"
+                        onClick={() => addToCart({...item, quantity: 1})}
                         className="rounded-full bg-orange-500 hover:bg-orange-600 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110"
                       >
                         <Plus className="h-4 w-4" />

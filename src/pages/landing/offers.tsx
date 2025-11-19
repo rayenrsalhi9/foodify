@@ -10,8 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import {useCartContext} from "@/context/cartContext"
 
 const Offers = () => {
+
+  const { addToCart } = useCartContext()
 
   const offers = menu.filter((item) => item.discount > 0 && item.discount < 0.2)
 
@@ -90,6 +93,7 @@ const Offers = () => {
                             {/* CTA */}
                             <Button 
                               size="sm"
+                              onClick={() => addToCart({...offer, quantity: 1})}
                               className="bg-orange-500 hover:bg-orange-600 text-white text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 sm:py-1.5 rounded transition-colors shrink-0"
                             >
                               Order Now
