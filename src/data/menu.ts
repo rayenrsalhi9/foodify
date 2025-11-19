@@ -14,7 +14,7 @@ export const menu: MenuItem[] = [
     name: "Green Salad",
     description: "Crisp mixed greens topped with cherry tomatoes, cucumbers, red onions, and a tangy vinaigrette.",
     category: "salad",
-    price: 12400,
+    price: 12000,
     image: "/salad/green-salad.webp",
     discount: 0
   },
@@ -23,7 +23,7 @@ export const menu: MenuItem[] = [
     name: "Broccoli Salad",
     description: "Fresh broccoli florets with crispy bacon, sunflower seeds, and a creamy sweet dressing.",
     category: "salad",
-    price: 13200,
+    price: 13250,
     image: "/salad/broccoli-salad.webp",
     discount: 0
   },
@@ -32,7 +32,7 @@ export const menu: MenuItem[] = [
     name: "Pasta Puttanesca",
     description: "Spaghetti in a bold sauce of tomatoes, olives, capers, anchovies, and garlic, finished with fresh basil.",
     category: "pasta",
-    price: 18600,
+    price: 18500,
     image: "/pasta/puttanesca-pasta.webp",
     discount: 0
   },
@@ -41,7 +41,7 @@ export const menu: MenuItem[] = [
     name: "Creamy Mushroom Pasta",
     description: "Fettuccine enveloped in a velvety cream sauce loaded with sautéed wild mushrooms and parmesan.",
     category: "pasta",
-    price: 19900,
+    price: 20000,
     image: "/pasta/mushroom-pasta.webp",
     discount: 0
   },
@@ -50,7 +50,7 @@ export const menu: MenuItem[] = [
     name: "Seafood Pasta",
     description: "Fresh pasta with mixed seafood in a light tomato and white wine sauce with garlic and herbs.",
     category: "pasta",
-    price: 22400,
+    price: 22500,
     image: "/pasta/seafood-pasta.webp",
     discount: 0.1
   },
@@ -59,7 +59,7 @@ export const menu: MenuItem[] = [
     name: "Classic Pizza",
     description: "Traditional pizza with tomato sauce, mozzarella cheese, and fresh basil on a crispy thin crust.",
     category: "pizza",
-    price: 16800,
+    price: 17000,
     image: "/pizza/classic-pizza.webp",
     discount: 0
   },
@@ -68,7 +68,7 @@ export const menu: MenuItem[] = [
     name: "Cheese Pizza",
     description: "Simple yet delicious pizza topped with rich tomato sauce and melted mozzarella cheese.",
     category: "pizza",
-    price: 15800,
+    price: 15750,
     image: "/pizza/cheese-pizza.webp",
     discount: 0
   },
@@ -77,7 +77,7 @@ export const menu: MenuItem[] = [
     name: "Seafood Pizza",
     description: "Gourmet pizza topped with fresh shrimp, calamari, and mussels on a tomato base with herbs.",
     category: "pizza",
-    price: 21800,
+    price: 21750,
     image: "/pizza/seafood-pizza.webp",
     discount: 0
   },
@@ -86,7 +86,7 @@ export const menu: MenuItem[] = [
     name: "Pepperoni Pizza",
     description: "Classic pizza loaded with spicy pepperoni slices and melted mozzarella on tomato sauce.",
     category: "pizza",
-    price: 17800,
+    price: 17750,
     image: "/pizza/pepperoni-pizza.webp",
     discount: 0
   },
@@ -104,7 +104,7 @@ export const menu: MenuItem[] = [
     name: "Cheese Burger",
     description: "Classic beef burger topped with melted cheddar cheese, lettuce, tomato, and our signature sauce.",
     category: "burger",
-    price: 17800,
+    price: 18000,
     image: "/burger/cheese-burger.webp",
     discount: 0
   },
@@ -113,7 +113,7 @@ export const menu: MenuItem[] = [
     name: "Classic Burger",
     description: "Juicy beef patty with lettuce, tomato, onion, and our house sauce on a toasted bun.",
     category: "burger",
-    price: 16900,
+    price: 17000,
     image: "/burger/classic-burger.webp",
     discount: 0
   },
@@ -149,7 +149,7 @@ export const menu: MenuItem[] = [
     name: "Fried Rice",
     description: "Savory fried rice with mixed vegetables and aromatic spices, a satisfying main course.",
     category: "rice",
-    price: 14600,
+    price: 14750,
     image: "/rice/fried-rice.webp",
     discount: 0.2
   },
@@ -158,7 +158,7 @@ export const menu: MenuItem[] = [
     name: "Rice and Chicken",
     description: "Delicious chicken cooked in aromatic rice with fresh vegetables and spices.",
     category: "rice",
-    price: 16200,
+    price: 16250,
     image: "/rice/rice-chicken.webp",
     discount: 0
   },
@@ -167,7 +167,7 @@ export const menu: MenuItem[] = [
     name: "Yellow Rice",
     description: "Fragrant aromatic rice with saffron and mixed vegetables, perfectly seasoned.",
     category: "rice",
-    price: 14800,
+    price: 14750,
     image: "/rice/aromatic-rice.webp",
     discount: 0
   },
@@ -176,7 +176,7 @@ export const menu: MenuItem[] = [
     name: "Fruit Salad",
     description: "Fresh seasonal fruits served with a light honey-lime dressing.",
     category: "salad",
-    price: 11800,
+    price: 11750,
     image: "/salad/fruit-salad.webp",
     discount: 0.1
   },
@@ -185,7 +185,7 @@ export const menu: MenuItem[] = [
     name: "Mechouia Salad",
     description: "Traditional Tunisian roasted vegetable salad with tomatoes, peppers, and olive oil.",
     category: "salad",
-    price: 14200,
+    price: 14250,
     image: "/salad/mechouia-salad.webp",
     discount: 0
   },
@@ -194,7 +194,7 @@ export const menu: MenuItem[] = [
     name: "White Sauce Pasta",
     description: "Creamy fettuccine pasta in a rich white sauce with parmesan and herbs.",
     category: "pasta",
-    price: 17400,
+    price: 17500,
     image: "/pasta/white-sauce-pasta.webp",
     discount: 0.15
   },
@@ -203,7 +203,7 @@ export const menu: MenuItem[] = [
     name: "Hot Sauce Pasta",
     description: "Spicy penne pasta in a fiery tomato sauce with chili flakes and garlic.",
     category: "pasta",
-    price: 16800,
+    price: 16750,
     image: "/pasta/hot-sauce-pasta.webp",
     discount: 0
   },
@@ -221,7 +221,7 @@ export const menu: MenuItem[] = [
     name: "Panini",
     description: "Grilled Italian sandwich with melted cheese, fresh basil, and premium ingredients on artisan bread.",
     category: "sandwich",
-    price: 13200,
+    price: 13250,
     image: "/sandwich/panini.webp",
     discount: 0
   },
@@ -230,7 +230,7 @@ export const menu: MenuItem[] = [
     name: "Burrito",
     description: "Large flour tortilla filled with seasoned rice, beans, cheese, and your choice of protein.",
     category: "sandwich",
-    price: 15600,
+    price: 15750,
     image: "/sandwich/burrito.webp",
     discount: 0
   },
@@ -239,7 +239,7 @@ export const menu: MenuItem[] = [
     name: "Tacos Deluxe",
     description: "Premium soft tacos with grilled steak, fresh cilantro, onions, and authentic Mexican salsa.",
     category: "sandwich",
-    price: 16900,
+    price: 17000,
     image: "/sandwich/tacos.webp",
     discount: 0
   }
