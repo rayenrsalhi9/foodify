@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
 import { type CartItem } from "@/data/cart";
+import { toast } from "sonner";
 
 const CartContext = createContext<{
     cart: CartItem[]
@@ -33,6 +34,14 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
         } else {
             setCart(prevItems => [...prevItems, item])
         }
+        toast.success(`Item added to cart`, {
+            style: {
+                background: '#f0fdf4',
+                border: '1px solid #bbf7d0',
+                color: 'green'
+            },
+            duration: 3000
+        })
     }
 
     const removeFromCart = (itemId: number) => {
