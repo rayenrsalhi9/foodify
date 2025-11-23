@@ -1,15 +1,18 @@
+import useMenu from "@/hooks/useMenu" 
+import { type SetURLSearchParams } from "react-router"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
-import { type SetURLSearchParams } from "react-router"
 
 type MenuFiltersProps = {
     category: string | null
-    categories: string[]
     search: string | null
     setSearchParams: SetURLSearchParams
 }
 
-const MenuFilters = ({ category, categories, setSearchParams, search }: MenuFiltersProps) => {
+const MenuFilters = ({ category, setSearchParams, search }: MenuFiltersProps) => {
+
+    const { menuCategories } = useMenu()
+
     return (
         <div className="bg-white rounded-2xl shadow-sm p-6 mb-8">
             <div className="flex flex-col lg:flex-row gap-6">
@@ -40,7 +43,7 @@ const MenuFilters = ({ category, categories, setSearchParams, search }: MenuFilt
                     >
                         All
                     </button>
-                    {categories.map((cat) => (
+                    {menuCategories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setSearchParams({ category: cat, search: search ?? '' })}

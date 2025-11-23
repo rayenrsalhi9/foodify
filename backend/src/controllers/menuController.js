@@ -29,6 +29,16 @@ const getMenu = async (req, res) => {
 
 }
 
+const getMenuCategories = async (req, res) => {
+  try {
+    const result = await pool.query('SELECT DISTINCT category FROM menu ORDER BY category')
+    res.json(result.rows)
+  } catch (err) {
+    console.error(err)
+    throw new Error('Internal server error')
+  }
+}
+
 const getMenuPreview = async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM menu where discount = 0 LIMIT 6')
@@ -59,4 +69,4 @@ const getSpecialOffers = async (req, res) => {
   }
 }
 
-export { getMenu, getMenuPreview, getOffers, getSpecialOffers }
+export { getMenu, getMenuPreview, getMenuCategories, getOffers, getSpecialOffers }

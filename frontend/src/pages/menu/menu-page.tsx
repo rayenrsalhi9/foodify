@@ -11,8 +11,6 @@ const Menu = () => {
     const search = searchParams.get('search')
 
     const { menu } = useMenu({ category, search })
-    
-    const categories = [...Array.from(new Set(menu.map(item => item.category)))]
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -27,7 +25,6 @@ const Menu = () => {
 
                 <MenuFilters 
                     category={category} 
-                    categories={categories} 
                     search={search}
                     setSearchParams={setSearchParams} 
                 />

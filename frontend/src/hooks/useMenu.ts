@@ -11,6 +11,7 @@ const useMenu = (params?: MenuParams) => {
     const { category, search } = params || {}
     
     const [menu, setMenu] = useState<MenuItem[]>([])
+    const [menuCategories, setMenuCategories] = useState<string[]>([])
     const [menuPreview, setMenuPreview] = useState<MenuItem[]>([])
     const [offers, setOffers] = useState<MenuItem[]>([])
     const [specialOffer, setSpecialOffer] = useState<MenuItem>()
@@ -25,7 +26,15 @@ const useMenu = (params?: MenuParams) => {
                 console.error(err)
             }
         }
-
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch('/api/menu/categories')
+                const data = await response.json()
+                setMenuCategories(data.map((item: { category: string }) => item.category))
+            } catch (err) {
+                console.error(err)
+            }
+        }
         const fetchOffers = async () => {
             try {
                 const response = await fetch('/api/menu/offers')
@@ -47,6 +56,7 @@ const useMenu = (params?: MenuParams) => {
         fetchSpecialOffer()
         fetchOffers()
         fetchPreview()
+        fetchCategories()
     }, [])
 
     useEffect(() => {
@@ -67,7 +77,7 @@ const useMenu = (params?: MenuParams) => {
         fetchMenu()
     }, [category, search])
 
-    return { menu, menuPreview, offers, specialOffer }
+    return { menu, menuPreview, menuCategories, offers, specialOffer, }
 }
 
 export default useMenu
