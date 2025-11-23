@@ -2,9 +2,10 @@ import { useSearchParams } from "react-router"
 import MenuFilters from "./menu-filters"
 import MenuItemCard from "./menu-item"
 import MenuEmpty from "./menu-empty"
-import { menu } from "@/data/menu"
+import useMenu from "@/hooks/useMenu"
 
 const Menu = () => {
+    const { menu } = useMenu()
     
     const categories = [...Array.from(new Set(menu.map(item => item.category)))]
 

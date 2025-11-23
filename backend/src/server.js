@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import menuRoute from './routes/menuRoute.js'
+
 dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
@@ -18,6 +20,9 @@ app.use(express.json())
 // Serve static files from frontend build directory
 const frontendPath = path.join(__dirname, '../../frontend/dist')
 app.use(express.static(frontendPath))
+
+// Use menu routes
+app.use('/api/menu', menuRoute)
 
 // Catch-all route to serve frontend index.html for client-side routing
 app.use((req, res) => {
