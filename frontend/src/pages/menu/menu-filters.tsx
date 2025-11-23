@@ -1,13 +1,15 @@
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
+import { type SetURLSearchParams } from "react-router"
 
 type MenuFiltersProps = {
     category: string | null
     categories: string[]
-    setSearchParams: (nextInit: URLSearchParams | Record<string, string | string[]>, options?: { replace?: boolean }) => void
+    search: string | null
+    setSearchParams: SetURLSearchParams
 }
 
-const MenuFilters = ({category, categories, setSearchParams} : MenuFiltersProps) => {
+const MenuFilters = ({ category, categories, setSearchParams, search }: MenuFiltersProps) => {
     return (
         <div className="bg-white rounded-2xl shadow-sm p-6 mb-8">
             <div className="flex flex-col lg:flex-row gap-6">
@@ -18,6 +20,7 @@ const MenuFilters = ({category, categories, setSearchParams} : MenuFiltersProps)
                         <Input
                             type="text"
                             placeholder="Search menu items..."
+                            onChange={(e) => setSearchParams({ search: e.target.value, category: category ?? '' })}
                             className="pl-10 pr-4 py-3 border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                         />
                     </div>
@@ -40,7 +43,7 @@ const MenuFilters = ({category, categories, setSearchParams} : MenuFiltersProps)
                     {categories.map((cat) => (
                         <button
                             key={cat}
-                            onClick={() => setSearchParams({ category: cat })}
+                            onClick={() => setSearchParams({ category: cat, search: search ?? '' })}
                             className={
                                 `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                                     category === cat

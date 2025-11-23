@@ -2,23 +2,31 @@ import pool from '../database.js'
 
 const getMenu = async (req, res) => {
 
-  const { category } = req.query
-  console.log(category)
+  const { category, search } = req.query || {}
 
-  const params = category ? { category } : {}
-  const query = 
-    category 
-    ? 'SELECT * FROM menu WHERE category like $1 order by name' 
-    : 'SELECT * FROM menu order by name'
+  const params = 
+    category && search ? [`%${category}%`, `%${search}%`] 
+    : category ? [`%${category}%`] 
+    : search ? [`%${search}%`] 
+    : []
+
+  const query =
+    category && search
+      ? 'SELECT * FROM menu WHERE category ILIKE $1 AND name ILIKE $2 ORDER BY name'
+      : category
+        ? 'SELECT * FROM menu WHERE category ILIKE $1 ORDER BY name'
+        : search
+          ? 'SELECT * FROM menu WHERE name ILIKE $1 ORDER BY name'
+          : 'SELECT * FROM menu ORDER BY name';
 
   try {
     const result = await pool.query(query, Object.values(params))
-    console.log(result.rows)
     res.json(result.rows)
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: 'Internal server error' })
   }
+
 }
 
 const getMenuPreview = async (req, res) => {

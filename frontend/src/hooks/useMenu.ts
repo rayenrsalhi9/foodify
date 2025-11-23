@@ -3,11 +3,12 @@ import { type MenuItem } from '@/types/types'
 
 type MenuParams = {
     category: string | null
+    search: string | null
 }
 
 const useMenu = (params?: MenuParams) => {
 
-    const { category } = params || {}
+    const { category, search } = params || {}
     
     const [menu, setMenu] = useState<MenuItem[]>([])
     const [menuPreview, setMenuPreview] = useState<MenuItem[]>([])
@@ -51,8 +52,12 @@ const useMenu = (params?: MenuParams) => {
     useEffect(() => {
         const fetchMenu = async () => {
             try {
-                const response = await 
-                    fetch(`/api/menu${category ? `?category=${category}` : ''}`)
+                const url = 
+                    category && search ? `/api/menu?category=${category}&search=${search}`
+                    : category ? `/api/menu?category=${category}`
+                    : search ? `/api/menu?search=${search}`
+                    : '/api/menu'
+                const response = await fetch(url)
                 const data = await response.json()
                 setMenu(data)
             } catch (err) {
@@ -60,7 +65,7 @@ const useMenu = (params?: MenuParams) => {
             }
         }
         fetchMenu()
-    }, [category])
+    }, [category, search])
 
     return { menu, menuPreview, offers, specialOffer }
 }

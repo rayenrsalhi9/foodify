@@ -8,8 +8,9 @@ const Menu = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const category = searchParams.get('category')
+    const search = searchParams.get('search')
 
-    const { menu } = useMenu({ category })
+    const { menu } = useMenu({ category, search })
     
     const categories = [...Array.from(new Set(menu.map(item => item.category)))]
 
@@ -27,6 +28,7 @@ const Menu = () => {
                 <MenuFilters 
                     category={category} 
                     categories={categories} 
+                    search={search}
                     setSearchParams={setSearchParams} 
                 />
                 
