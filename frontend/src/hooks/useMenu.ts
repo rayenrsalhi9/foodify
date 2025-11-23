@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { type MenuItem } from '@/data/menu'
+import { type MenuItem } from '@/types/types'
 
 const useMenu = () => {
     

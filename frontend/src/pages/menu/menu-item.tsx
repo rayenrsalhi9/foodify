@@ -1,4 +1,4 @@
-import type { MenuItem } from "@/data/menu"
+import type { MenuItem } from "@/types/types"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useCartContext } from "@/context/cartContext"
 import { Button } from "@/components/ui/button"
