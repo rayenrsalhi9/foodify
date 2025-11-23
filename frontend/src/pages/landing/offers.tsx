@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { menu } from "@/data/menu"
+import useMenu from "@/hooks/useMenu"
 import { createOptimizedPicture } from "@/lib/image-utils"
 import Autoplay from 'embla-carousel-autoplay'
 import {
@@ -17,7 +17,7 @@ const Offers = () => {
 
   const { addToCart } = useCartContext()
 
-  const offers = menu.filter((item) => item.discount > 0 && item.discount < 0.2)
+  const { offers } = useMenu()
 
   return (
     offers.length > 0 ? (
