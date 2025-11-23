@@ -7,3 +7,5 @@ export type MenuItem = {
   category: string
   discount: number
 }
+
+export type CartItem = MenuItem & { quantity: number}

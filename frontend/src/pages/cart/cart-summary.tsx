@@ -3,7 +3,7 @@ import { AlertDialog, AlertDialogContent, AlertDialogTrigger } from "@/component
 import CartConfirm from "./cart-confirm"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { type CartItem } from "@/data/cart"
+import { type CartItem } from "@/types/types"
 import { useCartContext } from "@/context/cartContext"
 import { formatPrice } from "@/lib/currency"
 

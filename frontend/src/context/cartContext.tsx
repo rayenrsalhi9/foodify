@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
-import { type CartItem } from "@/data/cart";
+import { type CartItem } from "@/types/types";
 import { toast } from "sonner";
 
 const CartContext = createContext<{

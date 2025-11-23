@@ -1,4 +1,4 @@
-import { type CartItem } from "@/data/cart"
+import { type CartItem } from "@/types/types"
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { useCartContext } from "@/context/cartContext"
 import { Trash2 } from "lucide-react"
