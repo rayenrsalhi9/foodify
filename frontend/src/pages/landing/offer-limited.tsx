@@ -2,17 +2,17 @@ import { Button } from "@/components/ui/button"
 import { ShoppingCart, Sparkles, Star } from "lucide-react"
 import { createOptimizedPicture } from "@/lib/image-utils"
 import {useCartContext} from "@/context/cartContext"
-import {menu} from "@/data/menu"
+import useMenu from "@/hooks/useMenu"
 import { formatPrice } from "@/lib/currency"
 
 const OfferLimited = () => {
 
   const { addToCart } = useCartContext()
-  const limitedOffer = menu.find((item) => item.discount >= 0.2)
+  const { specialOffer } = useMenu()
   
-  if (!limitedOffer) return null
+  if (!specialOffer) return null
 
-  const imageData = createOptimizedPicture(limitedOffer.image || "/placeholder.svg", "Limited offer meal image", "relative w-full max-w-md h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out")
+  const imageData = createOptimizedPicture(specialOffer.image || "/placeholder.svg", "Limited offer meal image", "relative w-full max-w-md h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out")
   
   return (
     <section className="relative w-full bg-linear-to-br from-zinc-900 via-zinc-800 to-zinc-900 py-20 px-4 flex justify-center items-center overflow-hidden">
@@ -56,10 +56,10 @@ const OfferLimited = () => {
                   <div className="relative bg-linear-to-br from-red-500 via-red-600 to-red-700 rounded-full px-6 py-3 shadow-xl border border-red-400/30 backdrop-blur-sm">
                     <div className="text-white text-center">
                       <div className="text-2xl md:text-4xl font-bold bg-linear-to-br from-white to-gray-200 bg-clip-text text-transparent">
-                        {formatPrice(limitedOffer.price * (1 - limitedOffer.discount))}
+                        {formatPrice(specialOffer.price * (1 - specialOffer.discount))}
                       </div>
                       <div className="text-xs text-gray-300 line-through">
-                        {formatPrice(limitedOffer.price)}
+                        {formatPrice(specialOffer.price)}
                       </div>
                       <div className="text-xs font-semibold text-red-100 tracking-wide">Limited Time</div>
                     </div>
@@ -79,18 +79,18 @@ const OfferLimited = () => {
               </div>
               
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold bg-linear-to-br from-amber-400 to-orange-500 bg-clip-text text-transparent leading-tight">
-                  {limitedOffer.name}
+                  {specialOffer.name}
               </h2>
               
               <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                {limitedOffer.description}
+                {specialOffer.description}
               </p>
             </div>
 
             {/* Enhanced CTA Button */}
             <Button
               variant="outline"
-              onClick={() => addToCart({...limitedOffer, quantity: 1})}
+              onClick={() => addToCart({...specialOffer, quantity: 1})}
               className="relative bg-linear-to-r from-white to-gray-100 text-zinc-900 cursor-pointer hover:bg-linear-to-r hover:from-amber-400 hover:to-orange-500 px-10 py-7 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 ease-in-out border-0 overflow-hidden mx-auto lg:mx-0 group"
             >
               <span className="relative z-10 flex items-center gap-3">

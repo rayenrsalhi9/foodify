@@ -5,6 +5,7 @@ const useMenu = () => {
     
     const [menu, setMenu] = useState<MenuItem[]>([])
     const [offers, setOffers] = useState<MenuItem[]>([])
+    const [specialOffer, setSpecialOffer] = useState<MenuItem>()
 
     useEffect(() => {
         const fetchMenu = async () => {
@@ -25,11 +26,21 @@ const useMenu = () => {
                 console.error(err)
             }
         }
+        const fetchSpecialOffer = async () => {
+            try {
+                const response = await fetch('/api/menu/special-offer')
+                const data = await response.json()
+                setSpecialOffer(data[0])
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchSpecialOffer()
         fetchOffers()
         fetchMenu()
     }, [])
 
-    return { menu, offers }
+    return { menu, offers, specialOffer }
 }
 
 export default useMenu
