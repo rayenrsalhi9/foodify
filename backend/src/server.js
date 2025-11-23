@@ -20,10 +20,7 @@ const frontendPath = path.join(__dirname, '../../frontend/dist')
 app.use(express.static(frontendPath))
 
 // Catch-all route to serve frontend index.html for client-side routing
-app.get('/', (req, res) => {
-  if (req.path.startsWith('/api')) {
-    return res.status(404).json({ message: 'API endpoint not found' })
-  }
+app.use((req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'))
 })
 
