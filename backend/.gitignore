@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Build output (if you compile TS → JS)
+dist/
+build/
+
+# Temporary files
+.DS_Store
+*.tmp
+*.swp
+
+# TypeScript cache
+*.tsbuildinfo
+
+# VS Code settings (optional)
+.vscode/
