@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button"
 import { Plus, ArrowRight } from "lucide-react"
 import menuDecoration from '/menu/menu-decoration.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
-import { menu } from "@/data/menu"
+import useMenu from "@/hooks/useMenu"
 import {useCartContext} from "@/context/cartContext"
 import { formatPrice } from "@/lib/currency"
 
 const Menu = () => {
 
   const { addToCart } = useCartContext()
-  const menuPreview = menu.filter(el => el.discount === 0).slice(0, 6)
+  const { menuPreview } = useMenu()
 
   return (
     <section className="py-16 md:py-24 px-4 bg-linear-to-b from-gray-50 to-white">

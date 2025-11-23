@@ -10,6 +10,16 @@ const getMenu = async (req, res) => {
   }
 }
 
+const getMenuPreview = async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM menu where discount = 0 LIMIT 6')
+        res.json(result.rows)
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ message: 'Internal server error' })
+    }
+}
+
 const getOffers = async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM menu WHERE discount > 0 AND discount < 0.2')
@@ -30,4 +40,4 @@ const getSpecialOffers = async (req, res) => {
   }
 }
 
-export { getMenu, getOffers, getSpecialOffers }
+export { getMenu, getMenuPreview, getOffers, getSpecialOffers }

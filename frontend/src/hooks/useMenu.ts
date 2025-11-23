@@ -4,6 +4,7 @@ import { type MenuItem } from '@/data/menu'
 const useMenu = () => {
     
     const [menu, setMenu] = useState<MenuItem[]>([])
+    const [menuPreview, setMenuPreview] = useState<MenuItem[]>([])
     const [offers, setOffers] = useState<MenuItem[]>([])
     const [specialOffer, setSpecialOffer] = useState<MenuItem>()
 
@@ -17,6 +18,16 @@ const useMenu = () => {
                 console.error(err)
             }
         }
+        const fetchPreview = async () => {
+            try {
+                const response = await fetch('/api/menu/preview')
+                const data = await response.json()
+                setMenuPreview(data)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+
         const fetchOffers = async () => {
             try {
                 const response = await fetch('/api/menu/offers')
@@ -38,9 +49,10 @@ const useMenu = () => {
         fetchSpecialOffer()
         fetchOffers()
         fetchMenu()
+        fetchPreview()
     }, [])
 
-    return { menu, offers, specialOffer }
+    return { menu, menuPreview, offers, specialOffer }
 }
 
 export default useMenu
