@@ -1,13 +1,13 @@
-import { Link } from "react-router"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 
 type MenuFiltersProps = {
     category: string | null
     categories: string[]
+    setSearchParams: (nextInit: URLSearchParams | Record<string, string | string[]>, options?: { replace?: boolean }) => void
 }
 
-const MenuFilters = ({category, categories} : MenuFiltersProps) => {
+const MenuFilters = ({category, categories, setSearchParams} : MenuFiltersProps) => {
     return (
         <div className="bg-white rounded-2xl shadow-sm p-6 mb-8">
             <div className="flex flex-col lg:flex-row gap-6">
@@ -25,8 +25,8 @@ const MenuFilters = ({category, categories} : MenuFiltersProps) => {
 
                 {/* Category Filter */}
                 <div className="flex flex-wrap gap-2 items-center">
-                    <Link
-                        to="/menu"
+                    <button
+                        onClick={() => setSearchParams({ category: '' })}
                         className={
                             `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                                 !category
@@ -36,11 +36,11 @@ const MenuFilters = ({category, categories} : MenuFiltersProps) => {
                         }
                     >
                         All
-                    </Link>
+                    </button>
                     {categories.map((cat) => (
-                        <Link
+                        <button
                             key={cat}
-                            to={`/menu?category=${cat}`}
+                            onClick={() => setSearchParams({ category: cat })}
                             className={
                                 `px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                                     category === cat
@@ -50,7 +50,7 @@ const MenuFilters = ({category, categories} : MenuFiltersProps) => {
                             }
                         >
                             {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                        </Link>
+                        </button>
                     ))}
                 </div>
             </div>

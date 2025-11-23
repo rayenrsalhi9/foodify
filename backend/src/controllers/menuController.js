@@ -1,8 +1,19 @@
 import pool from '../database.js'
 
 const getMenu = async (req, res) => {
+
+  const { category } = req.query
+  console.log(category)
+
+  const params = category ? { category } : {}
+  const query = 
+    category 
+    ? 'SELECT * FROM menu WHERE category like $1 order by name' 
+    : 'SELECT * FROM menu order by name'
+
   try {
-    const result = await pool.query('SELECT * FROM menu order by name')
+    const result = await pool.query(query, Object.values(params))
+    console.log(result.rows)
     res.json(result.rows)
   } catch (err) {
     console.error(err)

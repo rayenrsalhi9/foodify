@@ -5,16 +5,13 @@ import MenuEmpty from "./menu-empty"
 import useMenu from "@/hooks/useMenu"
 
 const Menu = () => {
-    const { menu } = useMenu()
-    
-    const categories = [...Array.from(new Set(menu.map(item => item.category)))]
 
-    const [searchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
     const category = searchParams.get('category')
 
-    const menuToDisplay = category
-        ? menu.filter(item => item.category === category)
-        : menu
+    const { menu } = useMenu({ category })
+    
+    const categories = [...Array.from(new Set(menu.map(item => item.category)))]
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -27,13 +24,17 @@ const Menu = () => {
                     </p>
                 </div>
 
-                <MenuFilters category={category} categories={categories} />
+                <MenuFilters 
+                    category={category} 
+                    categories={categories} 
+                    setSearchParams={setSearchParams} 
+                />
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {menuToDisplay.map((item) => <MenuItemCard key={item.id} item={item} />)}
+                    {menu.map((item) => <MenuItemCard key={item.id} item={item} />)}
                 </div>
 
-                { menuToDisplay.length === 0 ? <MenuEmpty /> : null }
+                { menu.length === 0 ? <MenuEmpty /> : null }
             </div>
         </div>
     )

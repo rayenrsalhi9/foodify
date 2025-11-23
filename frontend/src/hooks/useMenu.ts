@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
 import { type MenuItem } from '@/types/types'
 
-const useMenu = () => {
+type MenuParams = {
+    category: string | null
+}
+
+const useMenu = (params?: MenuParams) => {
+
+    const { category } = params || {}
     
     const [menu, setMenu] = useState<MenuItem[]>([])
     const [menuPreview, setMenuPreview] = useState<MenuItem[]>([])
@@ -9,15 +15,6 @@ const useMenu = () => {
     const [specialOffer, setSpecialOffer] = useState<MenuItem>()
 
     useEffect(() => {
-        const fetchMenu = async () => {
-            try {
-                const response = await fetch('/api/menu')
-                const data = await response.json()
-                setMenu(data)
-            } catch (err) {
-                console.error(err)
-            }
-        }
         const fetchPreview = async () => {
             try {
                 const response = await fetch('/api/menu/preview')
@@ -48,9 +45,22 @@ const useMenu = () => {
         }
         fetchSpecialOffer()
         fetchOffers()
-        fetchMenu()
         fetchPreview()
     }, [])
+
+    useEffect(() => {
+        const fetchMenu = async () => {
+            try {
+                const response = await 
+                    fetch(`/api/menu${category ? `?category=${category}` : ''}`)
+                const data = await response.json()
+                setMenu(data)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchMenu()
+    }, [category])
 
     return { menu, menuPreview, offers, specialOffer }
 }
