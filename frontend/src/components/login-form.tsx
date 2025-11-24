@@ -1,3 +1,4 @@
+import { useActionState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -9,12 +10,25 @@ import {
 import { Input } from "@/components/ui/input"
 import { Link } from "react-router"
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"form">) {
+export function LoginForm({className,...props}: React.ComponentProps<"form">) {
+
+  const [error, handleLogin, isPending] = useActionState(
+    async (_prevState: string | null, formData: FormData) => {
+      
+      const data = Object.fromEntries(formData)
+      console.log(data)
+      
+      return null
+    },
+    null
+  )
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} data-testid="login-form" {...props}>
+    <form 
+      className={cn("flex flex-col gap-6", className)} 
+      {...props}
+      action={handleLogin}
+    >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
@@ -22,9 +36,37 @@ export function LoginForm({
             Enter your email below to login to your account
           </p>
         </div>
+
+        <div 
+          id="form-description" 
+          className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0"
+          aria-hidden="false"
+        >
+          Use this form to sign in to your account. Enter your email and password.
+        </div>
+
+        {
+          error ? 
+            <p className="text-destructive text-sm text-center" id="signin-error" role="alert">
+              {error}
+            </p> 
+          : null
+        }
+
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" type="email" placeholder="e.g. m@example.com" required />
+          <Input 
+            name="email"
+            id="email" 
+            type="email" 
+            className={cn("w-full", error ? "border-destructive" : "")}
+            placeholder="e.g. m@example.com" 
+            required 
+            aria-required="true"
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? 'signin-error' : undefined}
+            disabled={isPending}
+          />
         </Field>
         <Field>
           <div className="flex items-center">
@@ -36,11 +78,27 @@ export function LoginForm({
               Forgot your password?
             </a>
           </div>
-          <Input id="password" type="password" placeholder="********" required />
+          <Input 
+            name="password"
+            id="password" 
+            type="password" 
+            className={cn("w-full", error ? "border-destructive" : "")}
+            placeholder="********" 
+            required 
+            aria-required="true"
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? 'signin-error' : undefined}
+            disabled={isPending}
+          />
         </Field>
         <Field>
-          <Button type="submit" className="bg-orange-500 cursor-pointer hover:bg-orange-600">
-            Login
+          <Button 
+            type="submit" 
+            className={cn("bg-orange-500 cursor-pointer hover:bg-orange-600", isPending ? 'opacity-80 cursor-not-allowed' : '')}
+            disabled={isPending}
+            aria-busy={isPending}
+          >
+            {isPending ? 'Logging in...' : 'Login'}
           </Button>
         </Field>
         <Field>

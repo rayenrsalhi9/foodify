@@ -1,3 +1,4 @@
+import { useActionState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -9,12 +10,25 @@ import {
 import { Input } from "@/components/ui/input"
 import { Link } from "react-router"
 
-export function SignupForm({
-  className,
-  ...props
-}: React.ComponentProps<"form">) {
+export function SignupForm({className, ...props}: React.ComponentProps<"form">) {
+
+  const [error, handleSignup, isPending] = useActionState(
+    async (_prevState: string | null, formData: FormData) => {
+      
+      const data = Object.fromEntries(formData)
+      console.log(data)
+      
+      return null
+    },
+    null
+  )
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form 
+      className={cn("flex flex-col gap-6", className)} 
+      {...props}
+      action={handleSignup}
+    >
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Create your account</h1>
@@ -22,25 +36,91 @@ export function SignupForm({
             Enter your details below to create your account
           </p>
         </div>
+
+        <div 
+          id="form-description" 
+          className="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0"
+          aria-hidden="false"
+        >
+          Use this form to sign in to your account. Enter your email and password.
+        </div>
+
+        {
+          error ? 
+            <p className="text-destructive text-sm text-center" id="signin-error" role="alert">
+              {error}
+            </p> 
+          : null
+        }
+
         <Field>
           <FieldLabel htmlFor="username">Username</FieldLabel>
-          <Input id="username" type="text" placeholder="e.g. johndoe471" required />
+          <Input 
+            name="username"
+            id="username" 
+            type="text" 
+            className={cn("w-full", error ? "border-destructive" : "")}
+            placeholder="e.g. johndoe471" 
+            required 
+            aria-required="true"
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? 'signin-error' : undefined}
+            disabled={isPending}
+          />
         </Field>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" type="email" placeholder="e.g. m@example.com" required />
+          <Input 
+            name="email"
+            id="email" 
+            type="email" 
+            className={cn("w-full", error ? "border-destructive" : "")}
+            placeholder="e.g. m@example.com" 
+            required 
+            aria-required="true"
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? 'signin-error' : undefined}
+            disabled={isPending}
+          />
         </Field>
         <Field>
           <FieldLabel htmlFor="password">Password</FieldLabel>
-          <Input id="password" type="password" placeholder="********" required />
+          <Input 
+            name="password"
+            id="password" 
+            type="password" 
+            className={cn("w-full", error ? "border-destructive" : "")}
+            placeholder="********" 
+            required 
+            aria-required="true"
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? 'signin-error' : undefined}
+            disabled={isPending}
+          />
         </Field>
         <Field>
           <FieldLabel htmlFor="confirmPassword">Confirm Password</FieldLabel>
-          <Input id="confirmPassword" type="password" placeholder="********" required />
+          <Input 
+            name="confirmPassword"
+            id="confirmPassword" 
+            type="password" 
+            className={cn("w-full", error ? "border-destructive" : "")}
+            placeholder="********" 
+            required 
+            aria-required="true"
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? 'signin-error' : undefined}
+            disabled={isPending}
+          />
         </Field>
         <Field>
-          <Button type="submit" className="bg-orange-500 cursor-pointer hover:bg-orange-600">
-            Sign Up
+          <Button 
+            type="submit" 
+            className={cn("bg-orange-500 cursor-pointer hover:bg-orange-600", isPending ? 'opacity-80 cursor-not-allowed' : '')}
+            disabled={isPending}
+            aria-busy={isPending}
+          >
+            {isPending ? 'Signing Up...' : 'Sign Up'}
           </Button>
         </Field>
         <Field>
