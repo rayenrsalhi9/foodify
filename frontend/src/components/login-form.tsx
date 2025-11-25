@@ -1,5 +1,7 @@
 import { useActionState } from "react"
+import { Link, useNavigate } from "react-router"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
   Field,
@@ -8,16 +10,30 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router"
 
 export function LoginForm({className,...props}: React.ComponentProps<"form">) {
+
+  const navigate = useNavigate()
 
   const [error, handleLogin, isPending] = useActionState(
     async (_prevState: string | null, formData: FormData) => {
       
       const data = Object.fromEntries(formData)
-      console.log(data)
       
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {"Content-Type": "application/json",},
+      })
+
+      const {error, success, message} = await res.json()
+
+      if (error) return error
+      if (success && message) {
+        toast.success(message)
+        navigate("/menu")
+      }
+
       return null
     },
     null

@@ -3,7 +3,41 @@ import validator from 'validator'
 import bcrypt from 'bcryptjs'
 
 const signUserIn = async (req, res) => {
-    console.log('login process will appear here')
+    
+    const {email, password} = req.body
+
+    if (!email || !password) {
+        return res.status(400).json({error: "All fields are required"})
+    }
+
+    if (!validator.isEmail(email)) {
+        return res.status(400).json({error: "Invalid email format"})
+    }
+
+    try {
+
+        const user = await pool.query(
+            "SELECT * FROM users WHERE email = $1"
+            , [email]
+        )
+        if (user.rows.length === 0) {
+            return res.status(400).json({error: "User not found"})
+        }
+
+        const hashedPassword = user.rows[0].password
+        const isPasswordValid = await bcrypt.compare(password, hashedPassword)
+        if (!isPasswordValid) {
+            return res.status(400).json({error: "Invalid password"})
+        }
+
+        req.session.userId = user.rows[0].id
+        return res.status(200).json({success: true, message: "User signed in successfully"})
+        
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({error: "Internal server error"})
+    }
+
 }
 
 const signUserUp = async (req, res) => {
