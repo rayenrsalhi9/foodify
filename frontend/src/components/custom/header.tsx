@@ -81,25 +81,14 @@ const Header: React.FC = () => {
                                     </Button>
                                 </Link>     
                             ) : (
-                                <>
-                                    <Link
-                                        to="/login"
-                                        className="hidden sm:inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
-                                        aria-label="Log in to your account"
-                                    >
-                                        <User className="h-5 w-5" aria-hidden="true" />
-                                        <span className="hidden lg:inline">Log In</span>
-                                    </Link>
-                                    
-                            
-                                    <Link
-                                        to="/login"
-                                        className="sm:hidden inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold transition-colors duration-200 p-2"
-                                        aria-label="Log in to your account"
-                                    >
-                                        <User className="h-5 w-5" aria-hidden="true" />
-                                    </Link>
-                                </>
+                                <Link
+                                    to="/login"
+                                    className="inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
+                                    aria-label="Log in to your account"
+                                >
+                                    <User className="h-5 w-5" aria-hidden="true" />
+                                    <span className="hidden lg:inline">Log In</span>
+                                </Link>
                             )
                         }  
                     </div>
