@@ -26,8 +26,6 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
 
     const [user, setUser] = useState<User | null>(null)
     const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
-    console.log(isSignedIn)
-    console.log(user)
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -42,10 +40,16 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
             }
         }
 
-        if (!isSignedIn) return
+        if (!isSignedIn && !user) return
+
+        if (!isSignedIn && user) {
+            setUser(null)
+            return 
+        } 
+
         fetchUser()
 
-    }, [isSignedIn])
+    }, [isSignedIn, user])
 
     return (
         <UserContext.Provider value={{user, setIsSignedIn}}>
