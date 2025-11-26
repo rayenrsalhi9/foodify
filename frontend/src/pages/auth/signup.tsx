@@ -1,8 +1,8 @@
+import { Link } from "react-router"
 import { UtensilsCrossed } from "lucide-react"
 import signupBg from '/auth/signup-bg.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import { SignupForm } from "@/components/signup-form"
-import { Link } from "react-router"
 
 const signup = () => {
   

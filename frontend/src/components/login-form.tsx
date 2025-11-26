@@ -31,13 +31,22 @@ export function LoginForm({className,...props}: React.ComponentProps<"form">) {
       const {error, success, message} = await res.json()
 
       if (error) return error
+
       if (success && message) {
-        toast.success(message)
+        toast.success(message, {
+            style: {
+                background: '#f0fdf4',
+                border: '1px solid #bbf7d0',
+                color: 'green'
+            },
+            duration: 3000
+        })
         setIsSignedIn(prev => !prev)
         navigate("/menu")
       }
 
       return null
+
     },
     null
   )

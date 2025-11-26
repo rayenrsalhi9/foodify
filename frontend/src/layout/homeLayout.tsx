@@ -7,7 +7,6 @@ import Menu from "@/pages/landing/menu"
 import Footer from "@/components/custom/footer"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import AppSidebar from "@/components/custom/Sidebar"
-import { Toaster } from "sonner"
 
 const HomeLayout = () => {
   return (
@@ -22,7 +21,6 @@ const HomeLayout = () => {
         <Menu />
         <Footer />
       </div>
-      <Toaster />
     </SidebarProvider>
   )
 }

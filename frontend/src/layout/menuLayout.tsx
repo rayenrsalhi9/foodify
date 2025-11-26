@@ -3,7 +3,6 @@ import AppSidebar from "@/components/custom/Sidebar";
 import Menu from "@/pages/menu/menu-page";
 import Footer from "@/components/custom/footer";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { Toaster } from "sonner";
 
 const menuLayout = () => {
     return (
@@ -14,7 +13,6 @@ const menuLayout = () => {
                 <Menu />
                 <Footer />
             </div>
-            <Toaster />
         </SidebarProvider>
     )
 }

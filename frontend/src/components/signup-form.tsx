@@ -27,16 +27,26 @@ export function SignupForm({className, ...props}: React.ComponentProps<"form">) 
         body: JSON.stringify(data),
         headers: {"Content-Type": "application/json",},
       })
+
       const {error, success, message} = await response.json()
       
       if (error) return error
+
       if (success && message) {
-        toast.success(message)
+        toast.success(message, {
+            style: {
+                background: '#f0fdf4',
+                border: '1px solid #bbf7d0',
+                color: 'green'
+            },
+            duration: 3000
+        })
         setIsSignedIn(prev => !prev)
         navigate("/menu")
       }
 
       return null
+
     },
     null
   )
