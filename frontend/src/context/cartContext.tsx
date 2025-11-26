@@ -44,15 +44,16 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
             }
         }
 
-        if (!isSignedIn && cart.length === 0) return
         if (!isSignedIn && cart.length > 0) {
             setCart([])
             return
         }
 
-        fetchCart()
+        if (isSignedIn) {
+            fetchCart()
+        }
 
-    }, [isSignedIn, cart])
+    }, [isSignedIn])
 
     const addToCart = async (item: CartItem) => {
 

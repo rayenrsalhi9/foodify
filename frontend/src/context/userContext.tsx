@@ -72,16 +72,16 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
             }
         }
 
-        if (!isSignedIn && !user) return
-
         if (!isSignedIn && user) {
             setUser(null)
             return 
         } 
 
-        fetchUser()
+        if (isSignedIn) {
+            fetchUser()
+        }
 
-    }, [isSignedIn, user])
+    }, [isSignedIn])
 
     return (
         <UserContext.Provider value={{user, isSignedIn, setIsSignedIn, logout}}>
