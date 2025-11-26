@@ -4,7 +4,7 @@ const getUserData = async (req, res) => {
 
     const userId = req.session.userId
     if (!userId) {
-        return res.status(400).json({notSignedIn: true})
+        return res.status(200).json({notSignedIn: true})
     }
 
     try {

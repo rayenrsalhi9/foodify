@@ -42,7 +42,7 @@ const AppSidebar = () => {
         if (error) throw new Error(error)
 
         if (success) {
-            setIsSignedIn(prev => !prev)
+            setIsSignedIn(false)
             navigate("/login")
             toast.success(message || "Logout successful", {
                 style: {

@@ -32,6 +32,8 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
 
     const [user, setUser] = useState<User | null>(null)
     const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
+    console.log(isSignedIn)
+    console.log(user)
 
     const logout = async () => {
         try {
@@ -40,7 +42,9 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
             const {success, error, message} = await response.json()
             
             if (error) return {error}
+
             if (success) {
+                setIsSignedIn(false)
                 return {success: true, message}
             }
 
@@ -56,11 +60,15 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
             try {
                 const response = await fetch("/api/user/data")
                 const {notSignedIn, error, user} = await response.json()
-                if (notSignedIn) return
+                if (notSignedIn) {
+                    setUser(null)
+                    return
+                }
                 if (error) throw new Error(error)
                 setUser(user)
             } catch (error) {
                 console.log(error)
+                setUser(null)
             }
         }
 

@@ -24,14 +24,20 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
 
     const {isSignedIn} = useUserContext()
     const [cart, setCart] = useState<CartItem[]>([])
+    console.log(cart)
 
     useEffect(() => {
 
         const fetchCart = async () => {
             try {
                 const response = await fetch('/api/cart')
-                const {data, error} = await response.json()
+                const {data, error, notSignedIn} = await response.json()
+                
                 if (error) return
+                if (notSignedIn) {
+                    setCart([])
+                    return
+                }
                 setCart(data)
             } catch (error) {
                 console.error('Error fetching cart:', error)
