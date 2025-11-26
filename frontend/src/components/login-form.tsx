@@ -1,5 +1,6 @@
 import { useActionState } from "react"
 import { Link, useNavigate } from "react-router"
+import { useUserContext } from "@/context/userContext"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
@@ -14,6 +15,7 @@ import { Input } from "@/components/ui/input"
 export function LoginForm({className,...props}: React.ComponentProps<"form">) {
 
   const navigate = useNavigate()
+  const {setIsSignedIn} = useUserContext()
 
   const [error, handleLogin, isPending] = useActionState(
     async (_prevState: string | null, formData: FormData) => {
@@ -31,6 +33,7 @@ export function LoginForm({className,...props}: React.ComponentProps<"form">) {
       if (error) return error
       if (success && message) {
         toast.success(message)
+        setIsSignedIn(prev => !prev)
         navigate("/menu")
       }
 

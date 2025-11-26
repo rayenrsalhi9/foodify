@@ -1,13 +1,15 @@
-import { Button } from "../ui/button"
-import { Phone, ShoppingCart, User, UtensilsCrossed, Menu } from "lucide-react"
 import { Link } from "react-router"
 import { useSidebar } from "../ui/sidebar"
 import { useCartContext } from "@/context/cartContext"
+import { useUserContext } from "@/context/userContext"
+import { Button } from "../ui/button"
+import { Phone, ShoppingCart, User, UtensilsCrossed, Menu } from "lucide-react"
 
 const Header: React.FC = () => {
 
     const { toggleSidebar } = useSidebar()
     const { totalItems } = useCartContext()
+    const { user } = useUserContext()
 
     return (
         <header 
@@ -60,40 +62,46 @@ const Header: React.FC = () => {
 
                     {/* Right section - Cart and Login */}
                     <div className="flex items-center gap-2 md:gap-4">
-                        <Link 
-                            to="/cart"
-                            aria-label="Shopping cart"
-                            className="relative"
-                        >
-                            <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="cursor-pointer hover:bg-orange-600 transition-colors duration-200"
-                            >
-                                <ShoppingCart className="h-6 w-6" aria-hidden="true" />
-                                <span className="absolute -top-1 -right-1 bg-white text-red-600 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
-                                    {totalItems}
-                                </span>
-                            </Button>
-                        </Link>
-                        
-                        <Link
-                            to="/login"
-                            className="hidden sm:inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
-                            aria-label="Log in to your account"
-                        >
-                            <User className="h-5 w-5" aria-hidden="true" />
-                            <span className="hidden lg:inline">Log In</span>
-                        </Link>
-                        
-                        {/* Mobile login button - icon only */}
-                        <Link
-                            to="/login"
-                            className="sm:hidden inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold transition-colors duration-200 p-2"
-                            aria-label="Log in to your account"
-                        >
-                            <User className="h-5 w-5" aria-hidden="true" />
-                        </Link>
+                        {
+                            user ? (
+                                <Link 
+                                    to="/cart"
+                                    aria-label="Shopping cart"
+                                    className="relative"
+                                >
+                                    <Button 
+                                        variant="ghost" 
+                                        size="icon" 
+                                        className="cursor-pointer hover:bg-orange-600 transition-colors duration-200"
+                                    >
+                                        <ShoppingCart className="h-6 w-6" aria-hidden="true" />
+                                        <span className="absolute -top-1 -right-1 bg-white text-red-600 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                                            {totalItems}
+                                        </span>
+                                    </Button>
+                                </Link>     
+                            ) : (
+                                <>
+                                    <Link
+                                        to="/login"
+                                        className="hidden sm:inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
+                                        aria-label="Log in to your account"
+                                    >
+                                        <User className="h-5 w-5" aria-hidden="true" />
+                                        <span className="hidden lg:inline">Log In</span>
+                                    </Link>
+                                    
+                            
+                                    <Link
+                                        to="/login"
+                                        className="sm:hidden inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold transition-colors duration-200 p-2"
+                                        aria-label="Log in to your account"
+                                    >
+                                        <User className="h-5 w-5" aria-hidden="true" />
+                                    </Link>
+                                </>
+                            )
+                        }  
                     </div>
                 </div>
 

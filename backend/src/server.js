@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 
 import menuRoute from './routes/menuRoute.js'
 import authRoute from './routes/authRoute.js'
+import userRoute from './routes/userRoute.js'
 
 dotenv.config()
 
@@ -36,6 +37,7 @@ app.use(express.static(frontendPath))
 // Use menu routes
 app.use('/api/menu', menuRoute)
 app.use('/api/auth', authRoute)
+app.use('/api/user', userRoute)
 
 // Catch-all route to serve frontend index.html for client-side routing
 app.use((req, res) => {

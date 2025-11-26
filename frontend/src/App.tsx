@@ -1,12 +1,15 @@
 import { RouterProvider } from "react-router/dom"
 import router from "./router"
 import { CartContextProvider } from "./context/cartContext"
+import { UserContextProvider } from "./context/userContext"
 
 const App = () => {
   return (
-    <CartContextProvider>
-      <RouterProvider router={router} />
-    </CartContextProvider>
+    <UserContextProvider>
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    </UserContextProvider>
   )
 }
 
