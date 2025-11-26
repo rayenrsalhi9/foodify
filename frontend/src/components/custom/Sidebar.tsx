@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { useUserContext } from "@/context/userContext"
 import { menuItems } from "@/data/sidebar-menu"
-import { UtensilsCrossed, ChevronDown, ChevronRight} from "lucide-react"
+import { UtensilsCrossed, ChevronDown, ChevronRight, LogOut } from "lucide-react"
+import { toast } from "sonner"
 import {
   Sidebar,
   SidebarContent,
@@ -21,7 +22,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const AppSidebar = () => {
 
-    const { user } = useUserContext()
+    const navigate = useNavigate()
+
+    const { user, logout, setIsSignedIn } = useUserContext()
     const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
     const toggleExpand = (item: string) => {
@@ -30,6 +33,27 @@ const AppSidebar = () => {
                 ? prev.filter(i => i !== item)
                 : [...prev, item]
         );
+    }
+
+    const handleLogout = async () => {
+
+        const {success, message, error} = await logout()
+
+        if (error) throw new Error(error)
+
+        if (success) {
+            setIsSignedIn(prev => !prev)
+            navigate("/login")
+            toast.success(message || "Logout successful", {
+                style: {
+                    background: '#f0fdf4',
+                    border: '1px solid #bbf7d0',
+                    color: 'green'
+                },
+                duration: 3000
+            })
+        }
+
     }
 
     return (
@@ -121,18 +145,28 @@ const AppSidebar = () => {
             <SidebarFooter className="border-t border-gray-200">
                 {
                     user ? 
-                        <Link to="/profile" className="flex items-center gap-3 p-2 w-full hover:bg-gray-100 rounded transition-colors">
-                            <Avatar className="h-8 w-8 rounded-lg grayscale">
-                                <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
-                                <AvatarFallback className="rounded-lg">FD</AvatarFallback>
-                            </Avatar>
-                            <div className="grid flex-1 text-left text-sm leading-tight">
-                                <span className="truncate font-medium">{user.username || "Foodify User"}</span>
-                                <span className="text-muted-foreground truncate text-xs">
-                                    {user.email}
-                                </span>
-                            </div>
-                        </Link>
+                        <div className="flex items-center gap-2 p-2">
+                            <Link to="/profile" className="flex items-center gap-3 p-2 flex-1 hover:bg-gray-100 rounded transition-colors">
+                                <Avatar className="h-8 w-8 rounded-lg grayscale">
+                                    <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
+                                    <AvatarFallback className="rounded-lg">FD</AvatarFallback>
+                                </Avatar>
+                                <div className="grid flex-1 text-left text-sm leading-tight">
+                                    <span className="truncate font-medium">{user.username || "Foodify User"}</span>
+                                    <span className="text-muted-foreground truncate text-xs">
+                                        {user.email}
+                                    </span>
+                                </div>
+                            </Link>
+                            <button
+                                onClick={handleLogout}
+                                className="flex sm:hidden items-center justify-center p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                aria-label="Logout"
+                                title="Logout"
+                            >
+                                <LogOut className="h-4 w-4" />
+                            </button>
+                        </div>
                     :
                         <div className="flex gap-2 p-2">
                             <Link

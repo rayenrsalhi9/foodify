@@ -1,15 +1,38 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { useSidebar } from "../ui/sidebar"
 import { useCartContext } from "@/context/cartContext"
 import { useUserContext } from "@/context/userContext"
 import { Button } from "../ui/button"
+import { toast } from "sonner"
 import { Phone, ShoppingCart, LogIn, UtensilsCrossed, Menu, LogOut } from "lucide-react"
 
 const Header: React.FC = () => {
 
+    const navigate = useNavigate()
     const { toggleSidebar } = useSidebar()
     const { totalItems } = useCartContext()
-    const { user } = useUserContext()
+    const { user, logout, setIsSignedIn } = useUserContext()
+
+    const handleLogout = async () => {
+
+        const {success, message, error} = await logout()
+
+        if (error) throw new Error(error)
+
+        if (success) {
+            setIsSignedIn(prev => !prev)
+            navigate("/login")
+            toast.success(message || "Logout successful", {
+                style: {
+                    background: '#f0fdf4',
+                    border: '1px solid #bbf7d0',
+                    color: 'green'
+                },
+                duration: 3000
+            })
+        }
+
+    }
 
     return (
         <header 
@@ -84,6 +107,7 @@ const Header: React.FC = () => {
                                     <Button 
                                         variant="outline" 
                                         size="default" 
+                                        onClick={handleLogout}
                                         className="hidden md:flex bg-white text-orange-500 border-orange-500 hover:bg-orange-100 hover:text-orange-600 transition-colors duration-200"
                                     >
                                         <LogOut className="h-6 w-6" aria-hidden="true" />

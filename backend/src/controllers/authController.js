@@ -85,4 +85,18 @@ const signUserUp = async (req, res) => {
     }
 }
 
-export { signUserIn, signUserUp }
+const logoutUser = async (req, res) => {
+    try {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).json({ error: "Could not log out" })
+            }
+            return res.status(200).json({ success: true, message: "User logged out successfully" })
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ error: "Internal server error" })
+    }
+}
+
+export { signUserIn, signUserUp, logoutUser }
