@@ -128,6 +128,20 @@ const AppSidebar = () => {
                             </span>
                         </div>
                     </Link>
+                    <div className="flex gap-2 p-2">
+                        <Link
+                            to="/login"
+                            className="flex-1 text-center px-3 py-2 text-sm font-medium rounded-md bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to="/signup"
+                            className="flex-1 text-center px-3 py-2 text-sm font-medium rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 transition-colors"
+                        >
+                            Sign Up
+                        </Link>
+                    </div>
             </SidebarFooter>
         </Sidebar>
     )
