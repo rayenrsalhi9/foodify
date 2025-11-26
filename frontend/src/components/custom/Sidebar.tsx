@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router"
-import { menuItems, contactInfo } from "@/data/sidebar-menu"
+import { menuItems } from "@/data/sidebar-menu"
 import { UtensilsCrossed, ChevronDown, ChevronRight} from "lucide-react"
 import {
   Sidebar,
@@ -16,6 +16,7 @@ import {
   SidebarMenuSubItem,
   SidebarMenuSubButton,
 } from "@/components/ui/sidebar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const AppSidebar = () => {
     const [expandedItems, setExpandedItems] = useState<string[]>([]);
@@ -114,21 +115,19 @@ const AppSidebar = () => {
                 </SidebarGroup>
             </SidebarContent>
 
-            <SidebarFooter className="p-4 border-t border-gray-200">
-                <div className="space-y-4">
-                    <h3 className="font-bold text-sm text-gray-900">Contact Info</h3>
-                    <div className="space-y-3">
-                        {contactInfo.map((info, index) => (
-                            <div key={index} className="flex items-start gap-3">
-                                <info.icon className="h-4 w-4 text-orange-500 mt-0.5 shrink-0" />
-                                <div className="min-w-0">
-                                    <p className="text-xs font-medium text-gray-700">{info.label}</p>
-                                    <p className="text-xs text-gray-600 wrap-break-word">{info.value}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+            <SidebarFooter className="border-t border-gray-200">
+                    <Link to="/profile" className="flex items-center gap-3 p-2 w-full hover:bg-gray-100 rounded transition-colors">
+                        <Avatar className="h-8 w-8 rounded-lg grayscale">
+                            <AvatarImage src="https://github.com/shadcn.png" alt="" />
+                            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                        </Avatar>
+                        <div className="grid flex-1 text-left text-sm leading-tight">
+                            <span className="truncate font-medium">salhirayen123</span>
+                            <span className="text-muted-foreground truncate text-xs">
+                                rayen123@gmail.com
+                            </span>
+                        </div>
+                    </Link>
             </SidebarFooter>
         </Sidebar>
     )
