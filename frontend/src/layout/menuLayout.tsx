@@ -9,7 +9,7 @@ const menuLayout = () => {
     return (
         <SidebarProvider defaultOpen={false}>
             <AppSidebar />
-            <div className="w-full mx-auto">
+            <div className="w-full mx-auto overflow-x-hidden">
                 <Header />
                 <Menu />
                 <Footer />

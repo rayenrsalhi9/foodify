@@ -8,7 +8,7 @@ const CartLayout = () => {
   return (
     <SidebarProvider defaultOpen={false}>
       <AppSidebar />
-      <div className="w-full mx-auto">
+      <div className="w-full mx-auto overflow-x-hidden">
         <Header />
         <CartPage />
         <Footer />

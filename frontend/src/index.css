@@ -294,3 +294,55 @@
     animation: none !important;
   }
 }
+
+/* Fix for sidebar responsive issues */
+@media screen and (max-width: 768px) {
+  /* Prevent horizontal overflow when sidebar is open */
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+  
+  /* Ensure main content adapts to sidebar */
+  [data-slot="sidebar-wrapper"] > div:last-child {
+    min-width: 0;
+    flex: 1;
+  }
+  
+  /* Fix sidebar positioning on mobile */
+  [data-sidebar="sidebar"][data-mobile="true"] {
+    max-width: 100vw !important;
+  }
+  
+  /* Ensure content doesn't shift when sidebar opens */
+  [data-state="open"] ~ div {
+    transform: none !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* Additional fixes for better responsive behavior */
+[data-slot="sidebar-wrapper"] {
+  max-width: 100vw;
+}
+
+/* Prevent content overflow in main container */
+main, .main-content {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Fix for sidebar sheet overlay behavior */
+[data-sidebar="sidebar"][data-mobile="true"] {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+}
+
+/* Ensure proper body behavior when sidebar is open */
+body:has([data-sidebar="sidebar"][data-state="open"]) {
+  overflow-x: hidden;
+}
