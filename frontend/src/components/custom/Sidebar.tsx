@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router"
+import { useUserContext } from "@/context/userContext"
 import { menuItems } from "@/data/sidebar-menu"
 import { UtensilsCrossed, ChevronDown, ChevronRight} from "lucide-react"
 import {
@@ -19,6 +20,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const AppSidebar = () => {
+
+    const { user } = useUserContext()
     const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
     const toggleExpand = (item: string) => {
@@ -116,32 +119,36 @@ const AppSidebar = () => {
             </SidebarContent>
 
             <SidebarFooter className="border-t border-gray-200">
-                    <Link to="/profile" className="flex items-center gap-3 p-2 w-full hover:bg-gray-100 rounded transition-colors">
-                        <Avatar className="h-8 w-8 rounded-lg grayscale">
-                            <AvatarImage src="https://github.com/shadcn.png" alt="" />
-                            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                        </Avatar>
-                        <div className="grid flex-1 text-left text-sm leading-tight">
-                            <span className="truncate font-medium">salhirayen123</span>
-                            <span className="text-muted-foreground truncate text-xs">
-                                rayen123@gmail.com
-                            </span>
+                {
+                    user ? 
+                        <Link to="/profile" className="flex items-center gap-3 p-2 w-full hover:bg-gray-100 rounded transition-colors">
+                            <Avatar className="h-8 w-8 rounded-lg grayscale">
+                                <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
+                                <AvatarFallback className="rounded-lg">FD</AvatarFallback>
+                            </Avatar>
+                            <div className="grid flex-1 text-left text-sm leading-tight">
+                                <span className="truncate font-medium">{user.username || "Foodify User"}</span>
+                                <span className="text-muted-foreground truncate text-xs">
+                                    {user.email}
+                                </span>
+                            </div>
+                        </Link>
+                    :
+                        <div className="flex gap-2 p-2">
+                            <Link
+                                to="/login"
+                                className="flex-1 text-center px-3 py-2 text-sm font-medium rounded-md bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+                            >
+                                Login
+                            </Link>
+                            <Link
+                                to="/signup"
+                                className="flex-1 text-center px-3 py-2 text-sm font-medium rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 transition-colors"
+                            >
+                                Sign Up
+                            </Link>
                         </div>
-                    </Link>
-                    <div className="flex gap-2 p-2">
-                        <Link
-                            to="/login"
-                            className="flex-1 text-center px-3 py-2 text-sm font-medium rounded-md bg-orange-500 text-white hover:bg-orange-600 transition-colors"
-                        >
-                            Login
-                        </Link>
-                        <Link
-                            to="/signup"
-                            className="flex-1 text-center px-3 py-2 text-sm font-medium rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 transition-colors"
-                        >
-                            Sign Up
-                        </Link>
-                    </div>
+                }
             </SidebarFooter>
         </Sidebar>
     )
