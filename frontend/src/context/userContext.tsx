@@ -16,9 +16,11 @@ type User = {
 
 const UserContext = createContext<{
     user: User | null
+    isSignedIn: boolean
     setIsSignedIn: Dispatch<SetStateAction<boolean>>
 }>({
     user: null,
+    isSignedIn: false,
     setIsSignedIn: () => {},
 })
 
@@ -52,7 +54,7 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
     }, [isSignedIn, user])
 
     return (
-        <UserContext.Provider value={{user, setIsSignedIn}}>
+        <UserContext.Provider value={{user, isSignedIn, setIsSignedIn}}>
             {children}
         </UserContext.Provider>
     )

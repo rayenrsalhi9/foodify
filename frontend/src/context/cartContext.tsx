@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import {useUserContext} from "./userContext";
 import { type CartItem } from "@/types/types";
 import { toast } from "sonner";
 
@@ -21,27 +22,66 @@ const CartContext = createContext<{
 
 const CartContextProvider = ({children}: {children: React.ReactNode}) => {
 
+    const {isSignedIn} = useUserContext()
     const [cart, setCart] = useState<CartItem[]>([])
 
-    const addToCart = (item: CartItem) => {
-        const existingItem = cart.find(cartItem => cartItem.id === item.id)
-        if (existingItem) {
-            setCart(prevItems => prevItems.map(prevItem => 
-                prevItem.id === item.id 
-                    ? {...prevItem, quantity: prevItem.quantity + item.quantity} 
-                    : prevItem
-            ))
-        } else {
-            setCart(prevItems => [...prevItems, item])
+    useEffect(() => {
+
+        const fetchCart = async () => {
+            try {
+                const response = await fetch('/api/cart')
+                const {data, error} = await response.json()
+                if (error) return
+                setCart(data)
+            } catch (error) {
+                console.error('Error fetching cart:', error)
+            }
         }
-        toast.success(`Item added to cart`, {
-            style: {
-                background: '#f0fdf4',
-                border: '1px solid #bbf7d0',
-                color: 'green'
-            },
-            duration: 3000
-        })
+
+        if (!isSignedIn && cart.length === 0) return
+        if (!isSignedIn && cart.length > 0) {
+            setCart([])
+            return
+        }
+
+        fetchCart()
+
+    }, [isSignedIn, cart])
+
+    const addToCart = async (item: CartItem) => {
+
+        try {
+
+            const response = await fetch('/api/cart', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({productId: item.id})
+            })
+            const {success} = await response.json()
+            if (!success) return
+
+            const existingItem = cart.find(cartItem => cartItem.id === item.id)
+            if (existingItem) {
+                setCart(prevItems => prevItems.map(prevItem => 
+                    prevItem.id === item.id 
+                        ? {...prevItem, quantity: prevItem.quantity + item.quantity} 
+                        : prevItem
+                ))
+            } else {
+                setCart(prevItems => [...prevItems, item])
+            }
+            toast.success(`Item added to cart`, {
+                style: {
+                    background: '#f0fdf4',
+                    border: '1px solid #bbf7d0',
+                    color: 'green'
+                },
+                duration: 3000
+            })
+
+        } catch (error) {
+            console.error('Error adding item to cart:', error)
+        }
     }
 
     const removeFromCart = (itemId: number) => {
