@@ -3,7 +3,7 @@ import { useSidebar } from "../ui/sidebar"
 import { useCartContext } from "@/context/cartContext"
 import { useUserContext } from "@/context/userContext"
 import { Button } from "../ui/button"
-import { Phone, ShoppingCart, User, UtensilsCrossed, Menu } from "lucide-react"
+import { Phone, ShoppingCart, LogIn, UtensilsCrossed, Menu, LogOut } from "lucide-react"
 
 const Header: React.FC = () => {
 
@@ -64,29 +64,39 @@ const Header: React.FC = () => {
                     <div className="flex items-center gap-2 md:gap-4">
                         {
                             user ? (
-                                <Link 
-                                    to="/cart"
-                                    aria-label="Shopping cart"
-                                    className="relative"
-                                >
-                                    <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        className="cursor-pointer hover:bg-orange-600 transition-colors duration-200"
+                                <div className="flex items-center gap-4">
+                                    <Link 
+                                        to="/cart"
+                                        aria-label="Shopping cart"
+                                        className="relative block"
                                     >
-                                        <ShoppingCart className="h-6 w-6" aria-hidden="true" />
-                                        <span className="absolute -top-1 -right-1 bg-white text-red-600 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
-                                            {totalItems}
-                                        </span>
+                                        <Button 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            className="cursor-pointer hover:bg-orange-600 transition-colors duration-200"
+                                        >
+                                            <ShoppingCart className="h-6 w-6" aria-hidden="true" />
+                                            <span className="absolute -top-1 -right-1 bg-white text-red-600 text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                                                {totalItems}
+                                            </span>
+                                        </Button>
+                                    </Link>  
+                                    <Button 
+                                        variant="outline" 
+                                        size="default" 
+                                        className="hidden md:flex bg-white text-orange-500 border-orange-500 hover:bg-orange-100 hover:text-orange-600 transition-colors duration-200"
+                                    >
+                                        <LogOut className="h-6 w-6" aria-hidden="true" />
+                                        <span>Log Out</span>
                                     </Button>
-                                </Link>     
+                                </div>
                             ) : (
                                 <Link
                                     to="/login"
                                     className="inline-flex items-center justify-center rounded-md bg-white text-orange-500 hover:bg-gray-100 font-semibold gap-2 transition-colors duration-200 px-4 py-2"
                                     aria-label="Log in to your account"
                                 >
-                                    <User className="h-5 w-5" aria-hidden="true" />
+                                    <LogIn className="h-5 w-5" aria-hidden="true" />
                                     <span className="hidden lg:inline">Log In</span>
                                 </Link>
                             )
