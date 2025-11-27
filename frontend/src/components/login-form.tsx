@@ -12,7 +12,12 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
-export function LoginForm({className,...props}: React.ComponentProps<"form">) {
+type LoginFormProps = React.ComponentProps<"form"> & {
+  from?: string;
+  message?: string;
+};
+
+const LoginForm: React.FC<LoginFormProps> = ({ className, from, message, ...props }) => {
 
   const navigate = useNavigate()
   const {setIsSignedIn} = useUserContext()
@@ -42,7 +47,7 @@ export function LoginForm({className,...props}: React.ComponentProps<"form">) {
             duration: 3000
         })
         setIsSignedIn(prev => !prev)
-        navigate("/menu")
+        navigate(from || "/menu")
       }
 
       return null
@@ -78,6 +83,11 @@ export function LoginForm({className,...props}: React.ComponentProps<"form">) {
             <p className="text-destructive text-sm text-center" id="signin-error" role="alert">
               {error}
             </p> 
+          : 
+          message ?
+            <p className="text-destructive text-sm text-center" id="signin-message" role="alert">
+              {message}
+            </p>
           : null
         }
 
@@ -141,3 +151,5 @@ export function LoginForm({className,...props}: React.ComponentProps<"form">) {
     </form>
   )
 }
+
+export default LoginForm

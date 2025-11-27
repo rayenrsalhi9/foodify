@@ -1,10 +1,13 @@
 import { UtensilsCrossed } from "lucide-react"
 import loginBg from '/auth/login-bg.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
-import { LoginForm } from "@/components/login-form"
-import { Link } from "react-router"
+import LoginForm from "@/components/login-form"
+import { Link, useLocation } from "react-router"
 
-const login = () => {
+const Login = () => {
+
+  const location = useLocation()
+  const { from, message } = location.state || { from: { pathname: '/cart' }, message: 'You need to login to access your cart' }
   
   const imageData = createOptimizedPicture(loginBg, "Login background image", "absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale", "lazy")
   
@@ -21,7 +24,7 @@ const login = () => {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm />
+            <LoginForm from={from} message={message} />
           </div>
         </div>
       </div>
@@ -40,4 +43,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

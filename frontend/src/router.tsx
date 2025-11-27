@@ -9,7 +9,7 @@ import NotFound from "./pages/not-found"
 
 const HomeLayoutLazy = lazy(() => import('./layout/homeLayout'))
 const MenuLayoutLazy = lazy(() => import('./layout/menuLayout'))
-const CartLayoutLazy = lazy(() => import('./layout/cartLayout'))
+const CartLayoutLazy = lazy(() => import('./protected/CartProtected'))
 
 const router = createBrowserRouter([
   { 
