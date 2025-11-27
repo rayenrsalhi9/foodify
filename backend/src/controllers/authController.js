@@ -14,6 +14,11 @@ const signUserIn = async (req, res) => {
         return res.status(400).json({error: "Invalid email format"})
     }
 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({error: "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character"})
+    }
+
     try {
 
         const user = await pool.query(
@@ -59,6 +64,11 @@ const signUserUp = async (req, res) => {
     const usernameRegex = /^[a-zA-Z0-9_-]{1,20}$/
     if (!usernameRegex.test(username)) {
         return res.status(400).json({error: "Username must be 1-20 characters long and contain only letters, numbers, _, and -"})
+    }
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({error: "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character"})
     }
 
     try {
