@@ -5,10 +5,12 @@ import menuDecoration from '/menu/menu-decoration.webp'
 import { createOptimizedPicture } from "@/lib/image-utils"
 import useMenu from "@/hooks/useMenu"
 import {useCartContext} from "@/context/cartContext"
+import { useUserContext } from "@/context/userContext"
 import { formatPrice } from "@/lib/currency"
 
 const Menu = () => {
 
+  const { user } = useUserContext()
   const { addToCart } = useCartContext()
   const { menuPreview } = useMenu()
 
@@ -63,7 +65,11 @@ const Menu = () => {
                       <Button
                         size="sm"
                         onClick={() => addToCart({...item, quantity: 1})}
-                        className="rounded-full bg-orange-500 hover:bg-orange-600 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110"
+                        disabled={!user}
+                        className="rounded-full bg-orange-500 hover:bg-orange-600 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-110 disabled:opacity-75 disabled:border disabled:border-gray-400 disabled:bg-gray-100 disabled:text-gray-600 disabled:cursor-not-allowed disabled:line-through disabled:relative group"
+                        aria-disabled={!user}
+                        aria-label={!user ? "Add to Cart (disabled: Please sign in to add items to cart)" : "Add to Cart"}
+                        title={!user ? "Please sign in to add items to cart" : undefined}
                       >
                         <Plus className="h-4 w-4" />
                       </Button>

@@ -1,5 +1,6 @@
 import type { MenuItem } from "@/types/types"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useUserContext } from "@/context/userContext"
 import { useCartContext } from "@/context/cartContext"
 import { Button } from "@/components/ui/button"
 import OptimizedImage from "@/components/ui/optimized-image"
@@ -11,6 +12,7 @@ type MenuItemProps = {
 
 const MenuItemCard = ({item} : MenuItemProps) => {
 
+    const { user } = useUserContext()
     const { addToCart } = useCartContext()
     
     return (
@@ -60,8 +62,12 @@ const MenuItemCard = ({item} : MenuItemProps) => {
                     <Button
                         variant="default"
                         size="sm"
+                        disabled={!user}
                         onClick={() => addToCart({...item, quantity: 1})}
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200"
+                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 disabled:opacity-75 disabled:border disabled:border-gray-400 disabled:bg-gray-100 disabled:text-gray-600 disabled:cursor-not-allowed disabled:line-through disabled:relative group"
+                        aria-disabled={!user}
+                        aria-label={!user ? "Add to Cart (disabled: Please sign in to add items to cart)" : "Add to Cart"}
+                        title={!user ? "Please sign in to add items to cart" : undefined}
                     >
                         Add to Cart
                     </Button>

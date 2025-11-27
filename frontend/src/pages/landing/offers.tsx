@@ -10,13 +10,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { useUserContext } from "@/context/userContext"
 import {useCartContext} from "@/context/cartContext"
 import { formatPrice } from "@/lib/currency"
 
 const Offers = () => {
 
+  const { user } = useUserContext()
   const { addToCart } = useCartContext()
-
   const { offers } = useMenu()
 
   return (
@@ -94,8 +95,12 @@ const Offers = () => {
                             {/* CTA */}
                             <Button 
                               size="sm"
+                              disabled={!user}
                               onClick={() => addToCart({...offer, quantity: 1})}
-                              className="bg-orange-500 hover:bg-orange-600 text-white text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 sm:py-1.5 rounded transition-colors shrink-0"
+                              className="bg-orange-500 hover:bg-orange-600 text-white text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 shrink-0 disabled:opacity-75 disabled:border disabled:border-gray-400 disabled:bg-gray-100 disabled:text-gray-600 disabled:cursor-not-allowed disabled:line-through disabled:relative group"
+                              aria-disabled={!user}
+                              aria-label={!user ? "Order Now (disabled: Please sign in to add items to cart)" : "Order Now"}
+                              title={!user ? "Please sign in to add items to cart" : undefined}
                             >
                               Order Now
                             </Button>
