@@ -32,8 +32,6 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
 
     const [user, setUser] = useState<User | null>(null)
     const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
-    console.log(isSignedIn)
-    console.log(user)
 
     const logout = async () => {
         try {

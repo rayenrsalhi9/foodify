@@ -8,7 +8,13 @@ import Footer from "@/components/custom/footer"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import AppSidebar from "@/components/custom/Sidebar"
 
+import StickyBanner from "@/components/custom/sticky-banner"
+import { useUserContext } from "@/context/userContext"
+
 const HomeLayout = () => {
+
+  const {user} = useUserContext()
+
   return (
     <SidebarProvider defaultOpen={false}>
       <AppSidebar />
@@ -20,6 +26,7 @@ const HomeLayout = () => {
         <OfferLimited />
         <Menu />
         <Footer />
+        { !user ? <StickyBanner /> : null }
       </div>
     </SidebarProvider>
   )

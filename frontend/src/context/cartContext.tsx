@@ -24,7 +24,6 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
 
     const {isSignedIn} = useUserContext()
     const [cart, setCart] = useState<CartItem[]>([])
-    console.log(cart)
 
     useEffect(() => {
 
