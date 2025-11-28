@@ -7,12 +7,14 @@ import { toast } from "sonner";
 const CartContext = createContext<{
     cart: CartItem[]
     addToCart: (item: CartItem) => void
+    placeOrder: () => Promise<{ success?: boolean, error?: string, details?: unknown[] }>
     removeFromCart: (itemId: number) => void
     clearCart: () => void
     totalItems: number
     totalPrice: number
 }>({
     cart: [],
+    placeOrder: async () => ({ error: 'Not implemented' }),
     addToCart: () => {},
     removeFromCart: () => {},
     clearCart: () => {},
@@ -53,6 +55,32 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
         }
 
     }, [isSignedIn])
+
+    const placeOrder = async () => {
+
+        if (cart.length === 0) return { error: 'Cart is empty' }
+
+        try {
+
+            const response = await fetch("/api/order/placeOrder", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" }
+            })
+
+            const { error, success, details } = await response.json()
+            if (success) {
+                clearCart()
+                return { success, details }
+            } else {
+                return { error: error || 'Failed to place order' }
+            }
+            
+        } catch (error) {
+            console.error('Error placing order:', error)
+            return { error: 'Failed to place order' }
+        }
+
+    }
 
     const addToCart = async (item: CartItem) => {
 
@@ -102,7 +130,7 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
     const totalPrice = cart.reduce((total, item) => total + (item.price * (1 - item.discount)) * item.quantity, 0)
 
     return (
-        <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, totalItems, totalPrice}}>
+        <CartContext.Provider value={{cart, placeOrder, addToCart, removeFromCart, clearCart, totalItems, totalPrice}}>
             {children}
         </CartContext.Provider>
     )
