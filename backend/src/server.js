@@ -9,6 +9,7 @@ import menuRoute from './routes/menuRoute.js'
 import authRoute from './routes/authRoute.js'
 import userRoute from './routes/userRoute.js'
 import cartRoute from './routes/cartRoute.js'
+import orderRoute from './routes/orderRoute.js'
 
 dotenv.config()
 
@@ -40,6 +41,7 @@ app.use('/api/menu', menuRoute)
 app.use('/api/auth', authRoute)
 app.use('/api/user', userRoute)
 app.use('/api/cart', cartRoute)
+app.use('/api/order', orderRoute)
 
 // Catch-all route to serve frontend index.html for client-side routing
 app.use((req, res) => {
