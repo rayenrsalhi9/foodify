@@ -47,7 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ className, from, message, ...prop
             duration: 3000
         })
         setIsSignedIn(prev => !prev)
-        navigate(from || "/menu")
+        navigate(from || "/menu", { replace: true })
       }
 
       return null

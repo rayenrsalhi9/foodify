@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router"
 const Login = () => {
 
   const location = useLocation()
-  const { from, message } = location.state || { from: { pathname: '/cart' }, message: 'You need to login to access your cart' }
+  const state = location.state as { from?: string, message?: string } | undefined
   
   const imageData = createOptimizedPicture(loginBg, "Login background image", "absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale", "lazy")
   
@@ -24,7 +24,7 @@ const Login = () => {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm from={from} message={message} />
+            <LoginForm from={state?.from} message={state?.message} />
           </div>
         </div>
       </div>
