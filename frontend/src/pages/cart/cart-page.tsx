@@ -3,10 +3,36 @@ import CartEmpty from "./cart-empty"
 import CartItemCard from "./cart-item"
 import CartSummary from "./cart-summary"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { toast } from "sonner"
 
 const CartPage = () => {
 
-  const { cart } = useCartContext()
+  const { cart, placeOrder } = useCartContext()
+
+  const handlePlaceOrder = async () => {
+        const { error, success, details } = await placeOrder()
+        if (success) {
+            toast.success('Order placed successfully!', {
+                style: {
+                    background: '#f0fdf4',
+                    border: '1px solid #bbf7d0',
+                    color: 'green'
+                },
+                duration: 3000
+            })
+            console.log(details)
+            console.log(details?.total_price)
+        } else {
+            toast.error(error || 'Failed to place order', {
+                style: {
+                    background: '#fee2e2',
+                    border: '1px solid #fecaca',
+                    color: 'red'
+                },
+                duration: 3000
+            })
+        }
+    }
 
   return (
     <div className="min-h-[calc(100vh - 80px)] bg-gray-50">
@@ -41,7 +67,7 @@ const CartPage = () => {
                   </Card>
                 </div>
 
-                <CartSummary cart={cart} />
+                <CartSummary cart={cart} handlePlaceOrder={handlePlaceOrder} />
                 
               </div>
             </>

@@ -9,9 +9,10 @@ import { formatPrice } from "@/lib/currency"
 
 type CartSummaryProps = {
     cart: CartItem[]
+    handlePlaceOrder: () => void
 }
 
-const CartSummary = ({ cart } : CartSummaryProps) => {
+const CartSummary = ({ cart, handlePlaceOrder } : CartSummaryProps) => {
 
     const { totalPrice } = useCartContext()
 
@@ -45,7 +46,7 @@ const CartSummary = ({ cart } : CartSummaryProps) => {
                         </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
-                        <CartConfirm />
+                        <CartConfirm handlePlaceOrder={handlePlaceOrder} />
                     </AlertDialogContent>
                 </AlertDialog>
                 

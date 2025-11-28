@@ -6,37 +6,8 @@ import {
     AlertDialogHeader, 
     AlertDialogTitle 
 } from "@/components/ui/alert-dialog"
-import { useCartContext } from "@/context/cartContext"
-import { toast } from "sonner"
 
-const CartConfirm = () => {
-
-    const { placeOrder } = useCartContext()
-
-    const handlePlaceOrder = async () => {
-        const { error, success, details } = await placeOrder()
-        if (success) {
-            toast.success('Order placed successfully!', {
-                style: {
-                    background: '#f0fdf4',
-                    border: '1px solid #bbf7d0',
-                    color: 'green'
-                },
-                duration: 3000
-            })
-            console.log(details)
-            console.log(details?.total_price)
-        } else {
-            toast.error(error || 'Failed to place order', {
-                style: {
-                    background: '#fee2e2',
-                    border: '1px solid #fecaca',
-                    color: 'red'
-                },
-                duration: 3000
-            })
-        }
-    }
+const CartConfirm = ({handlePlaceOrder} : {handlePlaceOrder: () => void}) => {
 
     return (
         <>
