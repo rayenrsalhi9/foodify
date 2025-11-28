@@ -9,66 +9,52 @@ const placeOrder = async (req, res) => {
 
         await pool.query('BEGIN')
 
-        // 1. total price calculation
-        const totalResult = await pool.query(`
-            SELECT SUM((m.price * (1 - m.discount)) * c.quantity) AS total
-            FROM cart c
-            JOIN menu m ON c.product_id = m.id
-            WHERE c.user_id = $1
-        `, [userId]);
+        // 1. get user's cart
+        const cartResult = await pool.query(`
+            select m.id, m.name, m.description, m.price, m.image, m.discount, c.quantity
+            from menu m
+            join cart c on m.id = c.product_id
+            where c.user_id = $1
+        `, [userId])
 
-        const totalPrice = totalResult.rows[0].total || 0
-
-        if (totalPrice === 0) {
+        // 2. user's cart empty -> cancel operation
+        const cartItems = cartResult.rows
+        if (cartItems.length === 0) {
             await pool.query("ROLLBACK");
-            return res.status(400).json({ error: "Cart is empty" });
+            return res.status(400).json({ error: "Your cart is empty" });
         }
 
-        // 2. place order
+        // 3. cart not empty -> calculate total price
+        const totalPrice = cartItems.reduce((sum, item) => 
+            sum + item.price * (1 - item.discount) * item.quantity, 0
+        );
+
+        // create order
         const orderResult = await pool.query(`
             INSERT INTO orders (user_id, total_price)
-            VALUES ($1, $2)
-            RETURNING id, total_price, created_at
+            VALUES ($1, $2) RETURNING id
         `, [userId, totalPrice]);
-
+     
+        // save cart items in order items table
         const orderId = orderResult.rows[0].id;
 
-        // put items in "cart" table to "order_items" table
-        await pool.query(`
-            INSERT INTO order_items (order_id, product_id, quantity, price_at_purchase)
-            SELECT
-                $1,
-                c.product_id,
-                c.quantity,
-                (m.price * (1 - m.discount)) 
-            FROM cart c
-            JOIN menu m ON c.product_id = m.id
-            WHERE c.user_id = $2
-        `, [orderId, userId]);
+        if (!orderId) return res.status(401).json({ error: "Order creation failed" })
 
-        // clear cart after placing order
-        await pool.query(`DELETE FROM cart WHERE user_id = $1`, [userId]);
+       for (const item of cartItems) {
+            await pool.query(`
+                INSERT INTO order_items 
+                (order_id, menu_item_id, item_name, quantity, price_at_purchase, discount_applied)
+                VALUES ($1, $2, $3, $4, $5, $6)
+            `, [orderId, item.id, item.name, item.quantity, item.price * (1 - item.discount), item.discount])
+        }
 
-        await pool.query("COMMIT");
+        // clear cart
+        await pool.query('DELETE FROM cart WHERE user_id = $1', [userId])
 
-        // get order details
-        const details = await pool.query(`
-            SELECT 
-                o.id,
-                o.total_price,
-                o.created_at,
-                oi.quantity,
-                m.name,
-                m.price,
-                m.discount,
-                oi.price_at_purchase
-            FROM orders o
-            JOIN order_items oi ON o.id = oi.order_id
-            JOIN menu m ON oi.product_id = m.id
-            WHERE o.id = $1
-        `, [orderId]);
+        await pool.query('COMMIT')
 
-        res.json({ success: true, orderId, details: details.rows })
+        const orderDetails = await pool.query('select * from orders where user_id = $1 and id = $2', [userId, orderId])
+        res.json({success: true, details: orderDetails.rows[0]})
 
     } catch(err) {
         await pool.query("ROLLBACK");
