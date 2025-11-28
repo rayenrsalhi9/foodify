@@ -5,7 +5,7 @@ import CartSummary from "./cart-summary"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { toast } from "sonner"
 import { useState } from "react"
-import ConfirmationAlert from "@/components/custom/confirmationAlert"
+import ConfirmationAlert from "./confirmationAlert"
 import type { OrderDetails } from "@/context/cartContext"
 
 const CartPage = () => {
