@@ -4,7 +4,7 @@ import {useUserContext} from "./userContext";
 import { type CartItem } from "@/types/types";
 import { toast } from "sonner";
 
-type OrderDetails = {
+export type OrderDetails = {
     total_price: string;
     status: string;
     created_at: string;

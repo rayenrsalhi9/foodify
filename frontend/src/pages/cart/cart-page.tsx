@@ -4,10 +4,15 @@ import CartItemCard from "./cart-item"
 import CartSummary from "./cart-summary"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { toast } from "sonner"
+import { useState } from "react"
+import ConfirmationAlert from "@/components/custom/confirmationAlert"
+import type { OrderDetails } from "@/context/cartContext"
 
 const CartPage = () => {
 
   const { cart, placeOrder } = useCartContext()
+  const [showOrderDialog, setShowOrderDialog] = useState(false)
+  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null)
 
   const handlePlaceOrder = async () => {
         const { error, success, details } = await placeOrder()
@@ -20,8 +25,10 @@ const CartPage = () => {
                 },
                 duration: 3000
             })
-            console.log(details)
-            console.log(details?.total_price)
+            if (details) {
+                setOrderDetails(details)
+                setShowOrderDialog(true)
+            }
         } else {
             toast.error(error || 'Failed to place order', {
                 style: {
@@ -74,6 +81,13 @@ const CartPage = () => {
           )
         }    
       </div>
+
+      <ConfirmationAlert 
+        showOrderDialog={showOrderDialog} 
+        setShowOrderDialog={setShowOrderDialog} 
+        orderDetails={orderDetails} 
+      />
+      
     </div>
   )
 }
