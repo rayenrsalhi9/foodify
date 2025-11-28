@@ -10,6 +10,7 @@ import NotFound from "./pages/not-found"
 const HomeLayoutLazy = lazy(() => import('./layout/homeLayout'))
 const MenuLayoutLazy = lazy(() => import('./layout/menuLayout'))
 const CartLayoutLazy = lazy(() => import('./protected/CartProtected'))
+const ProfileLayoutLazy = lazy(() => import('./layout/profileLayout'))
 
 const router = createBrowserRouter([
   { 
@@ -33,6 +34,13 @@ const router = createBrowserRouter([
         <CartLayoutLazy />
       </Suspense>
     ) 
+  }, {
+    path: '/profile',
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProfileLayoutLazy />
+      </Suspense>
+    )
   },
   { path: "login", element: <LoginPage /> },
   { path: "signup", element: <SignupPage /> },
