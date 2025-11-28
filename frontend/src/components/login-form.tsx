@@ -1,4 +1,4 @@
-import { useActionState } from "react"
+import { useActionState, useEffect } from "react"
 import { Link, useNavigate } from "react-router"
 import { useUserContext } from "@/context/userContext"
 import { cn } from "@/lib/utils"
@@ -20,7 +20,13 @@ type LoginFormProps = React.ComponentProps<"form"> & {
 const LoginForm: React.FC<LoginFormProps> = ({ className, from, message, ...props }) => {
 
   const navigate = useNavigate()
-  const {setIsSignedIn} = useUserContext()
+  const {setIsSignedIn, isLoading, user} = useUserContext()
+
+  useEffect(() => {
+    if (user && !isLoading) {
+      navigate(from || "/menu", { replace: true })
+    }
+  }, [user, isLoading, from, navigate])
 
   const [error, handleLogin, isPending] = useActionState(
     async (_prevState: string | null, formData: FormData) => {
@@ -46,8 +52,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ className, from, message, ...prop
             },
             duration: 3000
         })
-        setIsSignedIn(prev => !prev)
-        navigate(from || "/menu", { replace: true })
+        setIsSignedIn(true)
       }
 
       return null
@@ -132,11 +137,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ className, from, message, ...prop
         <Field>
           <Button 
             type="submit" 
-            className={cn("bg-orange-500 cursor-pointer hover:bg-orange-600", isPending ? 'opacity-80 cursor-not-allowed' : '')}
-            disabled={isPending}
-            aria-busy={isPending}
+            className={cn("bg-orange-500 cursor-pointer hover:bg-orange-600", (isPending || isLoading) ? 'opacity-80 cursor-not-allowed' : '')}
+            disabled={isPending || isLoading}
+            aria-busy={isPending || isLoading}
           >
-            {isPending ? 'Logging in...' : 'Login'}
+            {isPending || isLoading ? 'Logging in...' : 'Login'}
           </Button>
         </Field>
         <Field>

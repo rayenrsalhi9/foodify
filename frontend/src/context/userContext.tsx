@@ -21,17 +21,20 @@ const UserContext = createContext<{
     isSignedIn: boolean
     setIsSignedIn: Dispatch<SetStateAction<boolean>>
     logout: () => Promise<LogoutResult>
+    isLoading: boolean
 }>({
     user: null,
     isSignedIn: false,
     setIsSignedIn: () => {},
-    logout: async () => ({success: false, message: ""})
+    logout: async () => ({success: false, message: ""}),
+    isLoading: false
 })
 
 const UserContextProvider = ({children}: {children: React.ReactNode}) => {
 
     const [user, setUser] = useState<User | null>(null)
     const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const logout = async () => {
         try {
@@ -55,6 +58,7 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
 
     useEffect(() => {
         const fetchUser = async () => {
+            setIsLoading(true)
             try {
                 const response = await fetch("/api/user/data")
                 const {notSignedIn, error, user} = await response.json()
@@ -67,6 +71,8 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
             } catch (error) {
                 console.log(error)
                 setUser(null)
+            } finally {
+                setIsLoading(false)
             }
         }
 
@@ -82,7 +88,7 @@ const UserContextProvider = ({children}: {children: React.ReactNode}) => {
     }, [isSignedIn])
 
     return (
-        <UserContext.Provider value={{user, isSignedIn, setIsSignedIn, logout}}>
+        <UserContext.Provider value={{user, isSignedIn, setIsSignedIn, logout, isLoading}}>
             {children}
         </UserContext.Provider>
     )

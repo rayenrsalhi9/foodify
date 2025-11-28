@@ -1,11 +1,16 @@
 import type { JSX } from "react";
 import { Navigate, useLocation } from "react-router";
 import { useUserContext } from "@/context/userContext";
+import Loading from "@/components/custom/loading";
 
 const ProtectedRoute = ({children} : { children: JSX.Element }) => {
 
-  const { user } = useUserContext()
+  const { user, isLoading } = useUserContext()
   const location = useLocation()
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   if (!user) {
     return (
@@ -21,6 +26,7 @@ const ProtectedRoute = ({children} : { children: JSX.Element }) => {
   }
 
   return children
+  
 }
 
 export default ProtectedRoute;
