@@ -25,6 +25,7 @@ const CartConfirm = () => {
                 duration: 3000
             })
             console.log(details)
+            console.log(details?.total_price)
         } else {
             toast.error(error || 'Failed to place order', {
                 style: {

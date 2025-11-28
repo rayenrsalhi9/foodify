@@ -53,7 +53,10 @@ const placeOrder = async (req, res) => {
 
         await pool.query('COMMIT')
 
-        const orderDetails = await pool.query('select * from orders where user_id = $1 and id = $2', [userId, orderId])
+        const orderDetails = await pool.query(
+            'select total_price, status, created_at from orders where user_id = $1 and id = $2',
+             [userId, orderId]
+        )
         res.json({success: true, details: orderDetails.rows[0]})
 
     } catch(err) {

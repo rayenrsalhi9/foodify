@@ -4,10 +4,16 @@ import {useUserContext} from "./userContext";
 import { type CartItem } from "@/types/types";
 import { toast } from "sonner";
 
+type OrderDetails = {
+    total_price: string;
+    status: string;
+    created_at: string;
+}
+
 const CartContext = createContext<{
     cart: CartItem[]
     addToCart: (item: CartItem) => void
-    placeOrder: () => Promise<{ success?: boolean, error?: string, details?: unknown[] }>
+    placeOrder: () => Promise<{ success?: boolean, error?: string, details?: OrderDetails }>
     removeFromCart: (itemId: number) => void
     clearCart: () => void
     totalItems: number
