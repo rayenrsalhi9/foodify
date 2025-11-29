@@ -5,6 +5,20 @@ const placeOrder = async (req, res) => {
     const userId = req.session.userId
     if (!userId) return res.status(401).json({ error: "User not authenticated" })
 
+    const { phoneNumber, location } = req.body
+    if (!phoneNumber || !location) {
+        return res.status(400).json({ error: "Phone number and location are required" })
+    }
+
+    const phoneRegex = /^\+216[0-9]{8}$/
+    if (!phoneRegex.test(phoneNumber)) {
+        return res.status(400).json({ error: "Invalid phone number format" })
+    }
+
+    if (location && location.length < 10) {
+        return res.status(400).json({ error: "Location must be at least 10 characters long" })
+    }
+
     try {
 
         await pool.query('BEGIN')
@@ -31,9 +45,9 @@ const placeOrder = async (req, res) => {
 
         // create order
         const orderResult = await pool.query(`
-            INSERT INTO orders (user_id, total_price)
-            VALUES ($1, $2) RETURNING id
-        `, [userId, totalPrice]);
+            INSERT INTO orders (user_id, total_price, phone_number, location)
+            VALUES ($1, $2, $3, $4) RETURNING id
+        `, [userId, totalPrice, phoneNumber, location]);
      
         // save cart items in order items table
         const orderId = orderResult.rows[0].id;

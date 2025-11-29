@@ -13,33 +13,48 @@ const CartPage = () => {
   const { cart, placeOrder } = useCartContext()
   const [showOrderDialog, setShowOrderDialog] = useState(false)
   const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null)
+  const [phoneNumber, setPhoneNumber] = useState<string | null>(null)
+  const [location, setLocation] = useState<string | null>(null)
 
-  const handlePlaceOrder = async () => {
-        const { error, success, details } = await placeOrder()
-        if (success) {
-            toast.success('Order placed successfully!', {
-                style: {
-                    background: '#f0fdf4',
-                    border: '1px solid #bbf7d0',
-                    color: 'green'
-                },
-                duration: 3000
-            })
-            if (details) {
-                setOrderDetails(details)
-                setShowOrderDialog(true)
-            }
-        } else {
-            toast.error(error || 'Failed to place order', {
-                style: {
-                    background: '#fee2e2',
-                    border: '1px solid #fecaca',
-                    color: 'red'
-                },
-                duration: 3000
-            })
-        }
+  const handlePlaceOrder = async (phoneNumber: string | null, location: string | null) => {
+
+    if (!phoneNumber || !location) {
+        toast.error('Please enter your phone number and location', {
+            style: {
+                background: '#fee2e2',
+                border: '1px solid #fecaca',
+                color: 'red'
+            },
+            duration: 3000
+        })
+        return
     }
+
+    const { error, success, details } = await placeOrder(phoneNumber, location)
+    if (success) {
+        toast.success('Order placed successfully!', {
+            style: {
+                background: '#f0fdf4',
+                border: '1px solid #bbf7d0',
+                color: 'green'
+            },
+            duration: 3000
+        })
+        if (details) {
+            setOrderDetails(details)
+            setShowOrderDialog(true)
+        }
+    } else {
+        toast.error(error || 'Failed to place order', {
+            style: {
+                background: '#fee2e2',
+                border: '1px solid #fecaca',
+                color: 'red'
+            },
+            duration: 3000
+        })
+    }
+  }
 
   return (
     <div className="min-h-[calc(100vh - 80px)] bg-gray-50">
@@ -74,7 +89,14 @@ const CartPage = () => {
                   </Card>
                 </div>
 
-                <CartSummary cart={cart} handlePlaceOrder={handlePlaceOrder} />
+                <CartSummary 
+                  cart={cart} 
+                  handlePlaceOrder={handlePlaceOrder} 
+                  phoneNumber={phoneNumber}
+                  setPhoneNumber={setPhoneNumber}
+                  location={location}
+                  setLocation={setLocation}
+                />
                 
               </div>
             </>

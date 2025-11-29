@@ -13,7 +13,7 @@ export type OrderDetails = {
 const CartContext = createContext<{
     cart: CartItem[]
     addToCart: (item: CartItem) => void
-    placeOrder: () => Promise<{ success?: boolean, error?: string, details?: OrderDetails }>
+    placeOrder: (phoneNumber: string | null, location: string | null) => Promise<{ success?: boolean, error?: string, details?: OrderDetails }>
     removeFromCart: (itemId: number) => void
     clearCart: () => void
     totalItems: number
@@ -62,15 +62,16 @@ const CartContextProvider = ({children}: {children: React.ReactNode}) => {
 
     }, [isSignedIn])
 
-    const placeOrder = async () => {
+    const placeOrder = async (phoneNumber: string | null, location: string | null) => {
 
         if (cart.length === 0) return { error: 'Cart is empty' }
-
+        
         try {
 
             const response = await fetch("/api/order/placeOrder", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" }
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ phoneNumber, location })
             })
 
             const { error, success, details } = await response.json()
