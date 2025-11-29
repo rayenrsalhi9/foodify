@@ -1,4 +1,5 @@
 import pool from '../database.js'
+import { transporter } from '../utils/mail.js'
 
 const placeOrder = async (req, res) => {
 
@@ -66,6 +67,34 @@ const placeOrder = async (req, res) => {
         await pool.query('DELETE FROM cart WHERE user_id = $1', [userId])
 
         await pool.query('COMMIT')
+
+        const userEmail = await pool.query('SELECT email FROM users WHERE id = $1', [userId])
+        if (!userEmail.rows[0].email) return res.status(401).json({ error: "User email not found" })
+
+        // send email to user
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: userEmail.rows[0].email,
+            subject: 'Order Confirmation',
+            text: `
+                Your order has been placed successfully. Order ID: ${orderId}. \n
+                Total Price: ${(totalPrice / 1000).toFixed(2)} TND \n
+                Phone Number: ${phoneNumber} \n
+                Location: ${location} \n
+                Items: \n
+                ${cartItems.map(item => 
+                    `- ${item.name} x ${item.quantity} @ ${((item.price * (1 - item.discount)) / 1000).toFixed(2)} TND`
+                ).join('\n')}
+            `
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
 
         const orderDetails = await pool.query(
             'select total_price, status, created_at from orders where user_id = $1 and id = $2',
